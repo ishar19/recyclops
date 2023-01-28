@@ -1,4 +1,5 @@
 import React from "react";
+import HomeBanner from "../components/HomeBanner";
 import HomeUser from "../components/HomeUser";
 import Location from "../components/Location";
 import Navbar from "../components/Navbar";
@@ -10,7 +11,7 @@ const Home = () => {
         <HomeUser />
         <Location />
       </div>
-
+      <HomeBanner />
       <Navbar />
     </div>
   );
