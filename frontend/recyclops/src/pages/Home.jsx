@@ -6,8 +6,8 @@ import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
-    <div className="pt-5">
-      <div className="flex justify-between px-5">
+    <div className="px-[5vw] pt-5">
+      <div className="flex items-center justify-between">
         <HomeUser />
         <Location />
       </div>

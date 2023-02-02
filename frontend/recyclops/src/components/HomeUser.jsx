@@ -1,5 +1,5 @@
 import React from "react";
-import { bgPrimary, textPrimary } from "../assets/styles";
+import { bgPrimary, textPrimary } from "../assets/styles"; // todo- use tailwind config for this
 const HomeUser = () => {
   const dummyData = { isLoggedIn: true, user: "Diksha" };
 
@@ -22,4 +22,7 @@ const HomeUser = () => {
   );
 };
 
+{
+  /* use a button */
+}
 export default HomeUser;
