@@ -23,7 +23,15 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
       <h1 className={`text-2xl ${textPrimary} mb-2 pl-5`}>Recent Scans</h1>
       <div>
         {isRecentScan ? (
-          scans
+          <div>
+            {scans}
+            <a
+              href="#"
+              className=" absolute right-3 cursor-pointer text-xl  underline"
+            >
+              See more
+            </a>
+          </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
             <h2 className="flex gap-1 text-2xl">
@@ -37,12 +45,6 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
             </a>
           </div>
         )}
-        <a
-          href="#"
-          className=" absolute right-3 cursor-pointer text-xl  underline"
-        >
-          See more
-        </a>
       </div>
     </div>
   );
