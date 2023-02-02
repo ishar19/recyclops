@@ -1,13 +1,12 @@
 import React from "react";
 import { bgPrimary, textPrimary } from "../assets/styles";
-const HomeUser = () => {
-  const dummyData = { isLoggedIn: true, user: "Diksha" };
-
+import PropTypes from "prop-types";
+const HomeUser = ({ isLoggedIn, user }) => {
   return (
     <div>
-      {dummyData.isLoggedIn ? (
+      {isLoggedIn ? (
         <div>
-          <h1 className={`text-3xl ${textPrimary}`}>Hi {dummyData.user}</h1>
+          <h1 className={`text-3xl ${textPrimary}`}>Hi {user}</h1>
           <h2 className="text-2xl">Welcome Back!</h2>
         </div>
       ) : (
@@ -20,6 +19,10 @@ const HomeUser = () => {
       )}
     </div>
   );
+};
+HomeUser.propTypes = {
+  isLoggedIn: PropTypes.boolean,
+  user: PropTypes.string,
 };
 
 export default HomeUser;
