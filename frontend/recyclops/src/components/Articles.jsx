@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { textPrimary } from "../assets/styles";
 const Articles = ({ articles, articleTitles }) => {
   const titles = articleTitles.map((title, i) => (
     <h2
@@ -14,11 +13,11 @@ const Articles = ({ articles, articleTitles }) => {
     <a
       href={article.link}
       key={i}
-      className="mx-2 mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-[#34A853] p-3"
+      className="mx-2 mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-greenPrimary p-3"
     >
       <div>
         <h2 className={`text-2xl`}>{article.title}</h2>
-        <p className={`${textPrimary} text-xl`}>{article.date}</p>
+        <p className="text-xl text-greenPrimary">{article.date}</p>
       </div>
       <img src={article.img} alt="scan image" className="w-24" />
     </a>
