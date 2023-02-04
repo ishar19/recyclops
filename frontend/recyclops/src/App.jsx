@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 
 function App() {
@@ -35,16 +36,23 @@ function App() {
     ],
   };
   return (
-    <div>
-      <Home
-        isLoggedIn={dummyData.isLoggedIn}
-        user={dummyData.user}
-        isRecentScan={dummyData.isRecentScan}
-        recentScan={dummyData.recentScan}
-        articleTitles={dummyData.articleTitles}
-        articles={dummyData.articles}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              isLoggedIn={dummyData.isLoggedIn}
+              user={dummyData.user}
+              isRecentScan={dummyData.isRecentScan}
+              recentScan={dummyData.recentScan}
+              articleTitles={dummyData.articleTitles}
+              articles={dummyData.articles}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

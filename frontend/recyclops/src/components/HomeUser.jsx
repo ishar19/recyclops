@@ -1,6 +1,19 @@
 import React from "react";
 import { bgPrimary, textPrimary } from "../assets/styles"; // todo- use tailwind config for this
+// import userData from "../../mock/user.json";
+// import { useEffect } from "react";
+// import { useState } from "react";
 const HomeUser = () => {
+  // const [user, setUser] = useState({});
+  // const handleUserData = async () => {
+  //   const response = await fetch(userData);
+  //   const data = await response.json();
+  //   setUser(data);
+  // };
+  // useEffect(() => {
+  //   handleUserData();
+  // }, []);
+  // console.log(user);
   const dummyData = { isLoggedIn: true, user: "Diksha" };
 
   return (
