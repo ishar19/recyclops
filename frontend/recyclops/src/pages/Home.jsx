@@ -17,7 +17,7 @@ const Home = ({
   return (
     <div className="px-[5vw] pt-5">
       <div className="flex items-center justify-between">
-        <HomeUser />
+        <HomeUser isLoggedIn={isLoggedIn} user={user} />
         <Location />
       </div>
       <HomeBanner />
