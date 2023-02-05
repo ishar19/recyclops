@@ -12,17 +12,17 @@ const Navbar = () => {
     {
       icon: <MdOutlineDocumentScanner size="32px" />,
       title: "Scanner",
-      link: "/Scanner",
+      link: "/scanner",
     },
     {
       icon: <MdVideogameAsset size="32px" />,
       title: "Gaming",
-      link: "/Gaming",
+      link: "/gaming",
     },
     {
       icon: <MdPerson size="32px" />,
       title: "Profile",
-      link: "/Profile",
+      link: "/profile",
     },
   ];
   return (
