@@ -1,5 +1,4 @@
 import React from "react";
-import { textPrimary, bgPrimary } from "../assets/styles";
 import { MdAddTask } from "react-icons/md";
 import PropTypes from "prop-types";
 const RecentScans = ({ isRecentScan, recentScan }) => {
@@ -7,11 +6,11 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
     return (
       <div
         key={i}
-        className="mx-2 mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-[#34A853] p-3"
+        className="mx-2 mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-greenPrimary p-3"
       >
         <div>
           <h2 className={`text-2xl`}>{scan.title}</h2>
-          <p className={`${textPrimary} text-xl`}>{scan.date}</p>
+          <p className="text-xl text-greenPrimary">{scan.date}</p>
         </div>
         <img src={scan.img} alt="scan image" className="w-24" />
       </div>
@@ -20,7 +19,7 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
 
   return (
     <div>
-      <h1 className={`text-2xl ${textPrimary} mb-2 pl-5`}>Recent Scans</h1>
+      <h1 className="mb-2 pl-5 text-2xl text-greenPrimary">Recent Scans</h1>
       <div>
         {isRecentScan ? (
           <div>
@@ -39,7 +38,7 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
             </h2>
             <a
               href="#"
-              className={`${bgPrimary} rounded-lg px-5 py-1 text-2xl text-white`}
+              className="rounded-lg bg-greenPrimary px-5 py-1 text-2xl text-white"
             >
               Start Scanning
             </a>

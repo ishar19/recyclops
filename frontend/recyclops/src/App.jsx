@@ -1,5 +1,7 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   const dummyData = {
@@ -33,18 +35,35 @@ function App() {
         link: "#",
       },
     ],
+    profileData: {
+      name: "Name",
+      phone: "9999988888",
+      email: "abcd123@gmail.com",
+      img: "https://cdn.crispedge.com/43464b.png",
+    },
   };
   return (
-    <div>
-      <Home
-        isLoggedIn={dummyData.isLoggedIn}
-        user={dummyData.user}
-        isRecentScan={dummyData.isRecentScan}
-        recentScan={dummyData.recentScan}
-        articleTitles={dummyData.articleTitles}
-        articles={dummyData.articles}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              isLoggedIn={dummyData.isLoggedIn}
+              user={dummyData.user}
+              isRecentScan={dummyData.isRecentScan}
+              recentScan={dummyData.recentScan}
+              articleTitles={dummyData.articleTitles}
+              articles={dummyData.articles}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={<Profile profileData={dummyData.profileData} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
