@@ -39,7 +39,7 @@ const Profile = ({ profileData }) => {
   ];
   const tabs = list.map((tab, i) => (
     <Link key={i} to={tab.link}>
-      <div className="item-center flex w-full gap-4 border-b-2 border-black p-2 text-2xl">
+      <div className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl">
         {tab.icon}
         <h2>{tab.title}</h2>
       </div>
