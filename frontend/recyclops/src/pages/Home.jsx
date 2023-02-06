@@ -15,16 +15,18 @@ const Home = ({
   articleTitles,
 }) => {
   return (
-    <div className="px-[5vw] pt-5">
-      <div className="flex items-center justify-between">
-        <HomeUser isLoggedIn={isLoggedIn} user={user} />
-        <Location />
+    <>
+      <div className="px-[5vw] pt-5 pb-16">
+        <div className="flex items-center justify-between">
+          <HomeUser isLoggedIn={isLoggedIn} user={user} />
+          <Location />
+        </div>
+        <HomeBanner />
+        <RecentScans isRecentScan={isRecentScan} recentScan={recentScan} />
+        <Articles articleTitles={articleTitles} articles={articles} />
       </div>
-      <HomeBanner />
-      <RecentScans isRecentScan={isRecentScan} recentScan={recentScan} />
-      <Articles articleTitles={articleTitles} articles={articles} />
       <Navbar />
-    </div>
+    </>
   );
 };
 Home.propTypes = {

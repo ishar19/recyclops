@@ -46,7 +46,7 @@ const Profile = ({ profileData }) => {
     </Link>
   ));
   return (
-    <div>
+    <>
       <div className="mt-20 flex justify-center gap-8 p-5 tracking-wide">
         <div>
           <h1 className="text-2xl font-bold">{profileData.name}</h1>
@@ -67,7 +67,7 @@ const Profile = ({ profileData }) => {
       <div className=" mx-10 mt-20 w-4/5 ">{tabs}</div>
 
       <Navbar />
-    </div>
+    </>
   );
 };
 Profile.propTypes = {

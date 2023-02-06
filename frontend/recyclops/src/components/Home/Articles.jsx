@@ -4,7 +4,7 @@ const Articles = ({ articles, articleTitles }) => {
   const titles = articleTitles.map((title, i) => (
     <h2
       key={i}
-      className={`cursor-pointer text-xl hover:text-[#34A853] hover:underline`}
+      className="flex-shrink-0 cursor-pointer text-xl hover:text-[#34A853] hover:underline"
     >
       {title}
     </h2>
@@ -13,7 +13,7 @@ const Articles = ({ articles, articleTitles }) => {
     <a
       href={article.link}
       key={i}
-      className="mx-2 mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-greenPrimary p-3"
+      className="mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-greenPrimary p-3"
     >
       <div>
         <h2 className={`text-2xl`}>{article.title}</h2>
@@ -24,7 +24,9 @@ const Articles = ({ articles, articleTitles }) => {
   ));
   return (
     <div className="mt-10">
-      <div className="flex gap-2 pl-5">{titles}</div>
+      <div className="flex justify-between overflow-x-scroll scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
+        {titles}
+      </div>
       <div className="mt-5 flex flex-col">{articleDisplay}</div>
     </div>
   );

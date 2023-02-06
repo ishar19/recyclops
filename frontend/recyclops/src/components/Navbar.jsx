@@ -26,7 +26,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="fixed bottom-0 flex h-16 w-full items-center justify-around bg-[#F0F0F0]">
+    <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around bg-[#F0F0F0]">
       {navbar.map((item, i) => (
         <Link key={i} to={item.link}>
           <div className="flex cursor-pointer flex-col items-center justify-center">

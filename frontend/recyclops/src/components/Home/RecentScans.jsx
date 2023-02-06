@@ -31,17 +31,11 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
 
   return (
     <div>
-      <h1 className="mb-2 pl-5 text-2xl text-greenPrimary">Recent Scans</h1>
+      <h1 className="mb-2 text-2xl text-greenPrimary">Recent Scans</h1>
       <div>
         {isRecentScan ? (
-          <div className="flex  gap-3 overflow-x-scroll scrollbar-hide">
+          <div className="  flex gap-3 overflow-x-scroll py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
             {recentScans}
-            {/* <a
-              href="#"
-              className=" absolute right-3 cursor-pointer text-xl  underline"
-            >
-              See more
-            </a> */}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
