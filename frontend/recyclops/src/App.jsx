@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-
+import Scanner from "./pages/Scanner";
+import "./App.css";
 function App() {
   const dummyData = {
     isLoggedIn: true,
@@ -176,6 +177,7 @@ function App() {
           path="/profile"
           element={<Profile profileData={dummyData.profileData} />}
         />
+        <Route path="/scanner" element={<Scanner />} />
       </Routes>
     </BrowserRouter>
   );
