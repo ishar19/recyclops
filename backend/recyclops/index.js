@@ -3,7 +3,7 @@ dotenv.config()
 import express from 'express'
 import cors from 'cors'
 var app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT||5000
 app.use(cors())
  
 app.get('/', function (req, res, next) {
