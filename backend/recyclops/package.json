@@ -1,0 +1,31 @@
+{
+  "name": "recyclops",
+  "version": "1.0.0",
+  "description": "backend for recyclops",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test",
+    "dev":"nodemon run index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishar19/recyclops.git"
+  },
+  "author": "Ishar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishar19/recyclops/issues"
+  },
+  "homepage": "https://github.com/ishar19/recyclops#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^9.17.1",
+    "joi": "^17.7.1",
+    "multer-firebase-storage": "^4.1.2",
+    "nodemon": "^2.0.20"
+  }
+}
