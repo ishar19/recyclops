@@ -23,7 +23,7 @@ cpu_count = os.cpu_count()
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #Setting up directory for images
-garbage_data_directory  = 'garbage_seven_classification'
+garbage_data_directory  = 'machine-learning-files\garbage_seven_classification'
 
 #Yes, Literal Garbage Model because now we are training resnet_18 model
 '''
