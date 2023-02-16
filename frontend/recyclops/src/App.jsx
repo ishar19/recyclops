@@ -5,7 +5,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   const dummyData = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     user: "Diksha",
     isRecentScan: true,
     recentScan: [
