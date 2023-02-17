@@ -7,6 +7,8 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Navbar = () => {
+  const path = window.location.pathname;
+  console.log(path);
   const navbar = [
     { icon: <MdOutlineHome size="32px" />, title: "Home", link: "/" },
     {
@@ -29,10 +31,21 @@ const Navbar = () => {
     <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around bg-[#F0F0F0]">
       {navbar.map((item, i) => (
         <Link key={i} to={item.link}>
-          <div className="flex cursor-pointer flex-col items-center justify-center">
-            {item.icon}
-            <p>{item.title}</p>
-          </div>
+          {path === item.link ? (
+            <div
+              className={` flex cursor-pointer flex-col items-center justify-center text-greenPrimary`}
+            >
+              {item.icon}
+              <p>{item.title}</p>{" "}
+            </div>
+          ) : (
+            <div
+              className={`flex cursor-pointer flex-col items-center justify-center`}
+            >
+              {item.icon}
+              <p>{item.title}</p>
+            </div>
+          )}
         </Link>
       ))}
     </div>

@@ -156,6 +156,7 @@ function App() {
       img: "https://cdn.crispedge.com/43464b.png",
     },
   };
+
   return (
     <UserProvider>
       <BrowserRouter>
