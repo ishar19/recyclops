@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv' 
 dotenv.config()
 import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_API_AUTH_DOMAIN,
@@ -11,4 +12,5 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
+
 export default firebaseApp

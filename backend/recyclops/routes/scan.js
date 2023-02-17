@@ -4,6 +4,7 @@ import firebaseApp from '../firebaseConfig.js'
 import {arrayRemove, arrayUnion, doc ,getDoc, getFirestore,setDoc,Timestamp } from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import getImage from '../utils/getImage.js';
+import uploadImage from '../utils/uploadImage.js';
 router.use((req, res, next) => {
   console.log('Time: ', Date.now())
   next()
@@ -11,9 +12,9 @@ router.use((req, res, next) => {
 
 router.post('/newScan',async(req, res)=>{
     const {dataURI} = req.body
-    const filePath = getImage(dataURI)
-    filePath.then((file)=>{res.json(file)})
-    // res.json(dataURI)
+    const file = await getImage(dataURI)
+    const publicURL = await uploadImage(file)
+    res.send(publicURL)
 })
 
 export default router
