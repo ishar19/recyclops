@@ -1,36 +1,31 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useEffect, useState } from "react";
 import { auth, provider } from "../../config";
 import { signInWithPopup } from "firebase/auth";
-// import userData from "../../mock/user.json";
-// import { useEffect } from "react";
-// import { useState } from "react";
-const HomeUser = ({ isLoggedIn }) => {
-  // const [user, setUser] = useState({});
-  // const handleUserData = async () => {
-  //   const response = await fetch(userData);
-  //   const data = await response.json();
-  //   setUser(data);
-  // };
-  // useEffect(() => {
-  //   handleUserData();
-  // }, []);
-  // console.log(user);
-  const [value, setValue] = useState("");
+import { UserContext } from "../../Context/UserProvider";
+const HomeUser = () => {
+  // const isLoggedIn = false
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = useContext(UserContext);
   const handleSignIn = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, provider)
+      .then((data) => {
+        console.log(data.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   useEffect(() => {
-    setValue(localStorage.getItem("email"));
-  });
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
+
   return (
     <div>
-      {value ? (
+      {isLoggedIn ? (
         <div>
-          <h1 className="text-3xl text-greenPrimary">Hi {value}</h1>
+          <h1 className="text-3xl text-greenPrimary">Hi {user.displayName}</h1>
           <h2 className="text-2xl">Welcome Back!</h2>
         </div>
       ) : (
@@ -49,7 +44,5 @@ const HomeUser = ({ isLoggedIn }) => {
 {
   /* use a button */
 }
-HomeUser.propTypes = {
-  isLoggedIn: PropTypes.boolean,
-};
+
 export default HomeUser;

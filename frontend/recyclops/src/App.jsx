@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-
+import UserProvider from "./Context/UserProvider";
 function App() {
   const dummyData = {
     isLoggedIn: false,
@@ -157,27 +157,29 @@ function App() {
     },
   };
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              isLoggedIn={dummyData.isLoggedIn}
-              user={dummyData.user}
-              isRecentScan={dummyData.isRecentScan}
-              recentScan={dummyData.recentScan}
-              articleTitles={dummyData.articleTitles}
-              articles={dummyData.articles}
-            />
-          }
-        />
-        <Route
-          path="/profile"
-          element={<Profile profileData={dummyData.profileData} />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                isLoggedIn={dummyData.isLoggedIn}
+                user={dummyData.user}
+                isRecentScan={dummyData.isRecentScan}
+                recentScan={dummyData.recentScan}
+                articleTitles={dummyData.articleTitles}
+                articles={dummyData.articles}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={<Profile profileData={dummyData.profileData} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
