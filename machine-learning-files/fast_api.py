@@ -63,15 +63,10 @@ async def classify_image(image_url: str | None = None) -> dict:
       status_code=422, 
       detail="Unprocessable Entity"
     )
-  except (OSError, ValueError):
+  except:
     raise HTTPException(
       status_code=500,
       detail="Internal Server Error"
-    )
-  except:
-    raise HTTPException(
-      status_code=404,
-      detail="An Error Occurred"
     )
   
   if img_pil.mode == 'RGBA':
