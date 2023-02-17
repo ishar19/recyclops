@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from PIL import Image
 from urllib.error import HTTPError, URLError
-from urllib3.exceptions import i
 from urllib.request import urlopen
 import os
 import time
