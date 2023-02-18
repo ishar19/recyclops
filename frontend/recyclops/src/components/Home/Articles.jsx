@@ -1,27 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { SlOptions } from "react-icons/sl";
-import { AiOutlineHeart } from "react-icons/ai";
-import { MdOutlineCancel } from "react-icons/md";
 
 const Articles = ({ articles, articleTitles }) => {
-  const optionsList = [
-    { title: "Add Favourite", icon: <AiOutlineHeart /> },
-    {
-      title: "Not Interested",
-      icon: <MdOutlineCancel />,
-    },
-  ];
-  const [showOption, setShowOption] = useState(false);
-  const handleOption = () => {
-    setShowOption((prev) => !prev);
-  };
-  const options = optionsList.map((option, i) => (
-    <div key={i} className="flex w-full border-2 border-greenPrimary text-sm">
-      <p>{option.title}</p>
-      {option.icon}
-    </div>
-  ));
   const titles = articleTitles.map((title, i) => (
     <h2
       key={i}
@@ -41,9 +22,8 @@ const Articles = ({ articles, articleTitles }) => {
         <p className="text-xl text-greenPrimary">{article.date}</p>
       </div>
       <div className="flex flex-col items-end justify-around">
-        {showOption && <div>{options}</div>}
         <img src={article.img} alt="scan image" className="h-16 w-full" />
-        <button className="text-greenPrimary" onClick={handleOption}>
+        <button className="text-greenPrimary">
           <SlOptions />
         </button>
       </div>
