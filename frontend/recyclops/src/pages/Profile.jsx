@@ -7,7 +7,7 @@ import {
   MdOutlineSettings,
   MdLogout,
 } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineGoogle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserContext } from "../Context/UserProvider";
@@ -66,7 +66,7 @@ const Profile = () => {
     </Link>
   ));
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="mt-10 flex flex-col items-center justify-center">
       {user ? (
         <>
           <div>
@@ -90,13 +90,14 @@ const Profile = () => {
           </div>
         </>
       ) : (
-        <a
+        <button
           onClick={handleSignIn}
           href="#"
-          className="rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
         >
+          <AiOutlineGoogle />
           Sign in
-        </a>
+        </button>
       )}
       <Navbar />
     </div>
