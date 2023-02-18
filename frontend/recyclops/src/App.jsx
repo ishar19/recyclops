@@ -199,7 +199,10 @@ function App() {
               )
             }
           />
-          <Route path="/signin" element={<SignIn />} />
+          <Route
+            path="/signin"
+            element={!isLoggedIn ? <SignIn /> : <Navigate replace to={"/"} />}
+          />
         </Routes>
       </BrowserRouter>
     </UserProvider>
