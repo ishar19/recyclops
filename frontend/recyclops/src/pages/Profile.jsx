@@ -99,8 +99,8 @@ const Profile = ({ profileData }) => {
           </a>
         )}
         <img
-          src={user.photoURl}
-          alt="profile-img"
+          src={user.photoURL}
+          alt={user.displayName}
           className="h-24 w-24 rounded-full"
         />
       </div>

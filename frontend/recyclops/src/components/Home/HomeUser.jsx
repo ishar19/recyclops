@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { auth, provider } from "../../config";
 import { signInWithPopup } from "firebase/auth";
 import { UserContext } from "../../Context/UserProvider";
+import { AiOutlineGoogle } from "react-icons/ai";
 const HomeUser = () => {
   // const isLoggedIn = false
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,6 +35,7 @@ const HomeUser = () => {
           href="#"
           className="rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
         >
+          <AiOutlineGoogle />
           Sign in
         </a>
       )}
