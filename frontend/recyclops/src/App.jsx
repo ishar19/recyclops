@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import UserProvider from "./Context/UserProvider";
+import SignIn from "./pages/SignIn";
 function App() {
   const dummyData = {
     isRecentScan: true,
@@ -181,6 +182,7 @@ function App() {
             path="/profile"
             element={<Profile profileData={dummyData.profileData} />}
           />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

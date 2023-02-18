@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 const Articles = ({ articles, articleTitles }) => {
   const [selected, setSelected] = useState(0);
@@ -64,6 +65,7 @@ const ArticleBox = ({ article, key }) => {
       </div>
       <div className="flex flex-col items-end justify-around">
         <img src={article.img} alt="scan image" className="h-16 w-full" />
+
         <button className="text-xl text-greenPrimary" onClick={handleOption}>
           {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
         </button>

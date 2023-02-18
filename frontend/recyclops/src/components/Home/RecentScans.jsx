@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const RecentScans = ({ isRecentScan, recentScan }) => {
   const recentScans = recentScan.map((scan, i) => {
     return (
+
       <div key={i} className="flex-shrink-0">
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
         <div>

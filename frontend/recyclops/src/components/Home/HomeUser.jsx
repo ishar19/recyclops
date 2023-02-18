@@ -20,14 +20,14 @@ const HomeUser = () => {
           <h2 className="text-2xl">Welcome Back!</h2>
         </div>
       ) : (
-        <a
+        <button
           onClick={handleSignIn}
           href="#"
-          className="rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
         >
           <AiOutlineGoogle />
           Sign in
-        </a>
+        </button>
       )}
     </div>
   );
