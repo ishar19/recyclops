@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 
 import { FiBook } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineGoogle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserContext } from "../Context/UserProvider";
