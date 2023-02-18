@@ -1,11 +1,21 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import UserProvider from "./Context/UserProvider";
 import SignIn from "./pages/SignIn";
+import { auth } from "./firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  });
   const dummyData = {
     isRecentScan: true,
     recentScan: [
@@ -181,7 +191,13 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile profileData={dummyData.profileData} />}
+            element={
+              isLoggedIn ? (
+                <Profile profileData={dummyData.profileData} />
+              ) : (
+                <Navigate replace to={"/signin"} />
+              )
+            }
           />
           <Route path="/signin" element={<SignIn />} />
         </Routes>
