@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyAnadPvjn5qU-4KwM22Qbsm2Y7N_CGFGHM",
-  authDomain: "recyclops-69781.firebaseapp.com",
-  projectId: "recyclops-69781",
-  storageBucket: "recyclops-69781.appspot.com",
-  messagingSenderId: "586991171058",
-  appId: "1:586991171058:web:7468b694c56ce4a85aa76b",
+  apiKey: import.meta.VITE_API_KEY,
+  authDomain: import.meta.VITE_AUTH_DOMAIN,
+  projectId: import.meta.VITE_PROJECT_ID,
+  storageBucket: import.meta.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
