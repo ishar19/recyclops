@@ -79,7 +79,14 @@ function App() {
         img: "https://cdn.crispedge.com/43464b.png",
       },
     ],
-    articleTitles: ["For you", "Plastic waste", "Sustainable lifestyle"],
+    articleTitles: [
+      "For you",
+      "Plastic waste",
+      "Sustainable lifestyle",
+      "Hazard",
+      "Innovations",
+      "Organic Waste",
+    ],
     articles: [
       {
         title: "Text that makes up the heading of the article",
