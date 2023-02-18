@@ -4,7 +4,7 @@ const Articles = ({ articles, articleTitles }) => {
   const titles = articleTitles.map((title, i) => (
     <h2
       key={i}
-      className="flex-shrink-0 cursor-pointer text-xl hover:text-[#34A853] hover:underline"
+      className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
     >
       {title}
     </h2>
