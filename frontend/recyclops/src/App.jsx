@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import UserProvider from "./Context/UserProvider";
 import SignIn from "./pages/SignIn";
+
 function App() {
   const dummyData = {
     isRecentScan: true,
@@ -186,6 +187,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </UserProvider>
+
   );
 }
 
