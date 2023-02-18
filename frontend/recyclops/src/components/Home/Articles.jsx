@@ -13,7 +13,7 @@ const Articles = ({ articles, articleTitles }) => {
     <a
       href={article.link}
       key={i}
-      className="mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid border-greenPrimary p-3"
+      className="mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-3	 drop-shadow-md"
     >
       <div>
         <h2 className={`text-2xl`}>{article.title}</h2>
