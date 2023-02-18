@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import UserProvider from "./Context/UserProvider";
 import SignIn from "./pages/SignIn";
-
+import Scanner from "./pages/Scanner";
 function App() {
   const dummyData = {
     isRecentScan: true,
@@ -179,6 +179,18 @@ function App() {
               />
             }
           />
+          <Route path="/scanner" element={<Scanner />} />
+          <Route
+            path="/gaming"
+            element={
+              <Home
+                isRecentScan={dummyData.isRecentScan}
+                recentScan={dummyData.recentScan}
+                articleTitles={dummyData.articleTitles}
+                articles={dummyData.articles}
+              />
+            }
+          />
           <Route
             path="/profile"
             element={<Profile profileData={dummyData.profileData} />}
@@ -187,7 +199,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </UserProvider>
-
   );
 }
 
