@@ -81,13 +81,8 @@ const Profile = ({ profileData }) => {
         {isLoggedIn ? (
           <div>
             <h1 className="text-2xl font-bold">{user.displayName}</h1>
-            <h2>{profileData.phone}</h2>
+
             <h2>{user.email}</h2>
-            <Link to="/edit-profile">
-              <div className="w-20 rounded-md bg-gray-400 py-1 text-center">
-                Edit
-              </div>
-            </Link>
           </div>
         ) : (
           <a
