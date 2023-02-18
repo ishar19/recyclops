@@ -1,34 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
-// import userData from "../../mock/user.json";
-// import { useEffect } from "react";
-// import { useState } from "react";
-const HomeUser = ({ isLoggedIn, user }) => {
-  // const [user, setUser] = useState({});
-  // const handleUserData = async () => {
-  //   const response = await fetch(userData);
-  //   const data = await response.json();
-  //   setUser(data);
-  // };
-  // useEffect(() => {
-  //   handleUserData();
-  // }, []);
-  // console.log(user);
-
+import React, { useContext } from "react";
+import { auth, provider } from "../../firebaseConfig";
+import { signInWithPopup } from "firebase/auth";
+import { UserContext } from "../../Context/UserProvider";
+import { AiOutlineGoogle } from "react-icons/ai";
+const HomeUser = () => {
+  const user = useContext(UserContext);
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((data) => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div>
-      {isLoggedIn ? (
+      {user ? (
         <div>
-          <h1 className="text-3xl text-greenPrimary">Hi {user}</h1>
+          <h1 className="text-3xl text-greenPrimary">Hi {user.displayName}</h1>
           <h2 className="text-2xl">Welcome Back!</h2>
         </div>
       ) : (
-        <a
+        <button
+          onClick={handleSignIn}
           href="#"
-          className="rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
         >
+          <AiOutlineGoogle />
           Sign in
-        </a>
+        </button>
       )}
     </div>
   );
@@ -37,8 +36,5 @@ const HomeUser = ({ isLoggedIn, user }) => {
 {
   /* use a button */
 }
-HomeUser.propTypes = {
-  isLoggedIn: PropTypes.boolean,
-  user: PropTypes.string,
-};
+
 export default HomeUser;
