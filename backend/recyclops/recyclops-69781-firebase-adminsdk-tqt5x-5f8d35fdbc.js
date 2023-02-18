@@ -1,4 +1,4 @@
-{
+const serviceAccount = {
   "type": "service_account",
   "project_id": "recyclops-69781",
   "private_key_id": "5f8d35fdbcdaa2fdd7626b2f09035172ce39b031",
@@ -10,3 +10,5 @@
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tqt5x%40recyclops-69781.iam.gserviceaccount.com"
 }
+
+export default serviceAccount

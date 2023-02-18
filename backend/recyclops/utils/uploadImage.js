@@ -2,17 +2,18 @@ import firebaseApp from "../firebaseConfig.js";
 import { getStorage, ref,uploadBytes, uploadString } from "firebase/storage";
 import {readFileSync,unlink} from 'fs'
 import admin from 'firebase-admin'
-import serviceAccount from '../recyclops-69781-firebase-adminsdk-tqt5x-5f8d35fdbc.json'assert { type: "json" };
+import serviceAccount from '../recyclops-69781-firebase-adminsdk-tqt5x-5f8d35fdbc.js';
 const storage = getStorage(firebaseApp);
 import { v4 as uuidv4 } from 'uuid';
-
+import adminApp from "../firebaseAdminConfig.js";
 import * as dotenv from 'dotenv' 
 dotenv.config()
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
-});
-var bucket = admin.storage().bucket();
+// admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//     storageBucket: process.env.FIREBASE_STORAGE_BUCKET
+// });
+// var bucket = admin.storage().bucket();
+var bucket = adminApp.storage().bucket()
 const uploadImage = async(filePath,dataURI)=>{
     const metadata = {
     metadata: {

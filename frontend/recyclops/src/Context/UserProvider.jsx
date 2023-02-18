@@ -6,16 +6,16 @@ export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const userListener = auth.onAuthStateChanged(async (user) => {
-      console.log("context");
       if (user == null) {
         setUser(null);
       } else {
-        const { displayName, email, photoURL } = user;
+        const { displayName, email, photoURL, uid } = user;
 
         setUser({
           displayName,
           email,
           photoURL,
+          uid,
         });
       }
     });
