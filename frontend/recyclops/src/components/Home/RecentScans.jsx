@@ -19,11 +19,14 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
 
   const recentScans = recentScan.map((scan, i) => {
     return (
-      <div key={i} className="flex-shrink-0">
+      <div
+        key={i}
+        className="flex-shrink-0 rounded-md bg-bluePrimary shadow-md"
+      >
         <img src={scan.img} alt="scan image" className="block w-24" />
         <div>
           <h2 className={`text-2xl`}>{scan.title}</h2>
-          <p className="text-xl text-greenPrimary">{scan.date}</p>
+          <p className="text-xl">{scan.date}</p>
         </div>
       </div>
     );
