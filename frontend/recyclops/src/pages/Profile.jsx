@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import {
-  MdNotificationsNone,
+  //   MdNotificationsNone,
   MdOutlineBookmarkBorder,
   MdOutlineHistory,
-  MdOutlineSettings,
+  //   MdOutlineSettings,
+  MdLogout,
 } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
+
+import { FiBook } from "react-icons/fi";
+import { AiOutlineHeart, AiOutlineGoogle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-const Profile = ({ profileData }) => {
+import { UserContext } from "../Context/UserProvider";
+import { auth, provider } from "../firebaseConfig";
+import { signOut, signInWithPopup } from "firebase/auth";
+const Profile = () => {
+  const user = useContext(UserContext);
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((data) => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const list = [
+    // {
+    //   title: "Notifications",
+    //   link: "/notifications",
+    //   icon: <MdNotificationsNone />,
+    // },
     {
-      title: "Notifications",
-      link: "/notifications",
-      icon: <MdNotificationsNone />,
-    },
-    {
-      title: "Saved",
-      link: "/saved",
+      title: "Saved Scans",
+      link: "/savedscans",
       icon: <AiOutlineHeart />,
     },
     {
@@ -28,46 +49,64 @@ const Profile = ({ profileData }) => {
     },
     {
       title: "Scan History",
-      link: "/scan-history",
+      link: "/scanhistory",
       icon: <MdOutlineHistory />,
     },
+    // {
+    //   title: "Settings",
+    //   link: "/settings",
+    //   icon: <MdOutlineSettings />,
+    // },
     {
-      title: "Settings",
-      link: "/settings",
-      icon: <MdOutlineSettings />,
+      title: "Reading History",
+      link: "/readinghistory",
+      icon: <FiBook />,
     },
   ];
+
   const tabs = list.map((tab, i) => (
     <Link key={i} to={tab.link}>
-      <div className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl">
-        {tab.icon}
-        <h2>{tab.title}</h2>
-      </div>
+      <button className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl">
+        {tab.icon} {tab.title}
+      </button>
     </Link>
   ));
   return (
-    <>
-      <div className="mt-20 flex justify-center gap-8 p-5 tracking-wide">
-        <div>
-          <h1 className="text-2xl font-bold">{profileData.name}</h1>
-          <h2>{profileData.phone}</h2>
-          <h2>{profileData.email}</h2>
-          <Link to="/edit-profile">
-            <div className="w-20 rounded-md bg-gray-400 py-1 text-center">
-              Edit
-            </div>
-          </Link>
-        </div>
-        <img
-          src={profileData.img}
-          alt="profile-img"
-          className="h-24 w-24 rounded-full"
-        />
-      </div>
-      <div className=" mx-10 mt-20 w-4/5 ">{tabs}</div>
-
+    <div className="mt-10 flex flex-col items-center justify-center">
+      {user ? (
+        <>
+          <div>
+            <h1 className="text-2xl font-bold">{user.displayName}</h1>
+            <h2>{user.email}</h2>
+          </div>
+          <img
+            src={user.photoURL}
+            alt={user.displayName}
+            className="h-24 w-24 rounded-full"
+          />
+          <div className="mt-20 w-4/5 ">
+            {tabs}
+            <button
+              onClick={handleLogOut}
+              className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl"
+            >
+              <MdLogout />
+              <h2>Log Out</h2>
+            </button>
+          </div>
+        </>
+      ) : (
+        <button
+          onClick={handleSignIn}
+          href="#"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
+        >
+          <AiOutlineGoogle />
+          Sign in
+        </button>
+      )}
       <Navbar />
-    </>
+    </div>
   );
 };
 Profile.propTypes = {

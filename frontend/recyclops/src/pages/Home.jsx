@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import PropTypes from "prop-types";
 import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
+
 const Home = ({
   isLoggedIn,
   user,
@@ -18,7 +19,7 @@ const Home = ({
     <>
       <div className="px-[5vw] pt-5 pb-16">
         <div className="flex items-center justify-between">
-          <HomeUser isLoggedIn={isLoggedIn} user={user} />
+          <HomeUser />
           <Location />
         </div>
         <HomeBanner />
