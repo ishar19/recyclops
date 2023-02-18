@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const path = window.location.pathname;
-  console.log(path);
+
   const navbar = [
     { icon: <MdOutlineHome size="32px" />, title: "Home", link: "/" },
     {
