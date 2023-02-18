@@ -187,7 +187,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </UserProvider>
-
   );
 }
 
