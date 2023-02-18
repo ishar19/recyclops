@@ -40,4 +40,28 @@ router.post('/newScan',async(req, res)=>{
     }
 })
 
+
+router.get('/getData/:id', async(req, res)=>{
+    const scanId = req.params.id
+    try{
+        const scanRef = doc(db,"scans",scanId)
+        const scanSnap = await getDoc(scanRef)
+        if(scanSnap.exists()){
+            const scanInfo = scanSnap.data()
+            const scanDataRef = doc(db, "scanData",scanInfo.scanClass)
+            const scanDataSnap = await getDoc(scanDataRef)
+            const scanData = scanDataSnap.data()
+            res.json({scanInfo,scanData})
+        }
+        else{
+            res.sendStatus(404)
+        }
+    }
+    catch(e){
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
+
+
 export default router
