@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import {
-  MdNotificationsNone,
+  //   MdNotificationsNone,
   MdOutlineBookmarkBorder,
   MdOutlineHistory,
-  MdOutlineSettings,
+  //   MdOutlineSettings,
   MdLogout,
 } from "react-icons/md";
+import { FiBook } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -30,14 +31,14 @@ const Profile = () => {
       });
   };
   const list = [
+    // {
+    //   title: "Notifications",
+    //   link: "/notifications",
+    //   icon: <MdNotificationsNone />,
+    // },
     {
-      title: "Notifications",
-      link: "/notifications",
-      icon: <MdNotificationsNone />,
-    },
-    {
-      title: "Saved",
-      link: "/saved",
+      title: "Saved Scans",
+      link: "/savedscans",
       icon: <AiOutlineHeart />,
     },
     {
@@ -47,22 +48,26 @@ const Profile = () => {
     },
     {
       title: "Scan History",
-      link: "/scan-history",
+      link: "/scanhistory",
       icon: <MdOutlineHistory />,
     },
+    // {
+    //   title: "Settings",
+    //   link: "/settings",
+    //   icon: <MdOutlineSettings />,
+    // },
     {
-      title: "Settings",
-      link: "/settings",
-      icon: <MdOutlineSettings />,
+      title: "Reading History",
+      link: "/readinghistory",
+      icon: <FiBook />,
     },
   ];
 
   const tabs = list.map((tab, i) => (
     <Link key={i} to={tab.link}>
-      <div className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl">
-        {tab.icon}
-        <h2>{tab.title}</h2>
-      </div>
+      <button className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl">
+        {tab.icon} {tab.title}
+      </button>
     </Link>
   ));
   return (

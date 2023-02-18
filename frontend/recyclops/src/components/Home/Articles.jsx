@@ -1,63 +1,82 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { SlOptions } from "react-icons/sl";
-import { AiOutlineHeart } from "react-icons/ai";
-import { MdOutlineCancel } from "react-icons/md";
-
+import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 const Articles = ({ articles, articleTitles }) => {
-  const optionsList = [
-    { title: "Add Favourite", icon: <AiOutlineHeart /> },
-    {
-      title: "Not Interested",
-      icon: <MdOutlineCancel />,
-    },
-  ];
-  const [showOption, setShowOption] = useState(false);
-  const handleOption = () => {
-    setShowOption((prev) => !prev);
+  const [selected, setSelected] = useState(0);
+  const handleSelect = (e, key) => {
+    setSelected(key);
   };
-  const options = optionsList.map((option, i) => (
-    <div key={i} className="flex w-full border-2 border-greenPrimary text-sm">
-      <p>{option.title}</p>
-      {option.icon}
-    </div>
-  ));
-  const titles = articleTitles.map((title, i) => (
-    <h2
-      key={i}
-      className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
-    >
-      {title}
-    </h2>
-  ));
-  const articleDisplay = articles.map((article, i) => (
-    <a
-      href={article.link}
-      key={i}
-      className="mb-3 flex gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-3	 drop-shadow-md"
-    >
-      <div>
-        <h2 className={`text-2xl`}>{article.title}</h2>
-        <p className="text-xl text-greenPrimary">{article.date}</p>
-      </div>
-      <div className="flex flex-col items-end justify-around">
-        {showOption && <div>{options}</div>}
-        <img src={article.img} alt="scan image" className="h-16 w-full" />
-        <button className="text-greenPrimary" onClick={handleOption}>
-          <SlOptions />
-        </button>
-      </div>
-    </a>
-  ));
+
   return (
     <div className="mt-10">
-      <div className="flex justify-between overflow-x-scroll scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-        {titles}
+      <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
+        <ArticleTitles
+          articleTitles={articleTitles}
+          selected={selected}
+          handleSelect={handleSelect}
+        />
       </div>
-      <div className="mt-5 flex flex-col">{articleDisplay}</div>
+      <div className="grid gap-4 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-2">
+        {articles.map((article, i) => (
+          <ArticleBox article={article} key={i} />
+        ))}
+      </div>
     </div>
   );
 };
+
+const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
+  return articleTitles.map((title, i) =>
+    selected == i ? (
+      <h2
+        key={i}
+        className="flex-shrink-0 cursor-pointer pr-2 text-xl text-[#34A853] hover:underline"
+        onClick={(e) => handleSelect(e, i)}
+      >
+        {title}
+      </h2>
+    ) : (
+      <h2
+        key={i}
+        className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
+        onClick={(e) => handleSelect(e, i)}
+      >
+        {title}
+      </h2>
+    )
+  );
+};
+
+const ArticleBox = ({ article, key }) => {
+  const [showBookMark, setShowBookMark] = useState(false);
+  const handleOption = () => {
+    setShowBookMark((prev) => !prev);
+  };
+
+  return (
+    <div
+      key={key}
+      className="relative mb-3 flex justify-evenly gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-5 drop-shadow-md"
+    >
+      <div>
+        <h2 className="text-2xl">{article.title}</h2>
+        <p className="text-xl text-greenPrimary">{article.date}</p>
+      </div>
+      <div className="flex flex-col items-end justify-around">
+        <img src={article.img} alt="scan image" className="h-16 w-full" />
+        <button className="text-xl text-greenPrimary" onClick={handleOption}>
+          {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+ArticleBox.propTypes = {
+  article: PropTypes.object,
+  key: PropTypes.number,
+};
+
 Articles.propTypes = {
   articleTitles: PropTypes.array,
   articles: PropTypes.array,
