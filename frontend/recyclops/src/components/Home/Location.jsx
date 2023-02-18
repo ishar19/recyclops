@@ -12,16 +12,13 @@ const Location = () => {
       setLatitute(position.coords.latitude);
       setLongitude(position.coords.longitude);
     });
-    console.log(latitute, longitute);
     axios
       .get(`${apiEnpoint}lat=${latitute}&lon=${longitute}&appid=${apiKey}`)
       .then((res) => {
-        console.log(res.data.name);
         setCurrentLocation(res.data.name);
       });
   }, [latitute, longitute]);
 
-  // const dummyLocation = "Rithala";
   return (
     <div className="flex items-center gap-2">
       <p className="text-xl underline underline-offset-4">{currentLocation}</p>

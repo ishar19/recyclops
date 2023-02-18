@@ -5,8 +5,6 @@ import Profile from "./pages/Profile";
 import UserProvider from "./Context/UserProvider";
 function App() {
   const dummyData = {
-    isLoggedIn: false,
-    user: "Diksha",
     isRecentScan: true,
     recentScan: [
       {
@@ -165,8 +163,6 @@ function App() {
             path="/"
             element={
               <Home
-                isLoggedIn={dummyData.isLoggedIn}
-                user={dummyData.user}
                 isRecentScan={dummyData.isRecentScan}
                 recentScan={dummyData.recentScan}
                 articleTitles={dummyData.articleTitles}

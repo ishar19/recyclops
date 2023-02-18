@@ -1,19 +1,25 @@
 import React, { useState, useEffect, createContext } from "react";
-import { auth } from "../config";
+import { auth } from "../firebaseConfig";
 import PropTypes from "prop-types";
 export const UserContext = createContext({ user: null });
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      const { displayName, email, photoURL } = user;
+    const userListener = auth.onAuthStateChanged(async (user) => {
+      console.log("context");
+      if (user == null) {
+        setUser(null);
+      } else {
+        const { displayName, email, photoURL } = user;
 
-      setUser({
-        displayName,
-        email,
-        photoURL,
-      });
+        setUser({
+          displayName,
+          email,
+          photoURL,
+        });
+      }
     });
+    return userListener;
   }, []);
   return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 }
