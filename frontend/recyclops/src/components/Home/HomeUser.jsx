@@ -3,10 +3,12 @@ import { auth, provider } from "../../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { UserContext } from "../../Context/UserProvider";
 import { AiOutlineGoogle } from "react-icons/ai";
-// import getUserJWT from "../../utils/getUserJWT";
+import getUserJWT from "../../utils/getUserJWT";
 const HomeUser = () => {
   const user = useContext(UserContext);
-  //   getUserJWT().then((token) => console.log(token));
+  if (getUserJWT() != null) {
+    getUserJWT().then((token) => console.log(token));
+  }
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((data) => {})
