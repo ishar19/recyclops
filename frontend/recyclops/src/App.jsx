@@ -1,11 +1,14 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import UserProvider from "./Context/UserProvider";
 import SignIn from "./pages/SignIn";
 import Scanner from "./pages/Scanner";
+import { UserContext } from "./Context/UserProvider";
+
 function App() {
+  const user = useContext(UserContext);
+
   const dummyData = {
     isRecentScan: true,
     recentScan: [
@@ -163,42 +166,38 @@ function App() {
       img: "https://cdn.crispedge.com/43464b.png",
     },
   };
-
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                isRecentScan={dummyData.isRecentScan}
-                recentScan={dummyData.recentScan}
-                articleTitles={dummyData.articleTitles}
-                articles={dummyData.articles}
-              />
-            }
-          />
-          <Route path="/scanner" element={<Scanner />} />
-          <Route
-            path="/gaming"
-            element={
-              <Home
-                isRecentScan={dummyData.isRecentScan}
-                recentScan={dummyData.recentScan}
-                articleTitles={dummyData.articleTitles}
-                articles={dummyData.articles}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={<Profile profileData={dummyData.profileData} />}
-          />
-          <Route path="/signin" element={<SignIn />} />
-        </Routes>
-      </BrowserRouter>
-    </UserProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              isRecentScan={dummyData.isRecentScan}
+              recentScan={dummyData.recentScan}
+              articleTitles={dummyData.articleTitles}
+              articles={dummyData.articles}
+            />
+          }
+        />
+        <Route path="/scanner" element={<Scanner />} />
+        <Route
+          path="/profile"
+          element={
+            user ? (
+              <Profile profileData={dummyData.profileData} />
+            ) : (
+              <Navigate replace to={"/signin"} />
+            )
+          }
+        />
+        <Route
+          path="/signin"
+          element={!user ? <SignIn /> : <Navigate replace to={"/"} />}
+        />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
