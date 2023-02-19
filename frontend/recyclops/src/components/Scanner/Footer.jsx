@@ -8,7 +8,7 @@ const Footer = () => {
     setSave((prev) => !prev);
   };
   return (
-    <div className="flex w-full justify-around">
+    <div className="text-cente absolute bottom-[10vh] left-[50vw] z-10 flex w-full translate-x-[-50%] translate-y-[-50%] items-center justify-around bg-opacity-60 p-8 text-2xl text-white">
       <div className="flex items-center gap-2">
         <AiOutlineTwitter />
         <div>Share</div>
