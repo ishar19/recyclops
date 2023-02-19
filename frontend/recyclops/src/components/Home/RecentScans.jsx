@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 const RecentScans = ({ isRecentScan, recentScan }) => {
   const recentScans = recentScan.map((scan, i) => {
     return (
-
-      <div key={i} className="flex-shrink-0">
+      <div
+        key={i}
+        className="flex-shrink-0 rounded-md bg-bluePrimary bg-opacity-50 shadow-md"
+      >
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
         <div>
           <h2 className="text-xl">{scan.title}</h2>
-          <p className="text-lg text-greenPrimary text-opacity-95">
-            {scan.date}
-          </p>
+          <p className="text-lg  text-opacity-95">{scan.date}</p>
         </div>
       </div>
     );
