@@ -6,7 +6,7 @@ import UserProvider from "./Context/UserProvider";
 import SignIn from "./pages/SignIn";
 import { auth } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
-
+import Scanner from "./pages/Scanner";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   onAuthStateChanged(auth, (user) => {
@@ -189,6 +189,7 @@ function App() {
               />
             }
           />
+          <Route path="/scanner" element={<Scanner />} />
           <Route
             path="/profile"
             element={
