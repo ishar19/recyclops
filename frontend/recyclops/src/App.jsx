@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
+
 function App() {
   const user = useContext(UserContext);
 
@@ -196,6 +197,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+
   );
 }
 

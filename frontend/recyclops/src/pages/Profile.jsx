@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { MdLogout } from "react-icons/md";
-
+import { FiBook } from "react-icons/fi";
+import { AiOutlineHeart, AiOutlineGoogle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserContext } from "../Context/UserProvider";
 import { auth } from "../firebaseConfig";
