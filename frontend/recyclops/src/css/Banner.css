@@ -1,0 +1,14 @@
+.banner {
+  animation-name: moveInRight;
+  animation-duration: 1s;
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0%;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
