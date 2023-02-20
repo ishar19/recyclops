@@ -3,10 +3,15 @@ import { MdAddTask } from "react-icons/md";
 import PropTypes from "prop-types";
 const RecentScans = ({ isRecentScan, recentScan }) => {
   const recentScans = recentScan.map((scan, i) => {
+    const modoulo = (i + 1) % 2;
     return (
       <div
         key={i}
-        className="flex-shrink-0 rounded-md bg-bluePrimary bg-opacity-50 shadow-md"
+        className={`flex flex-shrink-0 flex-col items-center rounded-md bg-opacity-50 bg-gradient-to-r ${
+          modoulo === 1
+            ? "from-bluePrimary/60 to-bluePrimary/20"
+            : "from-redPrimary/60 to-redPrimary/20"
+        } py-2 px-2 drop-shadow-lg`}
       >
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
         <div>
