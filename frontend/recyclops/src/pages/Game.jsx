@@ -6,11 +6,9 @@ import Score from "../components/Game/Score";
 const Game = () => {
   return (
     <div className="h-screen bg-sky-300">
-      <div className="flex items-center">
-        {" "}
-        <Score />
-        <Lives />
-      </div>
+      <Score />
+      <Lives />
+
       <DustbinSetup />
     </div>
   );

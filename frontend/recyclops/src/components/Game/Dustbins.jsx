@@ -5,12 +5,24 @@ import brownTrash from "../../Assets/brown trash.png";
 import yellowTrash from "../../Assets/yellow trash.png";
 const Dustbins = () => {
   return (
-    <div className="grid grid-cols-2 items-center gap-10">
-      <img src={greenTrash} className="h-5/6" />
-      <img src={redTrash} className="h-5/6" />
-      <img src={brownTrash} />
-      <img src={yellowTrash} />
-    </div>
+    <>
+      <img
+        src={greenTrash}
+        className="absolute top-[15vh] right-[10vw] z-10 h-[20vh]"
+      />
+      <img
+        src={redTrash}
+        className="absolute top-[15vh] left-[10vw] z-10 h-[20vh]"
+      />
+      <img
+        src={brownTrash}
+        className="absolute bottom-[16vh] right-[10vw] z-10 h-[20vh]"
+      />
+      <img
+        src={yellowTrash}
+        className="absolute bottom-[16vh] left-[10vw] z-10 h-[20vh]"
+      />
+    </>
   );
 };
 
