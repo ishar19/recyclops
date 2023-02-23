@@ -10,7 +10,7 @@ const Lives = () => {
     </div>
   ));
   return (
-    <div className="right-5 mt-5 flex w-1/2 gap-3 self-baseline pl-16 text-3xl">
+    <div className="right-5 z-20 mt-5 flex w-1/2 gap-3 self-baseline pl-16 text-3xl">
       {renderLives}
     </div>
   );
