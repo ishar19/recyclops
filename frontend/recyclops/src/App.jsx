@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
-
 function App() {
   const user = useContext(UserContext);
-
   const dummyData = {
     isRecentScan: true,
     recentScan: [
@@ -167,7 +165,7 @@ function App() {
     },
   };
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route
           path="/"
@@ -193,11 +191,10 @@ function App() {
         />
         <Route
           path="/signin"
-          element={!user ? <SignIn /> : <Navigate replace to={"/"} />}
+          element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}
         />
       </Routes>
-    </BrowserRouter>
-
+    </>
   );
 }
 

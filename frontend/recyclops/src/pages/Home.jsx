@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import HomeUser from "../components/Home/HomeUser";
 import Location from "../components/Home/Location";
@@ -6,15 +6,9 @@ import Navbar from "../components/Navbar";
 import PropTypes from "prop-types";
 import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
-
-const Home = ({
-  isLoggedIn,
-  user,
-  isRecentScan,
-  recentScan,
-  articles,
-  articleTitles,
-}) => {
+import { UserContext } from "../Context/UserProvider";
+const Home = ({ recentScan, articles, articleTitles }) => {
+  const user = useContext(UserContext);
   return (
     <>
       <div className="px-[5vw] pt-5 pb-16">
@@ -23,7 +17,7 @@ const Home = ({
           <Location />
         </div>
         <HomeBanner />
-        <RecentScans isRecentScan={isRecentScan} recentScan={recentScan} />
+        <RecentScans user={user} recentScan={recentScan} />
         <Articles articleTitles={articleTitles} articles={articles} />
       </div>
       <Navbar />
