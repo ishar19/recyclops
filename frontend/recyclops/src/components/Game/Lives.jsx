@@ -2,11 +2,14 @@ import React from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const Lives = () => {
-  const lives = [false, true, true];
+  const lives = [{ alive: false }, { alive: true }, { alive: true }];
   const renderLives = lives.map((live, i) => (
     <div key={i}>
-      {" "}
-      {live ? <AiFillHeart className=" text-red-500" /> : <AiOutlineHeart />}
+      {live.alive ? (
+        <AiFillHeart className=" text-red-500" />
+      ) : (
+        <AiOutlineHeart />
+      )}
     </div>
   ));
   return (

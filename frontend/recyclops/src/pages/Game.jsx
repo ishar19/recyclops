@@ -8,7 +8,6 @@ const Game = () => {
     <div className="h-screen bg-sky-300">
       <Score />
       <Lives />
-
       <DustbinSetup />
     </div>
   );

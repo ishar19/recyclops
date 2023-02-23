@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
 import Game from "./pages/Game";
+import GameLeaderboard from "./pages/GameLeaderboard";
 
 function App() {
   const user = useContext(UserContext);
@@ -192,7 +193,9 @@ function App() {
             )
           }
         />
-        <Route path="/gaming" element={<Game />} />
+        <Route path="/game" element={<Game />} />
+        <Route path="/game-leaderboard" element={<GameLeaderboard />} />
+
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/"} />}
