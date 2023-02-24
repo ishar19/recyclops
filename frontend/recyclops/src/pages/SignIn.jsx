@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffe } from "react";
 import logo from "../Assets/Logo.png";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { auth, provider } from "../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
+const title = "RecyclOps | Sign In";
 const SignIn = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
@@ -12,6 +13,9 @@ const SignIn = () => {
         console.log(error.message);
       });
   };
+  useEffect(() => {
+    document.title = title;
+  }, []);
   return (
     <div className="h-screen p-10">
       <div className="mb-10 mt-10 flex h-4/5 flex-col items-center rounded-md border-2 border-greenPrimary bg-[#F0F0F0] text-center">

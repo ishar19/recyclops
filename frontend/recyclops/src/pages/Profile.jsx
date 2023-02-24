@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { MdLogout } from "react-icons/md";
 // import { FiBook } from "react-icons/fi";
@@ -9,6 +9,7 @@ import { UserContext } from "../Context/UserProvider";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import Tabs from "../components/Profile/Tabs";
+const title = "RecyclOps | Profile";
 const Profile = () => {
   const user = useContext(UserContext);
   const handleLogOut = () => {
@@ -18,7 +19,9 @@ const Profile = () => {
         console.log(error);
       });
   };
-
+  useEffect(() => {
+    document.title = title;
+  }, []);
   return (
     <div className="mt-10 flex flex-col items-center justify-center">
       <>
