@@ -1,52 +1,61 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-
+import React, { useState, useEffect } from "react";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
-const Articles = ({ articles, articleTitles }) => {
-  const [selected, setSelected] = useState(0);
-  const handleSelect = (e, key) => {
-    setSelected(key);
-  };
-
+import { getArticles } from "../../APIs/Article";
+import PropTypes from "prop-types";
+import { getHumanDate } from "../../utils/getHumanDate";
+const Articles = () => {
+  //   const [selected, setSelected] = useState(0);
+  //   const handleSelect = (e, key) => {
+  //     setSelected(key);
+  //   };
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    const fetchArticles = async () => {
+      getArticles().then((data) => {
+        setArticles([...data]);
+      });
+    };
+    fetchArticles();
+  }, []);
   return (
     <div className="mt-10">
       <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-        <ArticleTitles
+        {/* <ArticleTitles
           articleTitles={articleTitles}
           selected={selected}
           handleSelect={handleSelect}
-        />
+        /> */}
       </div>
       <div className="grid gap-4 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => (
-          <ArticleBox article={article} key={i} />
+          <ArticleBox article={article.data} key={i} />
         ))}
       </div>
     </div>
   );
 };
 
-const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
-  return articleTitles.map((title, i) =>
-    selected == i ? (
-      <h2
-        key={i}
-        className="flex-shrink-0 cursor-pointer pr-2 text-xl text-[#34A853] hover:underline"
-        onClick={(e) => handleSelect(e, i)}
-      >
-        {title}
-      </h2>
-    ) : (
-      <h2
-        key={i}
-        className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
-        onClick={(e) => handleSelect(e, i)}
-      >
-        {title}
-      </h2>
-    )
-  );
-};
+// const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
+//   return articleTitles.map((title, i) =>
+//     selected == i ? (
+//       <h2
+//         key={i}
+//         className="flex-shrink-0 cursor-pointer pr-2 text-xl text-[#34A853] hover:underline"
+//         onClick={(e) => handleSelect(e, i)}
+//       >
+//         {title}
+//       </h2>
+//     ) : (
+//       <h2
+//         key={i}
+//         className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
+//         onClick={(e) => handleSelect(e, i)}
+//       >
+//         {title}
+//       </h2>
+//     )
+//   );
+// };
 
 const ArticleBox = ({ article, key }) => {
   const [showBookMark, setShowBookMark] = useState(false);
@@ -58,13 +67,16 @@ const ArticleBox = ({ article, key }) => {
     <div
       key={key}
       className="relative mb-3 flex justify-evenly gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-5 drop-shadow-md"
+      onClick={() => window.open(article.articleUrl, "_blank")}
     >
       <div>
         <h2 className="text-2xl">{article.title}</h2>
-        <p className="text-xl text-greenPrimary">{article.date}</p>
+        <p className="text-xl text-greenPrimary">
+          {getHumanDate(article.published.seconds)}
+        </p>
       </div>
       <div className="flex flex-col items-end justify-around">
-        <img src={article.img} alt="scan image" className="h-16 w-full" />
+        <img src={article.imageUrl} alt="scan image" className="h-16 w-full" />
 
         <button className="text-xl text-greenPrimary" onClick={handleOption}>
           {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
