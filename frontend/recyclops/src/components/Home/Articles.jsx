@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 import { getArticles } from "../../APIs/Article";
 import PropTypes from "prop-types";
-import { getHumanDate } from "../../utils/getHumanDate";
+import ArticleBox from "./ArticleBox";
 const Articles = () => {
   //   const [selected, setSelected] = useState(0);
   //   const handleSelect = (e, key) => {
@@ -56,41 +55,6 @@ const Articles = () => {
 //     )
 //   );
 // };
-
-const ArticleBox = ({ article, key }) => {
-  const [showBookMark, setShowBookMark] = useState(false);
-  const handleOption = () => {
-    setShowBookMark((prev) => !prev);
-  };
-
-  return (
-    <div
-      key={key}
-      className="relative mb-3 flex justify-evenly gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-5 drop-shadow-md"
-      onClick={() => window.open(article.articleUrl, "_blank")}
-    >
-      <div>
-        <h2 className="text-2xl">{article.title}</h2>
-        <p className="text-xl text-greenPrimary">
-          {getHumanDate(article.published.seconds)}
-        </p>
-      </div>
-      <div className="flex flex-col items-end justify-around">
-        <img src={article.imageUrl} alt="scan image" className="h-16 w-full" />
-
-        <button className="text-xl text-greenPrimary" onClick={handleOption}>
-          {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
-        </button>
-      </div>
-    </div>
-  );
-};
-
-ArticleBox.propTypes = {
-  article: PropTypes.object,
-  key: PropTypes.number,
-};
-
 Articles.propTypes = {
   articleTitles: PropTypes.array,
   articles: PropTypes.array,
