@@ -11,3 +11,18 @@ export const getRecentScansId = async (user) => {
     async (data) => await data.json()
   );
 };
+
+export const scanImage = async (uri, userId = null) => {
+  console.log(userId);
+  const body = {
+    userId: userId,
+    dataURI: uri,
+  };
+  return fetch(`http://localhost:5000/scan/newScan/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  }).then(async (data) => await data.json());
+};
