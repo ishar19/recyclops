@@ -194,7 +194,7 @@ function App() {
           }
         />
         <Route path="/game" element={<Game />} />
-        <Route path="/leaderboard" element={<GameLeaderboard />} />
+        <Route path="/game/leaderboard" element={<GameLeaderboard />} />
 
         <Route
           path="/signin"
