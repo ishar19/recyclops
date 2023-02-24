@@ -31,8 +31,8 @@ export const removeScan = async (userId, scanId) => {
     userId: userId,
     scanId: scanId,
   };
-  return fetch(`http://localhost:5000/user/saveScan`, {
-    method: "POST",
+  return fetch(`http://localhost:5000/user/removeScan`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
