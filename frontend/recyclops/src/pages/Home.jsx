@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import HomeUser from "../components/Home/HomeUser";
 import Location from "../components/Home/Location";
@@ -9,6 +9,10 @@ import Articles from "../components/Home/Articles";
 import { UserContext } from "../Context/UserProvider";
 const Home = ({ recentScan, articles, articleTitles }) => {
   const user = useContext(UserContext);
+  const title = "RecyclOps";
+  useEffect(() => {
+    document.title = title;
+  }, []);
   return (
     <>
       <div className="px-[5vw] pt-5 pb-16">

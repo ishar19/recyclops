@@ -5,6 +5,12 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
+<<<<<<< HEAD
+=======
+import Game from "./pages/Game";
+import GameLeaderboard from "./pages/GameLeaderboard";
+
+>>>>>>> 24a88138d7955b0bc5cec996db9c5264d2c85112
 function App() {
   const user = useContext(UserContext);
   const dummyData = {
@@ -189,12 +195,19 @@ function App() {
             )
           }
         />
+        <Route path="/game" element={<Game />} />
+        <Route path="/game/leaderboard" element={<GameLeaderboard />} />
+
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}
         />
       </Routes>
+<<<<<<< HEAD
     </>
+=======
+    </BrowserRouter>
+>>>>>>> 24a88138d7955b0bc5cec996db9c5264d2c85112
   );
 }
 
