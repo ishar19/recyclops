@@ -14,9 +14,10 @@ app.use(cors())
  
 import user from './routes/user.js'
 import scan from './routes/scan.js'
-
+import articles from './routes/articles.js'
 app.use('/user', user)
 app.use('/scan',scan)
+app.use('/articles', articles)
 app.get('/', function (req, res, next) {
   res.send("RECYCLOPS")
 })
