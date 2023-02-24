@@ -1,4 +1,4 @@
-import React, { useEffe } from "react";
+import React, { useEffect } from "react";
 import logo from "../Assets/Logo.png";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { auth, provider } from "../firebaseConfig";
