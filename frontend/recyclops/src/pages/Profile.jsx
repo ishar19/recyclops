@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/global/Navbar";
 import { MdLogout } from "react-icons/md";
 import PropTypes from "prop-types";
 import { UserContext } from "../Context/UserProvider";

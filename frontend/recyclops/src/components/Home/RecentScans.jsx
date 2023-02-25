@@ -5,9 +5,15 @@ import PropTypes from "prop-types";
 import { UserContext } from "../../Context/UserProvider";
 import { getRecentScansId, getScans } from "../../APIs/Scans";
 import { getHumanDate } from "../../utils/getHumanDate";
+import RecentScansModal from "./RecentScansModal";
+
 const RecentScans = ({ user }) => {
   // const user = useContext(UserContext);
   const [scanData, setScanData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const handleModal = () => {
+    setShowModal((prev) => !prev);
+  };
   // const scanData = [];
   const fetchScans = async () => {
     console.log("here");
@@ -84,6 +90,7 @@ const RecentScans = ({ user }) => {
           </div>
         )}
       </div>
+      {showModal && <RecentScansModal handleModal={handleModal} />}
     </div>
   );
 };
