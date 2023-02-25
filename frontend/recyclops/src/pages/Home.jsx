@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import HomeUser from "../components/Home/HomeUser";
 import Location from "../components/Home/Location";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/global/Navbar";
 import PropTypes from "prop-types";
 import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
