@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdAddTask } from "react-icons/md";
 import PropTypes from "prop-types";
+import RecentScansModal from "./RecentScansModal";
 const RecentScans = ({ isRecentScan, recentScan }) => {
+  const [showModal, setShowModal] = useState(false);
+  const handleModal = () => {
+    setShowModal((prev) => !prev);
+  };
   const recentScans = recentScan.map((scan, i) => {
     const modoulo = (i + 1) % 2;
     return (
@@ -12,6 +17,7 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
             ? "from-bluePrimary/60 to-bluePrimary/20"
             : "from-redPrimary/60 to-redPrimary/20"
         } py-2 px-2 drop-shadow-lg`}
+        onClick={handleModal}
       >
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
         <div>
@@ -44,6 +50,7 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
           </div>
         )}
       </div>
+      {showModal && <RecentScansModal handleModal={handleModal} />}
     </div>
   );
 };
