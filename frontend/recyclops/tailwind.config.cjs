@@ -6,9 +6,33 @@ module.exports = {
     extend: {
       colors: {
         greenPrimary: "#34A853",
-        bluePrimary: "#A1BFF0 ",
+        bluePrimary: "#4285F499 ",
         yellowPrimary: "#FABB0566",
+        redPrimary: "#E9423599",
+        organic: "#2A9848",
+        glass: "#D9AA21",
+        paper: "#DFDFDF",
+        metal: "#8F8F8F",
+        plastic: "#4285F4",
+        hazard: "#E94235",
+        cardboard: "#723F23",
       },
+      keyframes: {
+         moveInRight: {
+          "0%" :{
+            opacity: '0%',
+            transform: 'translateX(100px)'
+          },
+        
+          "100%" :{
+            opacity: '100%',
+            transform: 'translateX(0)'
+          }
+        }
+      },
+      animation: {
+        'banner-animation':'moveInRight 1s'
+      }
     },
   },
 

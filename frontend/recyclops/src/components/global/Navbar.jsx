@@ -18,8 +18,8 @@ const Navbar = () => {
     },
     {
       icon: <MdVideogameAsset size="32px" />,
-      title: "Gaming",
-      link: "/gaming",
+      title: "Game",
+      link: "/game",
     },
     {
       icon: <MdPerson size="32px" />,
