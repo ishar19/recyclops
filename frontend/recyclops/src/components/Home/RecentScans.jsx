@@ -10,10 +10,7 @@ import RecentScansModal from "./RecentScansModal";
 const RecentScans = ({ user }) => {
   // const user = useContext(UserContext);
   const [scanData, setScanData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const handleModal = () => {
-    setShowModal((prev) => !prev);
-  };
+
   // const scanData = [];
   const fetchScans = async () => {
     console.log("here");
@@ -28,45 +25,24 @@ const RecentScans = ({ user }) => {
   useEffect(() => {
     if (user != null) {
       setScanData([]);
-      //   fetchScans();
+      fetchScans();
     }
   }, [user]);
   //   console.log(user);
-  //   console.log(scanData);
-  //   useEffect(() => {
-  //     const fetchScans = async () => {
-  //       console.log("here");
-  //       const scanId = await getRecentScansId(user);
-  //       scanId.map(async (id) => {
-  //         const scan = await getScans(id);
-  //         setScanData((prev) => [...prev, scan]);
-  //       });
-  //     };
-  //     if (user != null) {
-  //       fetchScans();
-  //     }
-  //   }, []);
-
-  const recentScans = scanData.map((scan, i) => {
-    return (
-      <div
-        key={i}
-        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 shadow-md  drop-shadow-md`}
-      >
-        <img
-          src={scan["scanInfo"]["publicURL"]}
-          alt="scan image"
-          className="block h-20 w-28"
-        />
-        <div>
-          <h2 className="text-xl">{scan["scanData"]["class"]}</h2>
-          <p className="text-lg  text-opacity-95">
-            {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
-          </p>
-        </div>
-      </div>
-    );
-  });
+  // console.log(scanData);
+  // useEffect(() => {
+  //   const fetchScans = async () => {
+  //     console.log("here");
+  //     const scanId = await getRecentScansId(user);
+  //     scanId.map(async (id) => {
+  //       const scan = await getScans(id);
+  //       setScanData((prev) => [...prev, scan]);
+  //     });
+  //   };
+  //   if (user != null) {
+  //     fetchScans();
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -74,7 +50,9 @@ const RecentScans = ({ user }) => {
       <div>
         {user != null ? (
           <div className="my-6 flex gap-5 overflow-x-scroll py-8 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-            {recentScans}
+            {scanData.map((scan, i) => (
+              <ScanBoxes scan={scan} key={i} />
+            ))}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
@@ -90,7 +68,6 @@ const RecentScans = ({ user }) => {
           </div>
         )}
       </div>
-      {showModal && <RecentScansModal handleModal={handleModal} />}
     </div>
   );
 };
@@ -99,3 +76,37 @@ RecentScans.propTypes = {
   user: PropTypes.any,
 };
 export default RecentScans;
+
+const ScanBoxes = ({ scan, key }) => {
+  const [showModal, setShowModal] = useState(false);
+  const handleModal = () => {
+    setShowModal((prev) => !prev);
+  };
+  return (
+    <>
+      <div
+        key={key}
+        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 shadow-md  drop-shadow-md`}
+        onClick={handleModal}
+      >
+        <img
+          src={scan["scanInfo"]["publicURL"]}
+          alt="scan image"
+          className="block h-20 w-28"
+        />
+        <div>
+          <h2 className="text-xl">{scan["scanData"]["class"]}</h2>
+          <p className="text-lg  text-opacity-95">
+            {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
+          </p>
+        </div>
+      </div>
+      {showModal && <RecentScansModal scan={scan} handleModal={handleModal} />}
+    </>
+  );
+};
+
+ScanBoxes.propTypes = {
+  scan: PropTypes.any,
+  key: PropTypes.number,
+};

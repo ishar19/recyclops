@@ -2,12 +2,7 @@ import React, { useEffect, useContext } from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import HomeUser from "../components/Home/HomeUser";
 import Location from "../components/Home/Location";
-<<<<<<< HEAD
-import Navbar from "../components/Navbar";
-=======
 import Navbar from "../components/global/Navbar";
-import PropTypes from "prop-types";
->>>>>>> cd8dedb76820bc0a82ca149272bf3ef2f27e9a8a
 import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
 import { UserContext } from "../Context/UserProvider";
