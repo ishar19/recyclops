@@ -8,13 +8,25 @@ import {
   savedArticles,
   readingHistory,
 } from "../../APIs/Article";
-// import toast, { Toaster } from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const ArticleBox = ({ article, id, user }) => {
-  //   const saveToast = () => toast.success("Article saved");
-  // const deleteToast = () => toast.error("Article removed");
-  //   const failToast = () => toast.error("Some error happend, please try again");
-  //   const loginToast = () => toast("Please login to save articles");
+  //   const saveToast = (id) =>
+  //     toast.success("Article saved", {
+  //       id: id,
+  //     });
+  //   const deleteToast = (id) =>
+  //     toast.error("Article removed", {
+  //       id: id,
+  //     });
+  //   const failToast = (id) =>
+  //     toast.error("Some error happend, please try again", {
+  //       id: id,
+  //     });
+  //   const loginToast = (id) =>
+  //     toast("Please login to save articles", {
+  //       id: id,
+  //     });
 
   const [showBookMark, setShowBookMark] = useState(false);
   console.log(showBookMark);
@@ -32,10 +44,10 @@ const ArticleBox = ({ article, id, user }) => {
         );
         saveArticle(user.uid, id).then((res) => {
           if (res) {
-            // saveToast();
+            // saveToast(id);
             setShowBookMark((prev) => !prev);
           } else {
-            // failToast();
+            // failToast(id);
           }
         });
       } else {
@@ -50,18 +62,20 @@ const ArticleBox = ({ article, id, user }) => {
         );
         removeArticle(user.uid, id).then((res) => {
           if (res) {
-            // saveToast();
+            // deleteToast(id);
             setShowBookMark((prev) => !prev);
           } else {
-            // failToast();
+            // failToast(id);
           }
         });
       }
     } else {
-      //   loginToast();
+      //   loginToast(id);
+      alert("Login to save article");
     }
   };
-  const handleOnClick = () => {
+  const handleOnClick = (e) => {
+    e.stopPropagation();
     window.open(article.articleUrl, "_blank");
     if (user != null) {
       readingHistory(user.uid, id);
