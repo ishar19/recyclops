@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getArticles } from "../../APIs/Article";
 import PropTypes from "prop-types";
 import ArticleBox from "./ArticleBox";
+import { UserContext } from "../../Context/UserProvider";
+
 const Articles = () => {
   //   const [selected, setSelected] = useState(0);
   //   const handleSelect = (e, key) => {
   //     setSelected(key);
   //   };
   const [articles, setArticles] = useState([]);
+  const user = useContext(UserContext);
+
   useEffect(() => {
     const fetchArticles = async () => {
       getArticles().then((data) => {
@@ -27,7 +31,12 @@ const Articles = () => {
       </div>
       <div className="grid gap-4 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => (
-          <ArticleBox article={article.data} key={i} />
+          <ArticleBox
+            user={user}
+            article={article.data}
+            id={article.id}
+            key={i}
+          />
         ))}
       </div>
     </div>

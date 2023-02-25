@@ -13,7 +13,6 @@ export const getRecentScansId = async (user) => {
 };
 
 export const scanImage = async (uri, userId = null) => {
-  console.log(userId);
   const body = {
     userId: userId,
     dataURI: uri,
