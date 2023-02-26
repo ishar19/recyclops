@@ -12,27 +12,27 @@ const Tabs = () => {
   const list = [
     {
       title: "Scan History",
-      link: "/scanhistory",
+      link: "/profile/scanhistory",
       icon: <AiOutlineHeart />,
     },
     {
       title: "Saved Scans",
-      link: "/savedscans",
+      link: "/profile/savedscans",
       icon: <AiOutlineHeart />,
     },
     {
       title: "Reading History",
-      link: "/readinghistory",
+      link: "/profile/readinghistory",
       icon: <FiBook />,
     },
     {
       title: "Bookmarks",
-      link: "/bookmarks",
+      link: "/profile/bookmarks",
       icon: <MdOutlineBookmarkBorder />,
     },
     {
       title: "About Us",
-      link: "/aboutus",
+      link: "/profile/aboutus",
       icon: <FiBook />,
     },
   ];

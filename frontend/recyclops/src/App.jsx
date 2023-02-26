@@ -7,6 +7,9 @@ import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
 import Game from "./pages/Game";
 import GameLeaderboard from "./pages/GameLeaderboard";
+import ScanHistory from "./pages/ScanHistory";
+import SavedScans from "./pages/SavedScans";
+import ReadingHistory from "./pages/ReadingHistory";
 
 function App() {
   const user = useContext(UserContext);
@@ -195,7 +198,9 @@ function App() {
         />
         <Route path="/game" element={<Game />} />
         <Route path="/game/leaderboard" element={<GameLeaderboard />} />
-
+        <Route path="/profile/scanhistory" element={<ScanHistory />} />
+        <Route path="/profile/savedscans" element={<SavedScans />} />
+        <Route path="/profile/readinghistory" element={<ReadingHistory />} />
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/"} />}
