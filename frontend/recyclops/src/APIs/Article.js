@@ -1,5 +1,5 @@
 export const getArticles = async () => {
-  return fetch(`http://localhost:5000/articles/getArticles`).then(
+  return fetch(`http://localhost:5001/articles/getArticles`).then(
     async (data) => {
       return await data.json();
     }
@@ -11,7 +11,7 @@ export const saveArticle = async (userId, articleId) => {
     userId: userId,
     articleId: articleId,
   };
-  return fetch(`http://localhost:5000/user/saveArticle`, {
+  return fetch(`http://localhost:5001/user/saveArticle`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const removeArticle = async (userId, articleId) => {
     userId: userId,
     articleId: articleId,
   };
-  return fetch(`http://localhost:5000/user/removeArticle`, {
+  return fetch(`http://localhost:5001/user/removeArticle`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const removeArticle = async (userId, articleId) => {
 };
 
 export const savedArticles = async (id) => {
-  return fetch(`http://localhost:5000/user/savedArticle/${id}`).then(
+  return fetch(`http://localhost:5001/user/savedArticle/${id}`).then(
     async (data) => {
       return await data.json();
     }
@@ -47,7 +47,7 @@ export const readingHistory = async (userId, articleId) => {
     userId: userId,
     articleId: articleId,
   };
-  return fetch(`http://localhost:5000/user/readingHistory`, {
+  return fetch(`http://localhost:5001/user/readingHistory`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
