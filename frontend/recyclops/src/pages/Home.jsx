@@ -8,14 +8,7 @@ import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
 
 const title = "RecyclOps | Home";
-const Home = ({
-  isLoggedIn,
-  user,
-  isRecentScan,
-  recentScan,
-  articles,
-  articleTitles,
-}) => {
+const Home = ({ isRecentScan, recentScan, articles, articleTitles }) => {
   useEffect(() => {
     document.title = title;
   }, []);
@@ -35,8 +28,6 @@ const Home = ({
   );
 };
 Home.propTypes = {
-  isLoggedIn: PropTypes.boolean,
-  user: PropTypes.string,
   isRecentScan: PropTypes.boolean,
   recentScan: PropTypes.array,
   articleTitles: PropTypes.array,

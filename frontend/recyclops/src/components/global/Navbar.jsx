@@ -28,7 +28,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around bg-[#D4D4D8]">
+    <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around border-t-2 border-greenPrimary bg-[#D4D4D8]">
       {navbar.map((item, i) => (
         <Link key={i} to={item.link}>
           {path === item.link ? (
