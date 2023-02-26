@@ -9,7 +9,9 @@ import { UserContext } from "../Context/UserProvider";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import Tabs from "../components/Profile/Tabs";
+import profileBackground from "../Assets/Profile Background.png";
 const title = "RecyclOps | Profile";
+
 const Profile = () => {
   const user = useContext(UserContext);
   const handleLogOut = () => {
@@ -24,21 +26,24 @@ const Profile = () => {
   }, []);
   return (
     <div className="mt-10 flex flex-col items-center justify-center">
+      <img className="absolute top-[25vh]" src={profileBackground} />
       <>
-        <div>
-          <h1 className="text-2xl font-bold">{user.displayName}</h1>
-          <h2>{user.email}</h2>
+        <div className="flex items-center gap-2">
+          <img
+            src={user.photoURL}
+            alt={user.displayName}
+            className="h-24 w-24 rounded-full border-2 border-black"
+          />
+          <div>
+            <h1 className="text-2xl font-bold">{user.displayName}</h1>
+            <h2>{user.email}</h2>
+          </div>
         </div>
-        <img
-          src={user.photoURL}
-          alt={user.displayName}
-          className="h-24 w-24 rounded-full"
-        />
-        <div className="mt-20 w-4/5 ">
+        <div className="mt-20 flex w-4/5 flex-col gap-3 ">
           <Tabs />
           <button
             onClick={handleLogOut}
-            className="item-center flex w-full items-center gap-4 border-b-2 border-black p-2 text-2xl"
+            className="flex w-full items-center gap-4 rounded-lg bg-gray-300 bg-opacity-30 p-2 text-2xl drop-shadow-lg backdrop-blur-lg"
           >
             <MdLogout />
             <h2>Log Out</h2>
