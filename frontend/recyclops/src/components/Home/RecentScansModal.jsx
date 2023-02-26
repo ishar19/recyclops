@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getHumanDate } from "../../utils/getHumanDate";
 import PropTypes from "prop-types";
 import cardboard from "../../Assets/cardboard.png";
 import glass from "../../Assets/glass.png";
@@ -7,13 +8,10 @@ import metal from "../../Assets/metal.png";
 import organic from "../../Assets/organic.png";
 import paper from "../../Assets/paper.png";
 import plastic from "../../Assets/plastic.png";
-const scan = {
-  category: "Glass",
-  img: "https://images.pexels.com/photos/268349/pexels-photo-268349.jpeg?cs=srgb&dl=pexels-pixabay-268349.jpg&fm=jpg",
-  date: "1/1/23",
-};
-const RecentScansModal = ({ handleModal }) => {
+
+const RecentScansModal = ({ handleModal, scan }) => {
   const [scanContent, setScanContent] = useState({});
+  console.log(scan);
   const categoryChecker = (category) => {
     switch (category) {
       case "Organic":
@@ -75,44 +73,44 @@ const RecentScansModal = ({ handleModal }) => {
     }
   };
   useEffect(() => {
-    categoryChecker(scan.category);
+    categoryChecker(scan["scanData"]["class"]);
   }, [scan]);
   return (
-    <div className="max-h-[90vh]">
-      <div className="fixed inset-0 z-50 mx-5 flex items-center justify-center overflow-y-auto shadow-lg outline-none overflow-x-hidden focus:outline-none">
-        <div className="relative my-6 mx-auto w-auto max-w-3xl">
-          <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
-            <div
-              className={`flex items-start justify-between rounded-t border-b border-solid border-gray-300 p-5 ${scanContent.bg}`}
+    <div className="fixed inset-0 z-50 mx-5 flex items-center justify-center overflow-y-auto shadow-lg outline-none overflow-x-hidden focus:outline-none">
+      <div className="relative my-6 mx-auto w-auto max-w-3xl">
+        <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
+          <div
+            className={`flex items-start justify-between rounded-t border-b border-solid border-gray-300 p-5 trash${scan["scanData"]["color"]}`}
+          >
+            <h3 className="font=semibold text-3xl text-white">
+              {scan["scanData"]["class"]}
+            </h3>
+            <button
+              className="float-right border-0 bg-transparent text-black"
+              onClick={handleModal}
             >
-              <h3 className="font=semibold text-3xl text-white">
-                {scan.category}
-              </h3>
-              <button
-                className="float-right border-0 bg-transparent text-black"
-                onClick={handleModal}
-              >
-                <span className="opacity-7 block h-6 w-6  py-0 text-2xl text-white">
-                  x
-                </span>
-              </button>
-            </div>
-            <div className="relative flex-auto p-6">
-              <div className="flex flex-col items-center">
+              <span className="opacity-7 block h-6 w-6  py-0 text-2xl text-white">
+                x
+              </span>
+            </button>
+          </div>
+          <div className="relative flex-auto p-6">
+            <div className="flex flex-col items-center">
+              <img
+                src={scan["scanInfo"]["publicURL"]}
+                className="max-h-[30vh]"
+                alt={scan["scanInfo"]["publicURL"]}
+              />
+              <div className="self-start text-2xl">
+                Date: {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
+              </div>
+              <div className="flex pt-2">
+                {scanContent.description}
                 <img
-                  src={scan.img}
-                  className="max-h-[30vh]"
+                  src={scanContent.dustbin}
+                  className="h-[20vh]"
                   alt={scan.category}
                 />
-                <div className="self-start text-2xl">Date: {scan.date}</div>
-                <div className="flex pt-2">
-                  {scanContent.description}
-                  <img
-                    src={scanContent.dustbin}
-                    className="h-[20vh]"
-                    alt={scan.category}
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -123,5 +121,6 @@ const RecentScansModal = ({ handleModal }) => {
 };
 RecentScansModal.propTypes = {
   handleModal: PropTypes.func,
+  scan: PropTypes.object,
 };
 export default RecentScansModal;

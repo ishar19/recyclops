@@ -4,17 +4,17 @@ import firebaseApp from '../firebaseConfig.js'
 import {arrayRemove, arrayUnion, doc ,getDoc, getFirestore,setDoc,Timestamp } from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import verifyUserToken from '../utils/validUser.js';
-router.use(async(req, res, next) => {
-  const token = req.headers['bearer']
-  const verification =await verifyUserToken(token)
-  if(!verification){
-    res.sendStatus(403)
-    console.log("invalid token")
-  }
-  else{
-    next()
-  }
-})
+// router.use(async(req, res, next) => {
+//   const token = req.headers['bearer']
+//   const verification =await verifyUserToken(token)
+//   if(!verification){
+//     res.sendStatus(403)
+//     console.log("invalid token")
+//   }
+//   else{
+//     next()
+//   }
+// })
 
 router.get('/basicInfo/:id', async(req, res) => {
   const {id} = req.params
@@ -200,6 +200,7 @@ const {id} = req.params
     if (userSnap.exists()) {
     const response = userSnap.data()
     res.json(response.scanHistory);
+    console.log(response.scanHistory)
     } else {
     res.sendStatus(404);
     }

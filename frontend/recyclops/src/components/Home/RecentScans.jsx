@@ -1,58 +1,50 @@
-import React, { useEffect, useState } from "react";
+
+/* eslint-disable no-unused-vars */
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { MdAddTask } from "react-icons/md";
 import PropTypes from "prop-types";
+import { UserContext } from "../../Context/UserProvider";
+import { getRecentScansId, getScans } from "../../APIs/Scans";
+import { getHumanDate } from "../../utils/getHumanDate";
 import RecentScansModal from "./RecentScansModal";
-const RecentScans = ({ isRecentScan, recentScan }) => {
-  const [showModal, setShowModal] = useState(false);
-  const handleModal = () => {
-    setShowModal((prev) => !prev);
+
+const RecentScans = ({ user }) => {
+  // const user = useContext(UserContext);
+  const [scanData, setScanData] = useState([]);
+
+  // const scanData = [];
+  const fetchScans = async () => {
+    console.log("here");
+    const scanId = await getRecentScansId(user);
+    scanId.map(async (id) => {
+      const scan = await getScans(id);
+      setScanData((prev) => [...prev, scan]);
+      scanData.push(scan);
+      console.log(scanData);
+    });
   };
-  const recentScans = recentScan.map((scan, i) => {
-    const [bg, setBg] = useState("");
-    const checkCatgory = () => {
-      switch (scan.category) {
-        case "Organic":
-          setBg("from-organic/60 to-organic/20");
-          break;
-        case "Glass":
-          setBg("from-glass/60 to-glass/20");
-          break;
-        case "Paper":
-          setBg("from-paper/60 to-paper/20");
-          break;
-        case "Metal":
-          setBg("from-metal/60 to-metal/20");
-          break;
-        case "Plastic":
-          setBg("from-plastic/60 to-plastic/20");
-          break;
-        case "Hazard":
-          setBg("from-hazard/60 to-hazard/20");
-          break;
-        case "Cardboard":
-          setBg("from-cardboard/60 to-cardboard/20");
-          break;
-      }
-    };
-    useEffect(() => {
-      checkCatgory();
-    }, [scan]);
-    return (
-      <div
-        key={i}
-        className={`flex flex-shrink-0 flex-col items-center rounded-md bg-opacity-50 bg-gradient-to-r ${bg} py-2 px-2 drop-shadow-lg`}
-        onClick={handleModal}
-      >
-        <img src={scan.img} alt="scan image" className="block h-20 w-28" />
-        <div>
-          <h2 className="font-dosis text-xl font-medium">{scan.title}</h2>
-          <p className="font-dosis text-lg font-light text-opacity-95">
-            {scan.date}
-          </p>
-        </div>
-      </div>
-    );
-  });
+  
+  useEffect(() => {
+    if (user != null) {
+      setScanData([]);
+      fetchScans();
+    }
+  }, [user]);
+  //   console.log(user);
+  // console.log(scanData);
+  // useEffect(() => {
+  //   const fetchScans = async () => {
+  //     console.log("here");
+  //     const scanId = await getRecentScansId(user);
+  //     scanId.map(async (id) => {
+  //       const scan = await getScans(id);
+  //       setScanData((prev) => [...prev, scan]);
+  //     });
+  //   };
+  //   if (user != null) {
+  //     fetchScans();
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -60,9 +52,11 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
         Recent Scans
       </h1>
       <div>
-        {isRecentScan ? (
-          <div className="  flex gap-5 overflow-x-scroll py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-            {recentScans}
+        {user != null ? (
+          <div className="my-6 flex gap-5 overflow-x-scroll py-8 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
+            {scanData.map((scan, i) => (
+              <ScanBoxes scan={scan} key={i} />
+            ))}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
@@ -78,12 +72,45 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
           </div>
         )}
       </div>
-      {showModal && <RecentScansModal handleModal={handleModal} />}
     </div>
   );
 };
 RecentScans.propTypes = {
-  isRecentScan: PropTypes.boolean,
   recentScan: PropTypes.array,
+  user: PropTypes.any,
 };
 export default RecentScans;
+
+const ScanBoxes = ({ scan, key }) => {
+  const [showModal, setShowModal] = useState(false);
+  const handleModal = () => {
+    setShowModal((prev) => !prev);
+  };
+  return (
+    <>
+      <div
+        key={key}
+        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 shadow-md  drop-shadow-md`}
+        onClick={handleModal}
+      >
+        <img
+          src={scan["scanInfo"]["publicURL"]}
+          alt="scan image"
+          className="block h-20 w-28"
+        />
+        <div>
+          <h2 className="text-xl">{scan["scanData"]["class"]}</h2>
+          <p className="text-lg  text-opacity-95">
+            {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
+          </p>
+        </div>
+      </div>
+      {showModal && <RecentScansModal scan={scan} handleModal={handleModal} />}
+    </>
+  );
+};
+
+ScanBoxes.propTypes = {
+  scan: PropTypes.any,
+  key: PropTypes.number,
+};
