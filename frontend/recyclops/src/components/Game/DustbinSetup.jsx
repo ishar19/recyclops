@@ -3,12 +3,10 @@ import topGrass from "../../Assets/Grass.png";
 import topPavement from "../../Assets/Pavement.png";
 import bottomPavement from "../../Assets/BottomPavement.png";
 import Dustbins from "./Dustbins";
-import Item from "./Item";
 const DustbinSetup = () => {
   return (
     <div>
       <Dustbins />
-      <Item />
       <div>
         <img src={topGrass} className="absolute top-[14vh]" />
         <img src={topPavement} className="absolute top-[30vh] " />
