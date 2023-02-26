@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
 import { RxCross2 } from "react-icons/rx";
 import Reset from "./Reset";
 import Info from "./Info";
-const CameraScanner = (props) => {
-  const [dataUri, setDataUri] = useState("");
-  const data = true;
+import { scanImage } from "../../APIs/Scans";
+import { addScan } from "../../APIs/User";
+const CameraScanner = ({ user }) => {
+  const [dataUri, setDataUri] = useState(null);
+  const [data, setData] = useState(false);
+
   const handleReset = () => {
-    setDataUri("");
+    setDataUri(null);
+    setData(false);
   };
   function handleTakePhoto(dataUri) {
     setDataUri(dataUri);
@@ -17,18 +22,36 @@ const CameraScanner = (props) => {
     setDataUri(dataUri);
   }
 
-  function handleCameraError(error) {}
-
-  function handleCameraStart(stream) {}
-
-  function handleCameraStop() {}
-
+  useEffect(() => {
+    const getScanData = async () => {
+      const scanData = await scanImage(dataUri, user != null ? user.uid : null);
+      if (user != null) {
+        addScan(user.uid, scanData.scanId);
+      }
+      setData(scanData);
+      //   if (user == null) {
+      //     const recentScans = JSON.parse(
+      //       window.localStorage.getItem("recentScans")
+      //     );
+      //     if (recentScans == undefined)
+      //       window.localStorage.setItem("recentScans", [scanData.scanId]);
+      //     else
+      //       window.localStorage.setItem("recentScans", [
+      //         ...recentScans,
+      //         scanData.scanId,
+      //       ]);
+      //   }
+    };
+    if (dataUri != null) {
+      getScanData();
+    }
+  }, [dataUri]);
   return (
     <div>
-      {dataUri && data ? <Info /> : <></>}
+      {dataUri != null && data != false ? <Info data={data} /> : <></>}
       <Reset />
       <div className="">
-        {dataUri ? (
+        {dataUri != null ? (
           <>
             <img src={dataUri} className="h-[90vh] w-[100vw]" />
             <RxCross2
@@ -44,7 +67,6 @@ const CameraScanner = (props) => {
               className="camera-wrapper"
               onTakePhoto={handleTakePhoto}
               onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
-              onCameraError={handleCameraError}
               idealFacingMode={FACING_MODES.ENVIRONMENT}
               imageType={IMAGE_TYPES.JPG}
               imageCompression={0.97}
@@ -54,8 +76,6 @@ const CameraScanner = (props) => {
               isFullscreen
               isDisplayStartCameraError
               sizeFactor={1}
-              onCameraStart={handleCameraStart}
-              onCameraStop={handleCameraStop}
             />
           </div>
         )}
@@ -67,4 +87,7 @@ const CameraScanner = (props) => {
   );
 };
 
+CameraScanner.propTypes = {
+  user: PropTypes.any,
+};
 export default CameraScanner;

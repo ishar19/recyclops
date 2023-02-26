@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.trashBlue {
+  background: linear-gradient(
+    128.2deg,
+    rgba(66, 133, 244, 0.6) 0%,
+    rgba(66, 133, 244, 0.2) 100.92%
+  );
+}
+
+.trashGreen {
+  background: linear-gradient(
+    128.2deg,
+    rgba(93, 205, 123, 0.6) 0%,
+    rgba(93, 205, 123, 0.2) 100.92%
+  );
+}
+
+.trashYellow {
+  background: linear-gradient(
+    128.2deg,
+    rgba(227, 192, 91, 0.6) 0%,
+    rgba(227, 192, 91, 0.2) 100.92%
+  );
+}
+
+.trashWhite {
+  background: linear-gradient(
+    128.2deg,
+    rgba(240, 240, 240, 0.6) 0%,
+    rgba(240, 240, 240, 0.2) 100.92%
+  );
+}
+
+.trashGrey {
+  background: linear-gradient(
+    128.2deg,
+    rgba(143, 143, 143, 0.6) 0%,
+    rgba(143, 143, 143, 0.2) 100.92%
+  );
+}
+
+.trashRed {
+  background: linear-gradient(
+    128.2deg,
+    rgba(233, 66, 53, 0.6) 0%,
+    rgba(233, 66, 53, 0.2) 100.92%
+  );
+}
+
+.trashBrown {
+  background: linear-gradient(
+    128.2deg,
+    rgba(114, 63, 35, 0.6) 0%,
+    rgba(114, 63, 35, 0.2) 100.92%
+  );
+}
