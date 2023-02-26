@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdAddTask } from "react-icons/md";
 import PropTypes from "prop-types";
 import RecentScansModal from "./RecentScansModal";
@@ -8,15 +8,39 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
     setShowModal((prev) => !prev);
   };
   const recentScans = recentScan.map((scan, i) => {
-    const modoulo = (i + 1) % 2;
+    const [bg, setBg] = useState("");
+    const checkCatgory = () => {
+      switch (scan.category) {
+        case "Organic":
+          setBg("from-organic/60 to-organic/20");
+          break;
+        case "Glass":
+          setBg("from-glass/60 to-glass/20");
+          break;
+        case "Paper":
+          setBg("from-paper/60 to-paper/20");
+          break;
+        case "Metal":
+          setBg("from-metal/60 to-metal/20");
+          break;
+        case "Plastic":
+          setBg("from-plastic/60 to-plastic/20");
+          break;
+        case "Hazard":
+          setBg("from-hazard/60 to-hazard/20");
+          break;
+        case "Cardboard":
+          setBg("from-cardboard/60 to-cardboard/20");
+          break;
+      }
+    };
+    useEffect(() => {
+      checkCatgory();
+    }, [scan]);
     return (
       <div
         key={i}
-        className={`flex flex-shrink-0 flex-col items-center rounded-md bg-opacity-50 bg-gradient-to-r ${
-          modoulo === 1
-            ? "from-bluePrimary/60 to-bluePrimary/20"
-            : "from-redPrimary/60 to-redPrimary/20"
-        } py-2 px-2 drop-shadow-lg`}
+        className={`flex flex-shrink-0 flex-col items-center rounded-md bg-opacity-50 bg-gradient-to-r ${bg} py-2 px-2 drop-shadow-lg`}
         onClick={handleModal}
       >
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
