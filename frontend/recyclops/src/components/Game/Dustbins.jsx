@@ -2,10 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import redTrash from "../../Assets/red trash.png";
-// import greenTrash from "../../Assets/green trash.png";
+import greenTrash from "../../Assets/green trash.png";
 import brownTrash from "../../Assets/brown trash.png";
 import yellowTrash from "../../Assets/yellow trash.png";
-import { useDroppable } from "@dnd-kit/core";
+import {
+  closestCenter,
+  pointerWithin,
+  rectIntersection,
+  useDroppable,
+} from "@dnd-kit/core";
 import Item from "./Item";
 import {
   DndContext,
@@ -13,7 +18,7 @@ import {
   TouchSensor,
   useSensor,
   useSensors,
-  closestCenter,
+  //   rectangleIntersection,/
 } from "@dnd-kit/core";
 // import { Droppable } from "./Droppable";
 const Dustbins = () => {
@@ -24,24 +29,22 @@ const Dustbins = () => {
     },
   });
   const [isDropped, setIsDropped] = useState(false);
-  console.log(isDropped);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   const style = {
     color: isOver ? "green" : "red",
     width: isOver ? "320px" : "200px",
   };
   function handleDragEnd(event) {
-    console.log("end");
     console.log(event);
-    if (event.over && event.over.id === "droppable") {
+    if (event.over && event.over.id !== null) {
       setIsDropped(true);
     }
   }
-  const handleDragStart = (e) => console.log(e);
+  const handleDragStart = (e) => setIsDropped(false);
   const handleDragOver = ({ active }) => console.log("dragOver");
 
   useEffect(() => {
-    console.log("dropped in red trash");
+    console.log(isDropped);
   }, [isDropped]);
   return (
     <DndContext
@@ -49,65 +52,42 @@ const Dustbins = () => {
       onDragEnd={handleDragEnd}
       onDragOver={handleDragOver}
       sensors={sensors}
-      collisionDetection={closestCenter}
+      collisionDetection={rectIntersection}
     >
       <Item />
-      {/* <div
-        ref={setFirstDroppableRef}
-        style={style}
-        id="droppable"
-        className="absolute top-[15vh] right-[10vw] z-20 h-[20vh] bg-red-600"
-      >
-        <img src={greenTrash} /> 
-        <div
-          className="absolute top-[15vh] right-[10vw] z-10 h-[20vh]"
-          style={style}
-        >
-          Drop here
-        </div>
-        <div className="h-[100%] w-[100%]">Drop here</div>
-      </div> */}
-      <Droppable>
-        {isDropped ? (
-          <img
-            src={redTrash}
-            className="absolute top-[15vh] right-[10vw] z-10 h-[20vh]"
-          />
-        ) : (
-          <img
-            src={redTrash}
-            className="absolute top-[15vh] right-[10vw] z-10 h-[20vh]"
-          />
-        )}
+      <Droppable id={"green"}>
+        <img src={greenTrash} className="z-10 h-[20vh]" />
       </Droppable>
-      <img
-        src={redTrash}
-        className="absolute top-[15vh] left-[10vw] z-10 h-[20vh]"
-      />
-      <img
-        src={brownTrash}
-        className="absolute bottom-[16vh] right-[10vw] z-10 h-[20vh]"
-      />
-      <img
-        src={yellowTrash}
-        className="absolute bottom-[16vh] left-[10vw] z-10 h-[20vh]"
-      />
+      <Droppable id={"red"}>
+        <img src={redTrash} className=" z-10 h-[20vh]" />
+      </Droppable>
+      <Droppable id={"brown"}>
+        <img src={brownTrash} className=" z-10 h-[20vh]" />
+      </Droppable>
+      <Droppable id={"yellow"}>
+        <img src={yellowTrash} className=" z-10 h-[20vh]" />
+      </Droppable>
     </DndContext>
   );
 };
 
 export default Dustbins;
-
+const STYLES = {
+  green: "absolute top-[15vh] left-[10vw] z-10 h-[20vh]",
+  red: "absolute top-[15vh] right-[10vw] z-10 h-[20vh]",
+  brown: "absolute bottom-[16vh] right-[10vw] z-10 h-[20vh]",
+  yellow: "absolute bottom-[16vh] left-[10vw] z-10 h-[20vh]",
+};
 function Droppable(props) {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
+    id: props.id,
   });
   const style = {
-    color: isOver ? "green" : undefined,
+    color: isOver ? "green" : "red",
   };
 
   return (
-    <div ref={setNodeRef} style={style}>
+    <div ref={setNodeRef} style={style} className={`${STYLES[props.id]}`}>
       {props.children}
     </div>
   );
