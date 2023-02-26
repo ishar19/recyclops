@@ -1,39 +1,43 @@
 import React from "react";
 import {
   //   MdNotificationsNone,
-  MdOutlineBookmarkBorder,
+  MdOutlineBook,
   // MdOutlineHistory,
   //   MdOutlineSettings,
+  MdBookmark,
+  MdHistory,
+  MdOutlineMenuBook,
+  MdOutlineCompare,
 } from "react-icons/md";
-import { FiBook } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
+// import { FiBook } from "react-icons/fi";
+// import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const Tabs = () => {
   const list = [
     {
       title: "Scan History",
       link: "/profile/scanhistory",
-      icon: <AiOutlineHeart />,
+      icon: <MdOutlineCompare />,
     },
     {
       title: "Saved Scans",
       link: "/profile/savedscans",
-      icon: <AiOutlineHeart />,
+      icon: <MdBookmark />,
     },
     {
       title: "Reading History",
       link: "/profile/readinghistory",
-      icon: <FiBook />,
+      icon: <MdHistory />,
     },
     {
       title: "Bookmarks",
       link: "/profile/bookmarks",
-      icon: <MdOutlineBookmarkBorder />,
+      icon: <MdOutlineBook />,
     },
     {
       title: "About Us",
       link: "/profile/aboutus",
-      icon: <FiBook />,
+      icon: <MdOutlineMenuBook />,
     },
   ];
   return (

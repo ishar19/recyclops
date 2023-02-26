@@ -1,9 +1,9 @@
 import React from "react";
 import {
   MdOutlineHome,
-  MdOutlineDocumentScanner,
-  MdVideogameAsset,
-  MdPerson,
+  MdOutlineCompare,
+  MdOutlineSportsEsports,
+  MdOutlinePersonOutline,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Navbar = () => {
@@ -12,17 +12,17 @@ const Navbar = () => {
   const navbar = [
     { icon: <MdOutlineHome size="32px" />, title: "Home", link: "/" },
     {
-      icon: <MdOutlineDocumentScanner size="32px" />,
+      icon: <MdOutlineCompare size="32px" />,
       title: "Scanner",
       link: "/scanner",
     },
     {
-      icon: <MdVideogameAsset size="32px" />,
+      icon: <MdOutlineSportsEsports size="32px" />,
       title: "Game",
       link: "/game",
     },
     {
-      icon: <MdPerson size="32px" />,
+      icon: <MdOutlinePersonOutline size="32px" />,
       title: "Profile",
       link: "/profile",
     },
