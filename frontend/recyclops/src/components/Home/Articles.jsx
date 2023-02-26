@@ -13,12 +13,13 @@ const Articles = () => {
   const user = useContext(UserContext);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const fetchArticles = async () => {
       getArticles().then((data) => {
         setArticles([...data]);
       });
     };
-    fetchArticles();
+    // fetchArticles();
   }, []);
   return (
     <div className="mt-10">

@@ -25,7 +25,7 @@ const RecentScans = ({ user }) => {
   useEffect(() => {
     if (user != null) {
       setScanData([]);
-      fetchScans();
+      //   fetchScans();
     }
   }, [user]);
   //   console.log(user);
