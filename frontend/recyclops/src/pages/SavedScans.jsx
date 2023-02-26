@@ -5,7 +5,7 @@ import { MdOutlineHistory } from "react-icons/md";
 const SavedScans = () => {
   return (
     <div>
-      <h1 className="flex items-center gap-1 p-5 text-4xl text-greenPrimary">
+      <h1 className="flex items-center gap-1 p-5 font-dosis text-4xl font-bold text-greenPrimary">
         <MdOutlineHistory />
         Saved Scan
       </h1>

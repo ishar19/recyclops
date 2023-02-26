@@ -31,7 +31,7 @@ const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
     selected == i ? (
       <h2
         key={i}
-        className="flex-shrink-0 cursor-pointer pr-2 text-xl text-[#34A853] hover:underline"
+        className="flex-shrink-0 cursor-pointer pr-2 font-dosis text-xl font-light text-[#34A853] hover:underline"
         onClick={(e) => handleSelect(e, i)}
       >
         {title}
@@ -39,7 +39,7 @@ const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
     ) : (
       <h2
         key={i}
-        className="flex-shrink-0 cursor-pointer pr-2 text-xl hover:text-[#34A853] hover:underline"
+        className="flex-shrink-0 cursor-pointer pr-2 font-dosis text-xl font-light hover:text-[#34A853] hover:underline"
         onClick={(e) => handleSelect(e, i)}
       >
         {title}
@@ -60,8 +60,10 @@ const ArticleBox = ({ article, key }) => {
       className="relative mb-3 flex justify-evenly gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-5 drop-shadow-md"
     >
       <div>
-        <h2 className="text-2xl">{article.title}</h2>
-        <p className="text-xl text-greenPrimary">{article.date}</p>
+        <h2 className="font-dosis text-2xl font-medium">{article.title}</h2>
+        <p className="font-dosis text-xl font-bold text-greenPrimary">
+          {article.date}
+        </p>
       </div>
       <div className="flex flex-col items-end justify-around">
         <img src={article.img} alt="scan image" className="h-16 w-full" />

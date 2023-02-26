@@ -43,7 +43,7 @@ const Navbar = () => {
               className={`flex cursor-pointer flex-col items-center justify-center`}
             >
               {item.icon}
-              <p>{item.title}</p>
+              <p className="font-dosis font-medium">{item.title}</p>
             </div>
           )}
         </Link>

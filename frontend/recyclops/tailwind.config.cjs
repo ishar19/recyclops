@@ -31,6 +31,10 @@ module.exports = {
       animation: {
         "banner-animation": "moveInRight 1s",
       },
+      fontFamily: {
+        dosis: ["Dosis", "sans-serif"],
+        gloriaHallelujah: ['Gloria Hallelujah', 'cursive']
+      },
     },
   },
 

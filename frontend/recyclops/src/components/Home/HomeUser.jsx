@@ -18,14 +18,16 @@ const HomeUser = () => {
     <div>
       {user ? (
         <div>
-          <h1 className="text-3xl text-greenPrimary">Hi {user.displayName}</h1>
-          <h2 className="text-2xl">Welcome Back!</h2>
+          <h1 className="font-dosis text-3xl font-medium text-greenPrimary">
+            Hi {user.displayName}
+          </h1>
+          <h2 className="font-dosis text-2xl font-normal">Welcome Back!</h2>
         </div>
       ) : (
         <button
           onClick={handleSignIn}
           href="#"
-          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 text-2xl text-white"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-5 py-3 font-dosis text-2xl font-normal text-white"
         >
           <AiOutlineGoogle />
           Sign in

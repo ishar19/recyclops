@@ -35,15 +35,17 @@ const Profile = () => {
             className="h-24 w-24 rounded-full border-2 border-black"
           />
           <div>
-            <h1 className="text-2xl font-bold">{user.displayName}</h1>
-            <h2>{user.email}</h2>
+            <h1 className="font-dosis text-2xl font-normal">
+              {user.displayName}
+            </h1>
+            <h2 className="font-dosis font-light">{user.email}</h2>
           </div>
         </div>
         <div className="mt-20 flex w-4/5 flex-col gap-3 ">
           <Tabs />
           <button
             onClick={handleLogOut}
-            className="flex w-full items-center gap-4 rounded-lg bg-gray-300 bg-opacity-30 p-2 text-2xl drop-shadow-lg backdrop-blur-lg"
+            className="flex w-full items-center gap-4 rounded-lg bg-gray-300 bg-opacity-30 p-2 font-dosis text-2xl font-bold drop-shadow-lg backdrop-blur-lg"
           >
             <MdLogout />
             <h2>Log Out</h2>

@@ -23,7 +23,7 @@ const HomeLeaderboard = () => {
   ));
   return (
     <Link to="/game/leaderboard">
-      <button className="relative  mx-8 rounded-lg bg-gray-300 bg-opacity-30  p-5 drop-shadow-lg backdrop-blur-lg">
+      <button className="relative mx-8 rounded-lg bg-gray-300 bg-opacity-30 p-5  font-gloriaHallelujah drop-shadow-lg backdrop-blur-lg">
         <h1 className="text-3xl text-[#FABB05]">Leaderboard</h1>
         <div className=" ml-14 flex gap-14 text-sm text-white">
           <div>Player</div>

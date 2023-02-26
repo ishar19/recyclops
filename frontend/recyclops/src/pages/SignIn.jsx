@@ -23,12 +23,12 @@ const SignIn = () => {
         <button
           onClick={handleSignIn}
           href="#"
-          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-10 py-3 text-2xl text-white"
+          className="flex items-center gap-2 rounded-lg bg-greenPrimary px-10 py-3 font-dosis text-2xl font-medium text-white"
         >
           <AiOutlineGoogle />
           Sign in
         </button>
-        <div className="mt-12 p-5">
+        <div className="mt-12 p-5 font-dosis font-medium">
           Lorem ipsum dolor sit amet consectetur. Nunc sed mi blandit vitae eget
           vitae. In egestas quis.
         </div>
@@ -36,7 +36,7 @@ const SignIn = () => {
 
       <Link
         to="/"
-        className="text-whi absolute right-10 rounded-md bg-greenPrimary px-5 py-2 text-white shadow-md"
+        className="text-whi absolute right-10 rounded-md bg-greenPrimary px-5 py-2 font-dosis font-medium text-white shadow-md"
       >
         Skip
       </Link>

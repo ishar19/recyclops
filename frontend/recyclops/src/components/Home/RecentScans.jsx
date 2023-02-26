@@ -45,8 +45,10 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
       >
         <img src={scan.img} alt="scan image" className="block h-20 w-28" />
         <div>
-          <h2 className="text-xl">{scan.title}</h2>
-          <p className="text-lg  text-opacity-95">{scan.date}</p>
+          <h2 className="font-dosis text-xl font-medium">{scan.title}</h2>
+          <p className="font-dosis text-lg font-light text-opacity-95">
+            {scan.date}
+          </p>
         </div>
       </div>
     );
@@ -54,7 +56,9 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
 
   return (
     <div>
-      <h1 className="mb-2 text-2xl text-greenPrimary">Recent Scans</h1>
+      <h1 className="mb-2 font-dosis text-2xl font-normal text-greenPrimary">
+        Recent Scans
+      </h1>
       <div>
         {isRecentScan ? (
           <div className="  flex gap-5 overflow-x-scroll py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
@@ -62,12 +66,12 @@ const RecentScans = ({ isRecentScan, recentScan }) => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
-            <h2 className="flex gap-1 text-2xl">
+            <h2 className="flex gap-1 font-dosis text-2xl font-medium">
               No History <MdAddTask />
             </h2>
             <a
               href="#"
-              className="rounded-lg bg-greenPrimary px-5 py-1 text-2xl text-white"
+              className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white"
             >
               Start Scanning
             </a>

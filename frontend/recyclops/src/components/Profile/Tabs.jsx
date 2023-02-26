@@ -40,7 +40,7 @@ const Tabs = () => {
     <div className="flex flex-col gap-3">
       {list.map((tab, i) => (
         <Link key={i} to={tab.link}>
-          <button className="flex w-full items-center gap-4 rounded-lg bg-gray-300 bg-opacity-30 p-2 text-2xl drop-shadow-lg backdrop-blur-lg">
+          <button className="flex w-full items-center gap-4 rounded-lg bg-gray-300 bg-opacity-30 p-2 font-dosis text-2xl font-bold drop-shadow-lg backdrop-blur-lg">
             {tab.icon} {tab.title}
           </button>
         </Link>
