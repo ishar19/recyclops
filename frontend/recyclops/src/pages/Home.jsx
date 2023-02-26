@@ -5,6 +5,7 @@ import Location from "../components/Home/Location";
 import Navbar from "../components/global/Navbar";
 import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
+
 import { UserContext } from "../Context/UserProvider";
 const Home = () => {
   const user = useContext(UserContext);
@@ -27,5 +28,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;

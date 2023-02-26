@@ -1,9 +1,9 @@
 import React from "react";
 import {
   MdOutlineHome,
-  MdOutlineDocumentScanner,
-  MdVideogameAsset,
-  MdPerson,
+  MdOutlineCompare,
+  MdOutlineSportsEsports,
+  MdOutlinePersonOutline,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Navbar = () => {
@@ -12,23 +12,23 @@ const Navbar = () => {
   const navbar = [
     { icon: <MdOutlineHome size="32px" />, title: "Home", link: "/" },
     {
-      icon: <MdOutlineDocumentScanner size="32px" />,
+      icon: <MdOutlineCompare size="32px" />,
       title: "Scanner",
       link: "/scanner",
     },
     {
-      icon: <MdVideogameAsset size="32px" />,
+      icon: <MdOutlineSportsEsports size="32px" />,
       title: "Game",
       link: "/game",
     },
     {
-      icon: <MdPerson size="32px" />,
+      icon: <MdOutlinePersonOutline size="32px" />,
       title: "Profile",
       link: "/profile",
     },
   ];
   return (
-    <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around bg-[#D4D4D8]">
+    <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-around border-t-2 border-greenPrimary bg-[#D4D4D8]">
       {navbar.map((item, i) => (
         <Link key={i} to={item.link}>
           {path === item.link ? (
@@ -43,7 +43,7 @@ const Navbar = () => {
               className={`flex cursor-pointer flex-col items-center justify-center`}
             >
               {item.icon}
-              <p>{item.title}</p>
+              <p className="font-dosis font-medium">{item.title}</p>
             </div>
           )}
         </Link>

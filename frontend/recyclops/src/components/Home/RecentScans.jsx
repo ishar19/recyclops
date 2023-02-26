@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { MdAddTask } from "react-icons/md";
@@ -22,6 +23,7 @@ const RecentScans = ({ user }) => {
       console.log(scanData);
     });
   };
+  
   useEffect(() => {
     if (user != null) {
       setScanData([]);
@@ -46,7 +48,9 @@ const RecentScans = ({ user }) => {
 
   return (
     <div>
-      <h1 className="mb-2 text-2xl text-greenPrimary">Recent Scans</h1>
+      <h1 className="mb-2 font-dosis text-2xl font-normal text-greenPrimary">
+        Recent Scans
+      </h1>
       <div>
         {user != null ? (
           <div className="my-6 flex gap-5 overflow-x-scroll py-8 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
@@ -56,12 +60,12 @@ const RecentScans = ({ user }) => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
-            <h2 className="flex gap-1 text-2xl">
+            <h2 className="flex gap-1 font-dosis text-2xl font-medium">
               No History <MdAddTask />
             </h2>
             <a
               href="#"
-              className="rounded-lg bg-greenPrimary px-5 py-1 text-2xl text-white"
+              className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white"
             >
               Start Scanning
             </a>

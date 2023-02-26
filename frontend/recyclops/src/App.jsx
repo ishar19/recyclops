@@ -7,8 +7,11 @@ import Scanner from "./pages/Scanner";
 import { UserContext } from "./Context/UserProvider";
 import Game from "./pages/Game";
 import GameLeaderboard from "./pages/GameLeaderboard";
+import ScanHistory from "./pages/ScanHistory";
+import SavedScans from "./pages/SavedScans";
+import ReadingHistory from "./pages/ReadingHistory";
+import GameHome from "./pages/GameHome";
 import { Toaster } from "react-hot-toast";
-
 function App() {
   const user = useContext(UserContext);
   return (
@@ -20,9 +23,12 @@ function App() {
           path="/profile"
           element={user ? <Profile /> : <Navigate replace to={"/signin"} />}
         />
-        <Route path="/game" element={<Game />} />
+        <Route path="/game" element={<GameHome />} />
+        <Route path="/game/play" element={<Game />} />
         <Route path="/game/leaderboard" element={<GameLeaderboard />} />
-
+        <Route path="/profile/scanhistory" element={<ScanHistory />} />
+        <Route path="/profile/savedscans" element={<SavedScans />} />
+        <Route path="/profile/readinghistory" element={<ReadingHistory />} />
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}

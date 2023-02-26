@@ -21,7 +21,9 @@ const Location = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <p className="text-xl underline underline-offset-4">{currentLocation}</p>
+      <p className="font-dosis text-xl font-light underline underline-offset-4">
+        {currentLocation}
+      </p>
       <MdLocationPin size="32px" color="#34A853" />
     </div>
   );

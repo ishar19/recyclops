@@ -43,6 +43,8 @@ const Articles = () => {
   );
 };
 
+
+
 // const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
 //   return articleTitles.map((title, i) =>
 //     selected == i ? (
