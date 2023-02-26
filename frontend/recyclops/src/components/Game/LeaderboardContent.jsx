@@ -20,7 +20,7 @@ const LeaderboardContent = () => {
       <h2 className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FABB05] text-white">
         {i + 1}
       </h2>
-      <div className="flex h-10 items-center gap-14 rounded-md bg-gradient-to-r from-plastic/70 to-plastic/20 p-3">
+      <div className="flex h-10 items-center gap-20 rounded-md bg-gradient-to-r from-plastic/70 to-plastic/20 p-3">
         <h2>{player.name}</h2>
         <div className="flex gap-5">
           <h2>{player.dragDrop}</h2>
@@ -35,7 +35,7 @@ const LeaderboardContent = () => {
         <img src={leaderboardIcon} className="h-20" />
         <h1 className="text-4xl text-[#FABB05]">Leaderboard</h1>
       </div>
-      <div className="ml-14 flex gap-14 text-sm text-white">
+      <div className="ml-14 flex gap-20 text-sm text-white">
         <div>Player</div>
         <div className="flex gap-5">
           <div>Drag Drop</div>
@@ -43,7 +43,7 @@ const LeaderboardContent = () => {
         </div>
       </div>
       <div className="mt-2 flex flex-col gap-4">{renderBoard}</div>
-      <div className="mt-5 flex gap-20">
+      <div className="mt-5 flex justify-evenly">
         <Link to="/game">
           <button className="flex items-center gap-1  rounded-md bg-white p-1">
             <MdKeyboardBackspace />
