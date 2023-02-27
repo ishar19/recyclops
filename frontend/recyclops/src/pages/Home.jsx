@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-l from-[#34A85366]/40 to-[#34A85366]/10 px-[5vw] pt-5 pb-16">
+      <div className="bg-gradient-to-l from-[#34A85366]/40 to-[#34A85366]/10 px-[5vw] pt-5 pb-16 overflow-x-hidden">
         <div className="flex items-center justify-between">
           <HomeUser />
           <Location />

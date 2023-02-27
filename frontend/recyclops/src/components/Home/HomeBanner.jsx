@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import cardboard from "../../Assets/cardboard.png";
-import glass from "../../Assets/glass.png";
-import hazard from "../../Assets/hazard.png";
-import metal from "../../Assets/metal.png";
-import organic from "../../Assets/organic.png";
-import paper from "../../Assets/paper.png";
-import plastic from "../../Assets/plastic.png";
+import cardboard from "../../Assets/cardboard.svg";
+import glass from "../../Assets/glass.svg";
+import hazard from "../../Assets/hazard.svg";
+import metal from "../../Assets/metal.svg";
+import organic from "../../Assets/organic.svg";
+import paper from "../../Assets/paper.svg";
+import plastic from "../../Assets/plastic.svg";
 import DustbinModal from "./DustbinModal";
 const HomeBanner = () => {
   const [showModal, setShowModal] = useState(false);
@@ -71,19 +71,19 @@ const HomeBanner = () => {
   const dustbins = [organic, glass, paper, metal, plastic, hazard, cardboard];
   const renderDustbins = dustbins.map((dustbin, i) => (
     <img
-      key={i}
       src={dustbin}
       alt={dustbin}
+      key={i}
       onClick={() => {
         handleModal();
         handleDescription(dustbin);
       }}
-      className="h-[30vh]"
+      className="h-[30vh] cursor-pointer"
     />
   ));
   return (
     <div>
-      <div className="mx-auto my-4 flex h-[40vh] flex-shrink-0 animate-banner-animation gap-2 overflow-x-scroll p-5 py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300 lg:scrollbar-default">
+      <div className="my-4 flex h-[40vh] flex-shrink-0 justify-evenly gap-4  overflow-x-scroll p-5 py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300 lg:scrollbar-default">
         {renderDustbins}
       </div>
       {showModal && (
