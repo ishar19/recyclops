@@ -11,7 +11,7 @@ if __name__ == '__main__':
   fast_api_app = FastAPI()
 
   #Firebase App
-  cred = credentials.Certificate("game-files\private_key_one.json")
+  cred = credentials.Certificate("game_endpoint_files\private_key.json")
   firebase_admin.initialize_app(cred)
 
   #Collection References

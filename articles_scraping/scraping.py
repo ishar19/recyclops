@@ -17,7 +17,7 @@ random_images = [
 ]
 
 if __name__ == '__main__':
-  cred = credentials.Certificate("private_key.json")
+  cred = credentials.Certificate("articles_scraping/private_key.json")
   firebase_admin.initialize_app(cred)
   db = firestore.client()
   articles_ref = db.collection('articles')

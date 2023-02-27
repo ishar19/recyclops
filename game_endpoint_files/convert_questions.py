@@ -17,9 +17,9 @@ all_classes = [
 ]
 
 if __name__ == '__main__':
-  cred = credentials.Certificate("game-files\private_key_one.json")
+  cred = credentials.Certificate("game_endpoint_files\private_key.json")
   firebase_admin.initialize_app(cred, {
-    'storageBucket' : 'test-1d905.appspot.com'
+    'storageBucket' : 'recyclops-69781.appspot.com'
   })
 
   # Get a reference to the Cloud Storage bucket
@@ -32,8 +32,6 @@ if __name__ == '__main__':
   for index in range(len(all_classes)):
     for image in bucket.list_blobs(prefix=f'game_Images/{all_classes[index]}'):
       inside_index += 1
-      if inside_index % 100 == 0:
-        break
       if '.png' not in image.name:
         continue
       _, file_extension = os.path.splitext(image.name)
