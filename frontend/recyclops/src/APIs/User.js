@@ -3,7 +3,7 @@ export const addScan = async (userId, scanId) => {
     userId: userId,
     scanId: scanId,
   };
-  return fetch(`http://localhost:5001/user/addScan`, {
+  return fetch(`http://localhost:5000/user/addScan`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export const saveScan = async (userId, scanId) => {
     userId: userId,
     scanId: scanId,
   };
-  return fetch(`http://localhost:5001/user/saveScan`, {
+  return fetch(`http://localhost:5000/user/saveScan`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const removeScan = async (userId, scanId) => {
     userId: userId,
     scanId: scanId,
   };
-  return fetch(`http://localhost:5001/user/removeScan`, {
+  return fetch(`http://localhost:5000/user/removeScan`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
