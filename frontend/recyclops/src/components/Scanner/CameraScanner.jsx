@@ -46,6 +46,7 @@ const CameraScanner = ({ user }) => {
       getScanData();
     }
   }, [dataUri]);
+
   return (
     <div>
       {dataUri != null && data != false ? <Info data={data} /> : <></>}
@@ -71,7 +72,7 @@ const CameraScanner = ({ user }) => {
               imageType={IMAGE_TYPES.JPG}
               imageCompression={0.97}
               isMaxResolution
-              isImageMirror
+              isImageMirror={false}
               isSilentMode
               isFullscreen
               isDisplayStartCameraError
