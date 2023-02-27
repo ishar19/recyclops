@@ -33,7 +33,7 @@ module.exports = {
       },
       fontFamily: {
         dosis: ["Dosis", "sans-serif"],
-        gloriaHallelujah: ['Gloria Hallelujah', 'cursive']
+        gloriaHallelujah: ["Gloria Hallelujah", "cursive"],
       },
     },
   },
