@@ -7,12 +7,14 @@ import RecentScans from "../components/Home/RecentScans";
 import Articles from "../components/Home/Articles";
 
 import { UserContext } from "../Context/UserProvider";
+
 const Home = () => {
   const user = useContext(UserContext);
   const title = "RecyclOps";
   useEffect(() => {
     document.title = title;
   }, []);
+
   return (
     <>
       <div className="px-[5vw] pt-5 pb-16">
