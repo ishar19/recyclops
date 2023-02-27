@@ -1,0 +1,4 @@
+fastapi==0.92.0
+firebase_admin==6.1.0
+pydantic==1.10.5
+uvicorn==0.20.0
