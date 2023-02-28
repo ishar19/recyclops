@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/global/Navbar";
 import { MdLogout } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -7,7 +7,8 @@ import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import Tabs from "../components/Profile/Tabs";
 import profileBackground from "../Assets/Profile Background.png";
-const title = "RecyclOps | Profile";
+import SEO from "../components/global/SEO";
+// const title = "RecyclOps | Profile";
 
 const Profile = () => {
   const user = useContext(UserContext);
@@ -18,11 +19,18 @@ const Profile = () => {
         console.log(error);
       });
   };
-  useEffect(() => {
-    document.title = title;
-  }, []);
+  // useEffect(() => {
+  //   document.title = title;
+  // }, []);
   return (
     <div className="mt-10 flex flex-col items-center justify-center">
+      <SEO
+        title="RecyclOps | Profile"
+        description="AI powered tool for waste management"
+        authors="Ishar Jain Prabkirat Singh Bhavya Giri Diksha Raj"
+        name="RecyclOps"
+        keywords="Trash Disposal AI React Sustainable Development Game"
+      />
       <img className="absolute top-[25vh]" src={profileBackground} />
       <>
         <div className="flex items-center gap-2">
