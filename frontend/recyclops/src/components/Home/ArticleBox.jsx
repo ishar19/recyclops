@@ -8,29 +8,30 @@ import {
   savedArticles,
   readingHistory,
 } from "../../APIs/Article";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const ArticleBox = ({ article, id, user }) => {
-  //   const saveToast = (id) =>
-  //     toast.success("Article saved", {
-  //       id: id,
-  //     });
-  //   const deleteToast = (id) =>
-  //     toast.error("Article removed", {
-  //       id: id,
-  //     });
-  //   const failToast = (id) =>
-  //     toast.error("Some error happend, please try again", {
-  //       id: id,
-  //     });
-  //   const loginToast = (id) =>
-  //     toast("Please login to save articles", {
-  //       id: id,
-  //     });
+  const saveToast = (id) =>
+    toast.success("Article saved", {
+      id: id,
+    });
+  const deleteToast = (id) =>
+    toast.error("Article removed", {
+      id: id,
+    });
+  const failToast = (id) =>
+    toast.error("Some error happend, please try again", {
+      id: id,
+    });
+  const loginToast = (id) =>
+    toast("Please login to save articles", {
+      id: id,
+    });
 
   const [showBookMark, setShowBookMark] = useState(false);
   console.log(showBookMark);
   const handleOption = (e, id) => {
+    e.stopPropagation();
     if (user != null) {
       console.log(id);
       e.stopPropagation();
@@ -44,10 +45,10 @@ const ArticleBox = ({ article, id, user }) => {
         );
         saveArticle(user.uid, id).then((res) => {
           if (res) {
-            // saveToast(id);
+            saveToast(id);
             setShowBookMark((prev) => !prev);
           } else {
-            // failToast(id);
+            failToast(id);
           }
         });
       } else {
@@ -62,16 +63,16 @@ const ArticleBox = ({ article, id, user }) => {
         );
         removeArticle(user.uid, id).then((res) => {
           if (res) {
-            // deleteToast(id);
+            deleteToast(id);
             setShowBookMark((prev) => !prev);
           } else {
-            // failToast(id);
+            failToast(id);
           }
         });
       }
     } else {
-      //   loginToast(id);
-      alert("Login to save article");
+      loginToast(id);
+      //   alert("Login to save article");
     }
   };
   const handleOnClick = (e) => {
@@ -101,25 +102,28 @@ const ArticleBox = ({ article, id, user }) => {
   return (
     <div
       key={id}
-      className="relative mb-3 flex justify-evenly gap-5 rounded-lg border-[1.5px] border-solid bg-yellowPrimary bg-opacity-50 p-5 drop-shadow-md"
+      className={`relative mb-3 min-h-[200px] rounded-2xl border-[1.5px] border-solid drop-shadow-md md:min-h-[300px] lg:min-h-[300px]`}
       onClick={handleOnClick}
     >
-      <div>
-        <h2 className="text-2xl">{article.title}</h2>
-        <p className="text-xl text-greenPrimary">
-          {getHumanDate(article.published.seconds)}
-        </p>
-      </div>
+      <img
+        src={article.imageUrl}
+        alt="scan image"
+        className="absolute -z-10 h-full w-full rounded-2xl blur-[0.7px]"
+      />
       <div className="flex flex-col items-end justify-around">
-        <img src={article.imageUrl} alt="scan image" className="h-16 w-full" />
-
         <button
-          className="text-xl text-greenPrimary"
+          className="absolute bottom-3 right-2 z-10 text-3xl font-[1200] text-black"
           id={id}
           onClick={(e) => handleOption(e, id)}
         >
           {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
         </button>
+      </div>
+      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 backdrop-sepia-0">
+        <h2 className="text-xl">{article.title}</h2>
+        <p className="text-md text-black">
+          {getHumanDate(article.published.seconds)}
+        </p>
       </div>
       {/* <Toaster /> */}
     </div>
