@@ -190,6 +190,5 @@ if __name__ == '__main__':
       detail="User Not Found"
     )
 
-
   if __name__=="__main__":
-    uvicorn.run(fast_api_app,host="127.0.0.1",port=5000)
+    uvicorn.run(fast_api_app,host="127.0.0.1",port=8080)

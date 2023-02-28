@@ -86,4 +86,4 @@ async def classify_image(image_url: str | None = None) -> dict:
   }
 
 if __name__=="__main__":
-  uvicorn.run(fast_api_app,host="127.0.0.1",port=8000)
+  uvicorn.run(fast_api_app,host="127.0.0.1",port=8080)
