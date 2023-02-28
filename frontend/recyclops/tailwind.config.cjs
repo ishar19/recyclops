@@ -18,22 +18,57 @@ module.exports = {
       keyframes: {
         moveInRight: {
           "0%": {
-            opacity: "0%",
-            transform: "translateX(100px)",
+            opacity: "100%",
+            transform: "translateX(0vw)",
           },
-
+          //   "10%": {
+          //     opacity: "100%",
+          //     transform: "translateX(80vw)",
+          //   },
+          "20%": {
+            opacity: "100%",
+            transform: "translateX(60vw)",
+          },
+          //   "30%": {
+          //     opacity: "100%",
+          //     transform: "translateX(40vw)",
+          //   },
+          "40%": {
+            opacity: "100%",
+            transform: "translateX(20vw)",
+          },
+          //   "50%": {
+          //     opacity: "100%",
+          //     transform: "translateX(0vw)",
+          //   },
+          "60%": {
+            opacity: "100%",
+            transform: "translateX(-20vw)",
+          },
+          //   "70%": {
+          //     opacity: "100%",
+          //     transform: "translateX(-40vw)",
+          //   },
+          "80%": {
+            opacity: "100%",
+            transform: "translateX(-60vw)",
+          },
+          //   "90%": {
+          //     opacity: "100%",
+          //     transform: "translateX(-80vw)",
+          //   },
           "100%": {
             opacity: "100%",
-            transform: "translateX(0)",
+            transform: "translateX(-100vw)",
           },
         },
       },
       animation: {
-        "banner-animation": "moveInRight 1s",
+        "banner-animation": "moveInRight linear 7s infinite",
       },
       fontFamily: {
         dosis: ["Dosis", "sans-serif"],
-        gloriaHallelujah: ['Gloria Hallelujah', 'cursive']
+        gloriaHallelujah: ["Gloria Hallelujah", "cursive"],
       },
     },
   },

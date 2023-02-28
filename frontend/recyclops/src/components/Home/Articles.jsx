@@ -9,7 +9,24 @@ const Articles = () => {
   //   const handleSelect = (e, key) => {
   //     setSelected(key);
   //   };
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([
+    {
+      data: {
+        title: "Title tile title title title title",
+        published: { seconds: 1677522964144 },
+        imageUrl: "https://picsum.photos/200",
+      },
+      id: 1,
+    },
+    {
+      data: {
+        title: "Title tile title title title title",
+        published: { seconds: 1677522964144 },
+        imageUrl: "https://picsum.photos/200",
+      },
+      id: 1,
+    },
+  ]);
   const user = useContext(UserContext);
 
   useEffect(() => {
@@ -19,7 +36,7 @@ const Articles = () => {
         setArticles([...data]);
       });
     };
-    // fetchArticles();
+    fetchArticles();
   }, []);
   return (
     <div className="mt-10">
@@ -30,7 +47,7 @@ const Articles = () => {
           handleSelect={handleSelect}
         /> */}
       </div>
-      <div className="grid gap-4 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4   md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => (
           <ArticleBox
             user={user}
@@ -43,8 +60,6 @@ const Articles = () => {
     </div>
   );
 };
-
-
 
 // const ArticleTitles = ({ articleTitles, handleSelect, selected }) => {
 //   return articleTitles.map((title, i) =>
