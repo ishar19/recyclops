@@ -1,18 +1,21 @@
 import React from "react";
-
-const Score = () => {
-  const score = { highScore: 250, score: 150 };
+import PropTypes from "prop-types";
+const Score = ({ score }) => {
   return (
     <div
       className="absolute
-     left-[2vw] top-[1vh] grid w-1/2 grid-cols-2 gap-x-14 gap-y-3 p-5 font-gloriaHallelujah"
+     left-[2vw] top-[1vh] grid grid-cols-2 gap-x-4 gap-y-3 p-5 font-gloriaHallelujah"
     >
-      <h2>HighScore </h2>
-      <h2>{score.highScore}</h2>
+      {/* <h2>HighScore </h2>
+      <h2>{score.highScore}</h2> */}
       <h2>Score </h2>
-      <h2>{score.score}</h2>
+      <h2>{score}</h2>
     </div>
   );
+};
+
+Score.propTypes = {
+  score: PropTypes.number,
 };
 
 export default Score;

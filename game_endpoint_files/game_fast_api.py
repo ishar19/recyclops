@@ -1,5 +1,7 @@
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+
 from firebase_admin import auth, credentials, firestore
 from pydantic import BaseModel
 import firebase_admin
@@ -9,9 +11,24 @@ import uvicorn
 if __name__ == '__main__':
   #Fast API App Instance
   fast_api_app = FastAPI()
+  origins = [
+    "http://localhost:5173",
+    "https://localhost:5173",
+    "https://localhost:5174",
+    "https://localhost:5174",
+    "http://localhost:8080",
+  ]
+
+  fast_api_app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+  )
 
   #Firebase App
-  cred = credentials.Certificate("game_endpoint_files\private_key.json")
+  cred = credentials.Certificate("./private_key.json")
   firebase_admin.initialize_app(cred)
 
   #Collection References
