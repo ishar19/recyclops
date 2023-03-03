@@ -1,6 +1,6 @@
 import { auth } from "../firebaseConfig";
 
-const getUserJWT = () => {
+export const getUserJWT = () => {
   let JWT;
   if (auth.currentUser == null) {
     return null;
@@ -16,8 +16,14 @@ const getUserJWT = () => {
         // Handle error
       });
   }
-
   return JWT;
 };
 
-export default getUserJWT;
+export const getUserId = () => {
+  if (auth.currentUser == null) {
+    return null;
+  } else {
+    console;
+    return auth.currentUser.uid;
+  }
+};
