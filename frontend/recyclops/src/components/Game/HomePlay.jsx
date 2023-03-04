@@ -7,9 +7,9 @@ import { newGame } from "../../APIs/Game";
 // eslint-disable-next-line react/prop-types
 const HomePlay = ({ user }) => {
   const navigate = useNavigate();
-  const navigateToGame = () => {
+  const navigateToGame = async () => {
+    if (user != null) await createNewGame();
     navigate("/game/play");
-    if (user != null) createNewGame();
   };
 
   const createNewGame = async () => {

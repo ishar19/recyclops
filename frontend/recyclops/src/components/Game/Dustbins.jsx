@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Lives from "./Lives";
 import Score from "./Score";
-import { newGame, fetchGame, saveGame, getQuestions } from "../../APIs/Game";
+import { saveGame, getQuestions } from "../../APIs/Game";
 import { rectIntersection, useDroppable } from "@dnd-kit/core";
 import { Item } from "./Item";
 import {
@@ -21,12 +21,8 @@ const Dustbins = ({ user }) => {
   const [bins, setBins] = useState([]);
   const [trash, setTrash] = useState(null);
   const [correctBin, setCorrectBin] = useState(null);
-  const [score, setScore] = useState(
-    JSON.parse(window.localStorage.getItem("gameData")).score
-  );
-  const [lives, setLives] = useState(
-    JSON.parse(window.localStorage.getItem("gameData")).livesLeft
-  );
+  const [score, setScore] = useState(null);
+  const [lives, setLives] = useState(null);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   function handleDragEnd(event) {
     const gameData = JSON.parse(window.localStorage.getItem("gameData"));
@@ -52,21 +48,31 @@ const Dustbins = ({ user }) => {
     setCorrectBin(question.correctBinId);
   };
   useEffect(() => {
+    setScore(JSON.parse(window.localStorage.getItem("gameData")).score);
+    setLives(JSON.parse(window.localStorage.getItem("gameData")).livesLeft);
     if (isDropped) {
       fetchQuestions();
       setIsDropped(false);
     }
   }, [isDropped]);
+  useEffect(() => {
+    setScore(JSON.parse(window.localStorage.getItem("gameData")).score);
+    setLives(JSON.parse(window.localStorage.getItem("gameData")).livesLeft);
+  }, []);
+  useEffect(() => {
+    const save = async () => {
+      const gameData = JSON.parse(window.localStorage.getItem("gameData"));
+      gameData.endTimestamp = new Date(Date.now());
+      window.localStorage.setItem("gameData", JSON.stringify(gameData));
+      await saveGame(JSON.parse(window.localStorage.getItem("gameData")));
+      window.localStorage.removeItem("gameData");
+    };
+    if (lives == 0) {
+      alert("Game over");
+      save();
+    }
+  }, [lives]);
 
-  //  function to get game, either saved or new (getting the user's last game is still pending in endpoint)
-  // set in parent
-  //   const createNewGame = async () => {
-  //     const gameData = await newGame(currentUser.uid);
-  //     window.localStorage.setItem("gameData", JSON.stringify(gameData));
-  //   };
-  //   useEffect(() => {
-  //     if (currentUser != null) createNewGame();
-  //   }, [currentUser]);
   return (
     <DndContext
       onDragStart={handleDragStart}

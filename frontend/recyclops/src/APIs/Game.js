@@ -36,16 +36,16 @@ export const fetchGame = async () => {
   });
 };
 
-export const saveGame = async () => {
-  const body = {
-    gameId: "UnjZQJNIOTy6rYe4kxFx",
-    userId: "k",
-    startTimestamp: "2023-02-27T15:30:00.000000",
-    endTimestamp: "2023-02-27T15:30:00.000000",
-    livesLeft: 3,
-    score: 190,
-    questions: [],
-  };
+export const saveGame = async (body) => {
+  //   const body = {
+  //     gameId: "UnjZQJNIOTy6rYe4kxFx",
+  //     userId: "k",
+  //     startTimestamp: "2023-02-27T15:30:00.000000",
+  //     endTimestamp: "2023-02-27T15:30:00.000000",
+  //     livesLeft: 3,
+  //     score: 190,
+  //     questions: [],
+  //   };
   return fetch(
     `http://localhost:${import.meta.env.VITE_FAST_API_PORT}/game/save`,
     {
