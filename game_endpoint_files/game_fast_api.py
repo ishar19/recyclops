@@ -8,9 +8,20 @@ import firebase_admin
 import random
 import uvicorn
 
+def decode_token(token: str) -> str :
+  try:
+    decoded_token = auth.verify_id_token(token)
+    print(decoded_token)
+  except auth.InvalidIdTokenError:
+    raise HTTPException(
+      status_code=401, 
+      detail="Invalid Token"
+    )
+  return decoded_token['uid']
+
 if __name__ == '__main__':
   #Fast API App Instance
-  fast_api_app = FastAPI()
+  app = FastAPI()
   origins = [
     "http://localhost:5173",
     "https://localhost:5173",
@@ -19,13 +30,14 @@ if __name__ == '__main__':
     "http://localhost:8080",
   ]
 
-  fast_api_app.add_middleware(
+  app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
   )
+
 
   #Firebase App
   cred = credentials.Certificate("./private_key.json")
@@ -38,7 +50,7 @@ if __name__ == '__main__':
   questions_ref = db.collection('questions')
   users_ref = db.collection('users')
 
-  @fast_api_app.get("/questions/random")
+  @app.get("/questions/random")
   async def random_question()-> dict:
 
     # Get a reference to the sorted docs
@@ -54,8 +66,11 @@ if __name__ == '__main__':
     
     return random_question_query.get()[0].to_dict()
   
-  @fast_api_app.get("/game/fetch")
-  async def fetch_game(game_id: str) -> dict:
+  @app.get("/game/fetch")
+  async def fetch_game(game_id: str, token: str) -> dict:
+    #Check if the token is valid otherwise raise error
+    decode_token(token)
+
     game_doc_ref = games_ref.document(game_id)
 
     # Get the document snapshot
@@ -70,17 +85,10 @@ if __name__ == '__main__':
         detail="Game Not Found"
       )
 
-  @fast_api_app.get("/game/new")
+  @app.get("/game/new")
   async def new_game(token: str) -> dict: 
-    try:
-      decoded_token = auth.verify_id_token(token)
-      print(decoded_token)
-    except auth.InvalidIdTokenError:
-      raise HTTPException(
-        status_code=401, 
-        detail="Invalid Token"
-      )
-    user_id: str = decoded_token['uid']
+    #Check if the token is valid otherwise raise error
+    user_id = decode_token(token)
     
     #Checking user in users Collection
     user_query = users_ref.where('id', '==', user_id).limit(1)
@@ -127,8 +135,10 @@ if __name__ == '__main__':
     questions : list
 
 
-  @fast_api_app.post("/game/save")
-  async def save_game(game_item: GameItem) -> dict:
+  @app.post("/game/save")
+  async def save_game(game_item: GameItem, token: str) -> dict:
+    #Check if the token is valid otherwise raise error
+    user_id = decode_token(token)
 
     game_data = game_item.dict()
 
@@ -182,7 +192,7 @@ if __name__ == '__main__':
 
 
   #leaderboard related commands
-  @fast_api_app.get("/leaderboard/list")
+  @app.get("/leaderboard/list")
   async def leaderboard() -> list[dict]:
     leaderboard_doc_ref = leaderboard_ref.document("drag_and_drop")
     leaderboard_doc_data = leaderboard_doc_ref.get().to_dict()
@@ -190,7 +200,7 @@ if __name__ == '__main__':
 
 
   # #leaderboard user related commands
-  @fast_api_app.get("/leaderboard/user")
+  @app.get("/leaderboard/user")
   async def leaderboard(user_id: str) -> dict:
 
     #Get user in leaderboard collection
@@ -208,4 +218,4 @@ if __name__ == '__main__':
     )
 
   if __name__=="__main__":
-    uvicorn.run(fast_api_app,host="127.0.0.1",port=8080)
+    uvicorn.run(app,host="127.0.0.1",port=8080)
