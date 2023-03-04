@@ -10,7 +10,7 @@ const GameHome = () => {
   const user = useContext(UserContext);
 
   return (
-    <div className="flex h-screen flex-col items-center  bg-greenPrimary">
+    <div className="flex flex-col  items-center bg-greenPrimary  pb-16">
       <SEO
         title="RecyclOps | Game"
         description="AI powered tool for waste management"
