@@ -9,24 +9,7 @@ const Articles = () => {
   //   const handleSelect = (e, key) => {
   //     setSelected(key);
   //   };
-  const [articles, setArticles] = useState([
-    {
-      data: {
-        title: "Title tile title title title title",
-        published: { seconds: 1677522964144 },
-        imageUrl: "https://picsum.photos/200",
-      },
-      id: 1,
-    },
-    {
-      data: {
-        title: "Title tile title title title title",
-        published: { seconds: 1677522964144 },
-        imageUrl: "https://picsum.photos/200",
-      },
-      id: 1,
-    },
-  ]);
+  const [articles, setArticles] = useState([]);
   const user = useContext(UserContext);
 
   useEffect(() => {
@@ -40,13 +23,7 @@ const Articles = () => {
   }, []);
   return (
     <div className="mt-10">
-      <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-        {/* <ArticleTitles
-          articleTitles={articleTitles}
-          selected={selected}
-          handleSelect={handleSelect}
-        /> */}
-      </div>
+      <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default"></div>
       <div className="grid grid-cols-1 gap-4   md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => (
           <ArticleBox

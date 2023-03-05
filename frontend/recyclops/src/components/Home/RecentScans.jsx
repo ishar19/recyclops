@@ -1,4 +1,3 @@
-
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { MdAddTask } from "react-icons/md";
@@ -14,37 +13,31 @@ const RecentScans = ({ user }) => {
 
   // const scanData = [];
   const fetchScans = async () => {
-    console.log("here");
     const scanId = await getRecentScansId(user);
     scanId.map(async (id) => {
       const scan = await getScans(id);
       setScanData((prev) => [...prev, scan]);
       scanData.push(scan);
-      console.log(scanData);
     });
   };
-  
+
   useEffect(() => {
     if (user != null) {
       setScanData([]);
-      //   fetchScans();
     }
   }, [user]);
-  //   console.log(user);
-  // console.log(scanData);
-  // useEffect(() => {
-  //   const fetchScans = async () => {
-  //     console.log("here");
-  //     const scanId = await getRecentScansId(user);
-  //     scanId.map(async (id) => {
-  //       const scan = await getScans(id);
-  //       setScanData((prev) => [...prev, scan]);
-  //     });
-  //   };
-  //   if (user != null) {
-  //     fetchScans();
-  //   }
-  // }, []);
+  useEffect(() => {
+    const fetchScans = async () => {
+      const scanId = await getRecentScansId(user);
+      scanId.map(async (id) => {
+        const scan = await getScans(id);
+        setScanData((prev) => [...prev, scan]);
+      });
+    };
+    if (user != null) {
+      fetchScans();
+    }
+  }, []);
 
   return (
     <div>

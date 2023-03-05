@@ -11,7 +11,6 @@ import plastic from "../../Assets/plastic.png";
 
 const RecentScansModal = ({ handleModal, scan }) => {
   const [scanContent, setScanContent] = useState({});
-  console.log(scan);
   const categoryChecker = (category) => {
     switch (category) {
       case "Organic":
@@ -76,7 +75,7 @@ const RecentScansModal = ({ handleModal, scan }) => {
     categoryChecker(scan["scanData"]["class"]);
   }, [scan]);
   return (
-    <div className="fixed inset-0 z-50 mx-5 flex items-center justify-center overflow-y-auto shadow-lg outline-none overflow-x-hidden focus:outline-none">
+    <div className="fixed inset-0  z-50 mx-auto flex w-[70%] items-center justify-center overflow-y-auto shadow-lg outline-none overflow-x-hidden focus:outline-none">
       <div className="relative my-6 mx-auto w-auto max-w-3xl">
         <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
           <div
@@ -98,19 +97,19 @@ const RecentScansModal = ({ handleModal, scan }) => {
             <div className="flex flex-col items-center">
               <img
                 src={scan["scanInfo"]["publicURL"]}
-                className="max-h-[30vh]"
+                className="h-[30vh]"
                 alt={scan["scanInfo"]["publicURL"]}
               />
-              <div className="self-start text-2xl">
+              <div className="mx-auto self-start text-2xl">
                 Date: {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
               </div>
-              <div className="flex pt-2">
-                {scanContent.description}
+              <div className="flex flex-col pt-2">
                 <img
                   src={scanContent.dustbin}
-                  className="h-[20vh]"
+                  className="h-[200px]"
                   alt={scan.category}
                 />
+                {/* {scanContent.description} */}
               </div>
             </div>
           </div>

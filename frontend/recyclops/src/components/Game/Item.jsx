@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDraggable } from "@dnd-kit/core";
-export const Item = ({ src }) => {
+const Item = ({ src }) => {
   //   const item = "item";
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "draggable",
@@ -16,17 +16,16 @@ export const Item = ({ src }) => {
       }
     : { zIndex: 20, borderRadius: "9999px" };
   return (
-    <div className="absolute bottom-[30vh] flex h-[25vh] w-[100vw] items-center justify-center bg-[#C2BB75]">
-      <>
-        <>
-          <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-            <img src={src} className=" bottom-4h-[150px] relative w-[150px]" />
-          </div>
-        </>
-      </>
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+      <img
+        src={src}
+        className="absolute top-[50vh] left-[50vw] h-[100px] w-[100px] translate-x-[-50%]"
+      />
     </div>
   );
 };
 Item.propTypes = {
   src: PropTypes.string,
 };
+
+export default Item;

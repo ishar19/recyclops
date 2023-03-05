@@ -4,7 +4,7 @@ const Score = ({ score }) => {
   return (
     <div
       className="absolute
-     left-[2vw] top-[1vh] grid grid-cols-2 gap-x-4 gap-y-3 p-5 font-gloriaHallelujah"
+     left-[10vw] top-[1vh] grid grid-cols-2 gap-x-4 gap-y-3 p-5 font-gloriaHallelujah"
     >
       {/* <h2>HighScore </h2>
       <h2>{score.highScore}</h2> */}

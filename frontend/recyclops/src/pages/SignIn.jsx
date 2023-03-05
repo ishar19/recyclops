@@ -9,9 +9,7 @@ const SignIn = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((data) => {})
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     document.title = title;
