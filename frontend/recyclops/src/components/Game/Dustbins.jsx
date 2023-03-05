@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Lives from "./Lives";
 import Score from "./Score";
 import { saveGame, getQuestions } from "../../APIs/Game";
+
 import { rectIntersection, useDroppable } from "@dnd-kit/core";
 import Item from "./Item";
 import {
@@ -43,6 +44,7 @@ const Dustbins = ({ user }) => {
   const [correctBin, setCorrectBin] = useState(null);
   const [score, setScore] = useState(null);
   const [lives, setLives] = useState(null);
+
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   function handleDragEnd(event) {
     const gameData = JSON.parse(window.localStorage.getItem("gameData"));
