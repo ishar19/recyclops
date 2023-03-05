@@ -1,7 +1,6 @@
 import { getUserJWT } from "../utils/getUserJWT.js";
 export const newGameModel = (gameDocumentId, userId) => {
   gameDocumentId = gameDocumentId.gameDocumentId;
-  console.log(gameDocumentId);
   return {
     gameId: gameDocumentId,
     userId: userId ? userId : null,
@@ -14,7 +13,6 @@ export const newGameModel = (gameDocumentId, userId) => {
 };
 
 export const newGame = async (userId) => {
-  console.log(userId);
   const jwt = await getUserJWT();
   const gameDocumentId = await fetch(
     `http://localhost:${
@@ -37,17 +35,12 @@ export const fetchGame = async () => {
 };
 
 export const saveGame = async (body) => {
-  //   const body = {
-  //     gameId: "UnjZQJNIOTy6rYe4kxFx",
-  //     userId: "k",
-  //     startTimestamp: "2023-02-27T15:30:00.000000",
-  //     endTimestamp: "2023-02-27T15:30:00.000000",
-  //     livesLeft: 3,
-  //     score: 190,
-  //     questions: [],
-  //   };
+  const jwt = await getUserJWT();
+
   return fetch(
-    `http://localhost:${import.meta.env.VITE_FAST_API_PORT}/game/save`,
+    `http://localhost:${
+      import.meta.env.VITE_FAST_API_PORT
+    }/game/save?token=${jwt}`,
     {
       method: "POST",
       headers: {
@@ -63,6 +56,14 @@ export const saveGame = async (body) => {
 export const getQuestions = async () => {
   return fetch(
     `http://localhost:${import.meta.env.VITE_FAST_API_PORT}/questions/random`
+  ).then(async (data) => {
+    return await data.json();
+  });
+};
+
+export const getLeaderboardList = async () => {
+  return fetch(
+    `http://localhost:${import.meta.env.VITE_FAST_API_PORT}/leaderboard/list`
   ).then(async (data) => {
     return await data.json();
   });

@@ -8,8 +8,10 @@ import { newGame } from "../../APIs/Game";
 const HomePlay = ({ user }) => {
   const navigate = useNavigate();
   const navigateToGame = async () => {
-    if (user != null) await createNewGame();
-    navigate("/game/play");
+    if (user != null)
+      await createNewGame().then(() => {
+        navigate("/game/play");
+      });
   };
 
   const createNewGame = async () => {

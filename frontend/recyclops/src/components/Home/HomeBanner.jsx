@@ -83,7 +83,7 @@ const HomeBanner = () => {
   ));
   return (
     <div>
-      <div className="my-4 flex h-[40vh] flex-shrink-0 justify-evenly gap-4  overflow-x-scroll p-5 py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300 lg:scrollbar-default">
+      <div className="my-4 flex h-[40vh] flex-shrink-0 gap-4  overflow-x-scroll p-5 py-4 scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300 lg:scrollbar-default">
         {renderDustbins}
       </div>
       {showModal && (
