@@ -36,7 +36,6 @@ export const fetchGame = async () => {
 
 export const saveGame = async (body) => {
   const jwt = await getUserJWT();
-
   return fetch(
     `http://localhost:${
       import.meta.env.VITE_FAST_API_PORT

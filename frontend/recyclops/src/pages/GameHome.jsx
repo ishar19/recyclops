@@ -25,6 +25,7 @@ const GameHome = () => {
           <HomeLeaderboard />
           <HomePlay user={user} />
         </div>
+
       </div>
       <Navbar />
     </>

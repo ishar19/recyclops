@@ -75,6 +75,7 @@ const Dustbins = ({ user }) => {
     const gameData = JSON.parse(window.localStorage.getItem("gameData"));
     setScore(gameData.score);
     setLives(gameData.livesLeft);
+
     if (isDropped) {
       if (gameData.livesLeft != 0) fetchQuestions();
       setIsDropped(false);
@@ -88,6 +89,7 @@ const Dustbins = ({ user }) => {
     const navigateBack = setTimeout(() => {
       navigate("/game");
     }, 2000);
+
     const save = async () => {
       const gameData = JSON.parse(window.localStorage.getItem("gameData"));
       gameData.endTimestamp = new Date(Date.now());
