@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDraggable } from "@dnd-kit/core";
-const Item = () => {
-  const item = "item";
+const Item = ({ src }) => {
+  //   const item = "item";
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "draggable",
     data: {
@@ -12,26 +13,19 @@ const Item = () => {
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         zIndex: 20,
-        // borderRadius: "9999px",
       }
     : { zIndex: 20, borderRadius: "9999px" };
   return (
-    <div className="absolute bottom-[25vh] flex h-[32vh] w-[100vw] items-center justify-center bg-[#C2BB75]">
-      <>
-        <>
-          <button
-            ref={setNodeRef}
-            style={style}
-            {...listeners}
-            {...attributes}
-            //   className="z-50 rounded-full bg-[#D9D9D9] p-7"
-          >
-            {item}
-          </button>
-        </>
-      </>
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+      <img
+        src={src}
+        className="absolute top-[50vh] left-[50vw] h-[100px] w-[100px] translate-x-[-50%]"
+      />
     </div>
   );
+};
+Item.propTypes = {
+  src: PropTypes.string,
 };
 
 export default Item;

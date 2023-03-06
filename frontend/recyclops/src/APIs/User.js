@@ -48,3 +48,11 @@ export const removeScan = async (userId, scanId) => {
     }
   ).then(async (data) => data.ok);
 };
+
+export const getUserData = async (userId) => {
+  return fetch(
+    `http://localhost:${
+      import.meta.env.VITE_NODE_JS_PORT
+    }/user/basicInfo/${userId}`
+  ).then(async (data) => await data.json());
+};

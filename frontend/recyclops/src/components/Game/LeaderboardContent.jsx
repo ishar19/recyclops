@@ -14,6 +14,14 @@ const LeaderboardContent = () => {
     { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
     { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
     { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
+    { name: "Ishar Jain", dragDrop: 128, quiz: 100 },
   ];
   const renderBoard = players.map((player, i) => (
     <div key={i} className="flex gap-1">
@@ -30,7 +38,7 @@ const LeaderboardContent = () => {
     </div>
   ));
   return (
-    <div className="z-10 rounded-md bg-white bg-opacity-10 p-5 font-gloriaHallelujah shadow-md">
+    <div className="absolute top-[5vh] z-10  m-2 rounded-md bg-white bg-opacity-10 p-5 font-gloriaHallelujah shadow-md">
       <div className="flex items-center gap-3">
         <img src={leaderboardIcon} className="h-20" />
         <h1 className="text-4xl text-[#FABB05]">Leaderboard</h1>
@@ -42,7 +50,9 @@ const LeaderboardContent = () => {
           <div>Quiz</div>
         </div>
       </div>
-      <div className="mt-2 flex flex-col gap-4">{renderBoard}</div>
+      <div className="mt-2 flex max-h-[58vh] flex-col gap-4 overflow-y-auto scrollbar-hide ">
+        {renderBoard}
+      </div>
       <div className="mt-5 flex justify-evenly">
         <Link to="/game">
           <button className="flex items-center gap-1  rounded-md bg-white p-1">

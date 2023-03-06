@@ -29,11 +29,9 @@ const ArticleBox = ({ article, id, user }) => {
     });
 
   const [showBookMark, setShowBookMark] = useState(false);
-  console.log(showBookMark);
   const handleOption = (e, id) => {
     e.stopPropagation();
     if (user != null) {
-      console.log(id);
       e.stopPropagation();
       if (!showBookMark) {
         const savedArticles = JSON.parse(
@@ -108,7 +106,7 @@ const ArticleBox = ({ article, id, user }) => {
       <img
         src={article.imageUrl}
         alt="scan image"
-        className="absolute -z-10 h-full w-full rounded-2xl blur-[0.7px]"
+        className="absolute -z-10 h-full w-full rounded-2xl object-cover blur-[0.7px]"
       />
       <div className="flex flex-col items-end justify-around">
         <button

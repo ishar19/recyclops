@@ -1,12 +1,14 @@
 import React from "react";
-// import staticLoaderLogo from "../../assets/staticLoaderLogo.svg";
-import Loader from "../../Assets/Recycleops.gif";
+import Loader from "../../Assets/Logo.png";
+// eslint-disable-next-line react/prop-types
 const Reset = () => {
   return (
-    <div className="absolute z-[-2]">
+    <div
+      className={`absolute z-[-50] flex h-screen w-screen items-center justify-center bg-gradient-to-l from-[#34A85366]/40 to-[#34A85366]/10`}
+    >
       <img
         src={Loader}
-        className=" relative top-[50vh] left-[50vw] h-[50vh] translate-x-[-50%] translate-y-[-50%]"
+        className="absolute   translate-x-[-50%] translate-y-[-50%] animate-spin-animation"
       />
     </div>
   );

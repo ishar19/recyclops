@@ -48,7 +48,7 @@ const CameraScanner = ({ user }) => {
   }, [dataUri]);
 
   return (
-    <div>
+    <>
       {dataUri != null && data != false ? <Info data={data} /> : <></>}
       <Reset />
       <div className="">
@@ -64,27 +64,28 @@ const CameraScanner = ({ user }) => {
           </>
         ) : (
           <div className="flex-1">
-            <Camera
-              className="camera-wrapper"
-              onTakePhoto={handleTakePhoto}
-              onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
-              idealFacingMode={FACING_MODES.ENVIRONMENT}
-              imageType={IMAGE_TYPES.JPG}
-              imageCompression={0.97}
-              isMaxResolution
-              isImageMirror={false}
-              isSilentMode
-              isFullscreen
-              isDisplayStartCameraError
-              sizeFactor={1}
-            />
+            {dataUri != null && data == false ? (
+              console.log("hi")
+            ) : (
+              <Camera
+                className="camera-wrapper"
+                onTakePhoto={handleTakePhoto}
+                onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
+                idealFacingMode={FACING_MODES.ENVIRONMENT}
+                imageType={IMAGE_TYPES.JPG}
+                imageCompression={0.97}
+                isMaxResolution
+                isImageMirror={false}
+                isSilentMode
+                isFullscreen
+                isDisplayStartCameraError
+                sizeFactor={1}
+              />
+            )}
           </div>
         )}
       </div>
-      {/* <div>
-    {dataUri!=""&&data==true?<Info/>:<><></>}
-      </div> */}
-    </div>
+    </>
   );
 };
 

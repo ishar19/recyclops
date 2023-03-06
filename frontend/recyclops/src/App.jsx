@@ -14,6 +14,8 @@ import GameHome from "./pages/GameHome";
 import { Toaster } from "react-hot-toast";
 function App() {
   const user = useContext(UserContext);
+  const gameData = () =>
+    !(window.localStorage.getItem("gameData") == undefined);
   return (
     <>
       <Routes>
@@ -24,7 +26,10 @@ function App() {
           element={user ? <Profile /> : <Navigate replace to={"/signin"} />}
         />
         <Route path="/game" element={<GameHome />} />
-        <Route path="/game/play" element={<Game />} />
+        <Route
+          path="/game/play"
+          element={gameData() ? <Game /> : <Navigate replace to={"/game"} />}
+        />
         <Route path="/game/leaderboard" element={<GameLeaderboard />} />
         <Route path="/profile/scanhistory" element={<ScanHistory />} />
         <Route path="/profile/savedscans" element={<SavedScans />} />

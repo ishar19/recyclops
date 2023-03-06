@@ -62,9 +62,16 @@ module.exports = {
             transform: "translateX(-100vw)",
           },
         },
+        spin: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "banner-animation": "moveInRight linear 7s infinite",
+        "spin-animation": "spin linear 2s infinite",
       },
       fontFamily: {
         dosis: ["Dosis", "sans-serif"],
