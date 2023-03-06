@@ -17,6 +17,7 @@ const Bookmarks = () => {
     };
     fetchArticles();
   }, []);
+
   return (
     <div>
       <h1 className="flex items-center gap-1 p-5 font-dosis text-4xl font-bold text-greenPrimary">
