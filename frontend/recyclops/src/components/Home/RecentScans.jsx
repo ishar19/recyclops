@@ -6,7 +6,8 @@ import { UserContext } from "../../Context/UserProvider";
 import { getRecentScansId, getScans } from "../../APIs/Scans";
 import { getHumanDate } from "../../utils/getHumanDate";
 import RecentScansModal from "./RecentScansModal";
-
+import { Link } from "react-router-dom";
+import ScanBoxes from "../global/ScanBoxes";
 const RecentScans = ({ user }) => {
   // const user = useContext(UserContext);
   const [scanData, setScanData] = useState([]);
@@ -56,12 +57,11 @@ const RecentScans = ({ user }) => {
             <h2 className="flex gap-1 font-dosis text-2xl font-medium">
               No History <MdAddTask />
             </h2>
-            <a
-              href="#"
-              className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white"
-            >
-              Start Scanning
-            </a>
+            <Link to="/scanner">
+              <button className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white">
+                Start Scanning
+              </button>
+            </Link>
           </div>
         )}
       </div>
@@ -73,37 +73,3 @@ RecentScans.propTypes = {
   user: PropTypes.any,
 };
 export default RecentScans;
-
-const ScanBoxes = ({ scan, key }) => {
-  const [showModal, setShowModal] = useState(false);
-  const handleModal = () => {
-    setShowModal((prev) => !prev);
-  };
-  return (
-    <>
-      <div
-        key={key}
-        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 shadow-md  drop-shadow-md`}
-        onClick={handleModal}
-      >
-        <img
-          src={scan["scanInfo"]["publicURL"]}
-          alt="scan image"
-          className="block h-20 w-28"
-        />
-        <div>
-          <h2 className="text-xl">{scan["scanData"]["class"]}</h2>
-          <p className="text-lg  text-opacity-95">
-            {getHumanDate(scan["scanInfo"]["createdAt"]["seconds"])}
-          </p>
-        </div>
-      </div>
-      {showModal && <RecentScansModal scan={scan} handleModal={handleModal} />}
-    </>
-  );
-};
-
-ScanBoxes.propTypes = {
-  scan: PropTypes.any,
-  key: PropTypes.number,
-};
