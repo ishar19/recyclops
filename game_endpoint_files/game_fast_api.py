@@ -1,7 +1,6 @@
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
 from firebase_admin import auth, credentials, firestore
 from pydantic import BaseModel
 import firebase_admin
@@ -17,26 +16,26 @@ def decode_token(token: str) -> str :
       status_code=401, 
       detail="Invalid Token"
     )
-  return decoded_token['uid']
+  return decoded_token
 
 #Fast API App Instance
 app = FastAPI()
-origins = [
-  "http://localhost:5173",
-  "https://localhost:5173",
-  "https://localhost:5174",
-  "https://localhost:5174",
-  "http://localhost:8080",
-]
+
+# origins = [
+#   "http://localhost:5173",
+#   "https://localhost:5173",
+#   "https://localhost:5174",
+#   "https://localhost:5174",
+#   "http://localhost:8080",
+# ]
 
 app.add_middleware(
   CORSMiddleware,
-  allow_origins=["*"],
+  allow_origins=['*'],
   allow_credentials=True,
   allow_methods=["*"],
   allow_headers=["*"],
 )
-
 
 #Firebase App
 cred = credentials.Certificate("./private_key.json")
@@ -87,7 +86,7 @@ async def fetch_game(game_id: str, token: str) -> dict:
 @app.get("/game/new")
 async def new_game(token: str) -> dict: 
   #Check if the token is valid otherwise raise error
-  user_id = decode_token(token)
+  user_id = decode_token(token)['uid']
   
   #Checking user in users Collection
   user_query = users_ref.where('id', '==', user_id).limit(1)
@@ -137,7 +136,8 @@ class GameItem(BaseModel):
 @app.post("/game/save")
 async def save_game(game_item: GameItem, token: str) -> dict:
   #Check if the token is valid otherwise raise error
-  user_id = decode_token(token)
+  decoded_token = decode_token(token)
+  user = auth.get_user(decode_token['uid'])
 
   game_data = game_item.dict()
 
@@ -157,9 +157,11 @@ async def save_game(game_item: GameItem, token: str) -> dict:
     leaderboard_doc_list : list[dict] = leaderboard_doc_ref.get().to_dict()['list']
     
     user_exists = False
+
     for index, inner_dict in enumerate(leaderboard_doc_list.copy()):
       if inner_dict['userId'] == user_id:
         if game_data['score'] > leaderboard_doc_list[index]['score']:
+          leaderboard_doc_list[index]['name'] = user.display_name
           leaderboard_doc_list[index]['score'] = game_data['score']
         user_exists = True
       
@@ -168,6 +170,7 @@ async def save_game(game_item: GameItem, token: str) -> dict:
           leaderboard_doc_list.append(
             {
               "userId" : user_id,
+              "name" : user.display_name,
               "score" : game_data['score']
             }
           )
