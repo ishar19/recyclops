@@ -21,13 +21,14 @@ def decode_token(token: str) -> str :
 
 #Fast API App Instance
 app = FastAPI()
-origins = [
-  "http://localhost:5173",
-  "https://localhost:5173",
-  "https://localhost:5174",
-  "https://localhost:5174",
-  "http://localhost:8080",
-]
+
+# origins = [
+#   "http://localhost:5173",
+#   "https://localhost:5173",
+#   "https://localhost:5174",
+#   "https://localhost:5174",
+#   "http://localhost:8080",
+# ]
 
 app.add_middleware(
   CORSMiddleware,
