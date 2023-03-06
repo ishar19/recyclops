@@ -137,7 +137,7 @@ class GameItem(BaseModel):
 async def save_game(game_item: GameItem, token: str) -> dict:
   #Check if the token is valid otherwise raise error
   decoded_token = decode_token(token)
-  user = auth.get_user(decode_token['uid'])
+  user = auth.get_user(decoded_token['uid'])
 
   game_data = game_item.dict()
 
