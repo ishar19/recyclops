@@ -13,6 +13,7 @@ import ReadingHistory from "./pages/ReadingHistory";
 import GameHome from "./pages/GameHome";
 import { Toaster } from "react-hot-toast";
 import Bookmarks from "./pages/Bookmarks";
+import AboutUs from "./pages/AboutUs";
 function App() {
   const user = useContext(UserContext);
   const gameData = () =>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/profile/savedscans" element={<SavedScans />} />
         <Route path="/profile/readinghistory" element={<ReadingHistory />} />
         <Route path="/profile/bookmarks" element={<Bookmarks />} />
+        <Route path="/profile/aboutus" element={<AboutUs />} />
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}
