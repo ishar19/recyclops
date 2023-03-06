@@ -3,8 +3,9 @@ import logo from "../Assets/Logo.png";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { auth, provider } from "../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
-import { Link } from "react-router-dom";
+
 const title = "RecyclOps | Sign In";
+import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
@@ -14,6 +15,7 @@ const SignIn = () => {
   useEffect(() => {
     document.title = title;
   }, []);
+  const navigate = useNavigate();
   return (
     <div className="h-screen p-10">
       <div className="mb-10 mt-10 flex h-4/5 flex-col items-center rounded-md border-2 border-greenPrimary bg-[#F0F0F0] text-center">
@@ -32,12 +34,12 @@ const SignIn = () => {
         </div>
       </div>
 
-      <Link
-        to="/"
+      <button
+        onClick={() => navigate(-1)}
         className="text-whi absolute right-10 rounded-md bg-greenPrimary px-5 py-2 font-dosis font-medium text-white shadow-md"
       >
         Skip
-      </Link>
+      </button>
     </div>
   );
 };
