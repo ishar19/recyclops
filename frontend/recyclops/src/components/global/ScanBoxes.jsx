@@ -11,7 +11,7 @@ const ScanBoxes = ({ scan, key }) => {
     <>
       <div
         key={key}
-        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 shadow-md  drop-shadow-md`}
+        className={`trash${scan["scanData"]["color"]} flex-shrink-0 rounded-md p-4 font-dosis  shadow-md drop-shadow-md`}
         onClick={handleModal}
       >
         <img

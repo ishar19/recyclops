@@ -38,7 +38,7 @@ const LeaderboardContent = () => {
     </div>
   ));
   return (
-    <div className="absolute top-[2vh] z-10 mx-2 rounded-md bg-white bg-opacity-10 px-5 py-2 font-gloriaHallelujah shadow-md">
+    <div className="absolute top-[4.5vh] z-10 mx-2 rounded-md bg-white bg-opacity-10 px-5 py-2 font-gloriaHallelujah shadow-md">
       <div className="flex items-center gap-3">
         <img src={leaderboardIcon} className="h-20" />
         <h1 className="text-4xl text-[#FABB05]">Leaderboard</h1>
