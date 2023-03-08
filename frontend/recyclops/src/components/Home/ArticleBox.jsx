@@ -5,12 +5,12 @@ import { getHumanDate } from "../../utils/getHumanDate";
 import {
   saveArticle,
   removeArticle,
-  savedArticles,
+  //   savedArticles,
   readingHistory,
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
-const ArticleBox = ({ article, id, user }) => {
+const ArticleBox = ({ articleIds, article, id, user }) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -82,7 +82,6 @@ const ArticleBox = ({ article, id, user }) => {
   };
   useEffect(() => {
     const getSavedArticles = async () => {
-      const articleIds = await savedArticles(user.uid);
       if (articleIds.includes(id)) {
         setShowBookMark(true);
       }
@@ -133,6 +132,7 @@ ArticleBox.propTypes = {
   key: PropTypes.number,
   id: PropTypes.string,
   user: PropTypes.any,
+  articleIds: PropTypes.array,
 };
 
 export default ArticleBox;

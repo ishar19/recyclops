@@ -39,15 +39,25 @@ router.get('/basicInfo/:id', async(req, res) => {
 router.post('/newUser',async(req, res)=>{
     const {email, id} = req.body
     try{
-        await setDoc(doc(db,"users",id),{
+        const userRef = doc(db,"users",id)
+        const userSnap = await getDoc(userRef);
+        if(userSnap.exists()){
+            res.sendStatus(200)
+            return
+        }
+    }
+    catch(e){
+        try{
+            await setDoc(doc(db,"users",id),{
             email:email,
             id:id,
             createdAt:Timestamp.fromDate(new Date(Date.now()))
         },{merge:true}).then(()=>res.sendStatus(200))
-    }
-    catch(e){
-        console.log(e)
-        res.sendStatus(500)
+        }
+        catch(e){
+            console.log(e)
+            res.sendStatus(500)
+        }
     }
 })
 
