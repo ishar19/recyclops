@@ -11,6 +11,7 @@ const Articles = () => {
   //   };
   const [articleIds, setArticleIds] = useState([]);
   const [articles, setArticles] = useState([]);
+  //   console.log(articleIds);
   const user = useContext(UserContext);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Articles = () => {
     };
 
     fetchArticles();
-  }, []);
+  }, [articleIds]);
   return (
     <div className="mt-10">
       <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default"></div>

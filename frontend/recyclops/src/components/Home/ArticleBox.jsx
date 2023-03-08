@@ -7,13 +7,11 @@ import {
   removeArticle,
 
   //   savedArticles,
-
   readingHistory,
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
-
-const ArticleBox = ({ articleIds, article, id, user }) => {
+const ArticleBox = ({ articleIds, article, id, user, bookmarked }) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -85,6 +83,7 @@ const ArticleBox = ({ articleIds, article, id, user }) => {
   };
   useEffect(() => {
     const getSavedArticles = async () => {
+      if (bookmarked) setShowBookMark(true);
       if (articleIds.includes(id)) {
         setShowBookMark(true);
       }
@@ -136,7 +135,7 @@ ArticleBox.propTypes = {
   id: PropTypes.string,
   user: PropTypes.any,
   articleIds: PropTypes.array,
-
+  bookmarked: PropTypes.bool,
 };
 
 export default ArticleBox;
