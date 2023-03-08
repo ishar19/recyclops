@@ -45,7 +45,6 @@ export const getUserData = async (userId) => {
     `${import.meta.env.VITE_NODE_JS_PORT}/user/basicInfo/${userId}`
   ).then(async (data) => await data.json());
 };
-
 export const newUser = async (userId, email) => {
   const body = {
     id: userId,
@@ -59,3 +58,4 @@ export const newUser = async (userId, email) => {
     body: JSON.stringify(body),
   }).then(async (data) => data.ok);
 };
+

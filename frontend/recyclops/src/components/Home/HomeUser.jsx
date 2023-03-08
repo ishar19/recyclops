@@ -3,7 +3,9 @@ import { auth, provider } from "../../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { UserContext } from "../../Context/UserProvider";
 import { AiOutlineGoogle } from "react-icons/ai";
+
 import { newUser } from "../../APIs/User";
+
 // import getUserJWT from "../../utils/getUserJWT";
 const HomeUser = () => {
   const user = useContext(UserContext);
@@ -16,6 +18,7 @@ const HomeUser = () => {
         // console.log(data);
         newUser(data.user.uid, data.user.email);
       })
+
       .catch((error) => {
         console.log(error.message);
       });
