@@ -1,13 +1,50 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import SignIn from "./pages/SignIn";
+import Scanner from "./pages/Scanner";
+import { UserContext } from "./Context/UserProvider";
+import Game from "./pages/Game";
+import GameLeaderboard from "./pages/GameLeaderboard";
+import ScanHistory from "./pages/ScanHistory";
+import SavedScans from "./pages/SavedScans";
+import ReadingHistory from "./pages/ReadingHistory";
+import GameHome from "./pages/GameHome";
+import { Toaster } from "react-hot-toast";
+import Bookmarks from "./pages/Bookmarks";
+import AboutUs from "./pages/AboutUs";
 function App() {
+  const user = useContext(UserContext);
+  const gameData = () =>
+    !(window.localStorage.getItem("gameData") == undefined);
   return (
-    <div className=" flex h-[100vh] items-center justify-center bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
-      <p className=" animate-bounce text-center text-7xl font-extrabold tracking-widest text-[#facc15]">
-        Recyclops
-      </p>
-      <p className="flex font-extralight tracking-widest"></p>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/scanner" element={<Scanner />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate replace to={"/signin"} />}
+        />
+        <Route path="/game" element={<GameHome />} />
+        <Route
+          path="/game/play"
+          element={gameData() ? <Game /> : <Navigate replace to={"/game"} />}
+        />
+        <Route path="/game/leaderboard" element={<GameLeaderboard />} />
+        <Route path="/profile/scanhistory" element={<ScanHistory />} />
+        <Route path="/profile/savedscans" element={<SavedScans />} />
+        <Route path="/profile/readinghistory" element={<ReadingHistory />} />
+        <Route path="/profile/bookmarks" element={<Bookmarks />} />
+        <Route path="/profile/aboutus" element={<AboutUs />} />
+        <Route
+          path="/signin"
+          element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}
+        />
+      </Routes>
+      <Toaster />
+    </>
   );
 }
 
