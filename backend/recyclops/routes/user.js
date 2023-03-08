@@ -39,6 +39,7 @@ router.get('/basicInfo/:id', async(req, res) => {
 router.post('/newUser',async(req, res)=>{
     const {email, id} = req.body
     try{
+
         const userRef = doc(db,"users",id)
         const userSnap = await getDoc(userRef);
         if(userSnap.exists()){
