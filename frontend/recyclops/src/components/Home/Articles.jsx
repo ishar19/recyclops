@@ -3,22 +3,17 @@ import { getArticles } from "../../APIs/Article";
 import PropTypes from "prop-types";
 import ArticleBox from "./ArticleBox";
 import { UserContext } from "../../Context/UserProvider";
-
 import { savedArticles } from "../../APIs/Article";
-
 const Articles = () => {
   //   const [selected, setSelected] = useState(0);
   //   const handleSelect = (e, key) => {
   //     setSelected(key);
   //   };
-
   const [articleIds, setArticleIds] = useState([]);
-
   const [articles, setArticles] = useState([]);
   const user = useContext(UserContext);
 
   useEffect(() => {
-
     const getSavedArticles = async () => {
       await savedArticles(user.uid).then((data) => {
         setArticleIds([...data]);
@@ -27,6 +22,7 @@ const Articles = () => {
     getSavedArticles();
   }, [user]);
 
+  useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const fetchArticles = async () => {
       getArticles().then((data) => {
@@ -46,9 +42,7 @@ const Articles = () => {
             article={article.data}
             id={article.id}
             key={i}
-
             articleIds={articleIds}
-
           />
         ))}
       </div>
