@@ -3,7 +3,7 @@ import Navbar from "../components/global/Navbar";
 import ProfileBackButton from "../components/global/ProfileBackButton";
 import { MdOutlineBook } from "react-icons/md";
 import { UserContext } from "../Context/UserProvider";
-import { savedArticles } from "../APIs/Article";
+import { savedArticles, getArticleById } from "../APIs/Article";
 import ArticleBox from "../components/Home/ArticleBox";
 const Bookmarks = () => {
   const [articles, setArticles] = useState([]);
@@ -11,12 +11,16 @@ const Bookmarks = () => {
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const fetchArticles = async () => {
-      savedArticles().then((data) => {
-        setArticles([...data]);
+      savedArticles(user.uid).then((data) => {
+        data.map(async (id) => {
+          getArticleById(id).then((res) => {
+            setArticles((articles) => [...articles, { id: id, data: res }]);
+          });
+        });
       });
     };
     fetchArticles();
-  }, []);
+  }, [user]);
 
   return (
     <div>
@@ -24,7 +28,7 @@ const Bookmarks = () => {
         <MdOutlineBook />
         Bookmarks
       </h1>
-      <div className="grid grid-cols-1 gap-4 px-5  md:grid-cols-2 lg:grid-cols-2">
+      <div className="mb-8 grid grid-cols-1 gap-4 px-5  md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => (
           <ArticleBox
             user={user}

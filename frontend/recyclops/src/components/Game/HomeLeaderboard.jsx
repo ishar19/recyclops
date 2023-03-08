@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getLeaderboardList } from "../../APIs/Game";
-import { getUserData } from "../../APIs/User";
+// import { getUserData } from "../../APIs/User";
 
 // eslint-disable-next-line react/prop-types
 const HomeLeaderboard = ({ user }) => {
   const [leaderboard, setLeaderBoard] = useState([]);
-  const getName = async (id) => {
-    const data = await getUserData(id);
-    return data.email.substring(0, 10);
-  };
+
   useEffect(() => {
     const getLeaderboard = async () => {
       await getLeaderboardList().then((data) => {
         data.map(async (i) => {
-          const obj = { score: i.score, name: await getName(i.userId) };
+          const obj = { score: i.score, name: i.name };
           setLeaderBoard((prev) => [...prev, obj]);
         });
       });

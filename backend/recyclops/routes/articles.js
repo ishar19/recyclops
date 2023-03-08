@@ -26,5 +26,23 @@ router.get('/getArticles',async(req, res)=>{
     }
 })
 
+router.get('/getArticleById/:id',async(req, res)=>{
+    const {id} = req.params
+    try{
+        const articleRef = doc(db,"articles",id)
+        const articleSnap = await getDoc(articleRef)
+        if(articleSnap.exists()){
+            const {articleUrl,description,imageUrl,published, title} = articleSnap.data()
+            const articleData = {articleUrl:articleUrl,description:description,imageUrl:imageUrl,published
+            :published,title:title}
+            res.json(articleData)
+        }
+    }
+    catch(e){
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
+
 
 export default router

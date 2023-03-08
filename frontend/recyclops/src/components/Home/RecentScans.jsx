@@ -13,32 +13,33 @@ const RecentScans = ({ user }) => {
   const [scanData, setScanData] = useState([]);
 
   // const scanData = [];
+  //   const fetchScans = async () => {
+  //     const scanId = await getRecentScansId(user);
+  //     scanId.map(async (id) => {
+  //       const scan = await getScans(id);
+  //       setScanData((prev) => [...prev, scan]);
+  //       scanData.push(scan);
+  //     });
+  //   };
   const fetchScans = async () => {
     const scanId = await getRecentScansId(user);
     scanId.map(async (id) => {
       const scan = await getScans(id);
       setScanData((prev) => [...prev, scan]);
-      scanData.push(scan);
     });
   };
 
   useEffect(() => {
-    if (user != null) {
+    if (user == null) {
       setScanData([]);
     }
-  }, [user]);
-  useEffect(() => {
-    const fetchScans = async () => {
-      const scanId = await getRecentScansId(user);
-      scanId.map(async (id) => {
-        const scan = await getScans(id);
-        setScanData((prev) => [...prev, scan]);
-      });
-    };
     if (user != null) {
       fetchScans();
     }
-  }, []);
+  }, [user]);
+  //   useEffect(() => {
+
+  //   }, []);
 
   return (
     <div>

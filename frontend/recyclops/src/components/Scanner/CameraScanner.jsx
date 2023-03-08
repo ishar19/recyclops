@@ -9,7 +9,7 @@ import { addScan } from "../../APIs/User";
 const CameraScanner = ({ user }) => {
   const [dataUri, setDataUri] = useState(null);
   const [data, setData] = useState(false);
-
+  console.log(dataUri, data);
   const handleReset = () => {
     setDataUri(null);
     setData(false);
@@ -49,10 +49,14 @@ const CameraScanner = ({ user }) => {
 
   return (
     <>
-      {dataUri != null && data != false ? <Info data={data} /> : <></>}
-      <Reset />
+      {dataUri != null && data != false ? (
+        <Info data={data} />
+      ) : (
+        <>{dataUri == null && data == false ? <Reset /> : <></>}</>
+      )}
+
       <div className="">
-        {dataUri != null ? (
+        {dataUri != null && data != false ? (
           <>
             <img src={dataUri} className="h-[90vh] w-[100vw]" />
             <RxCross2
@@ -65,7 +69,16 @@ const CameraScanner = ({ user }) => {
         ) : (
           <div className="flex-1">
             {dataUri != null && data == false ? (
-              console.log("hi")
+              <>
+                <Reset transparent={true} />
+                <img src={dataUri} className="h-[90vh] w-[100vw]" />
+                <RxCross2
+                  onClick={handleReset}
+                  fontSize="3em"
+                  fontWeight="bolder"
+                  className="absolute right-4 top-4 rounded-lg bg-greenPrimary text-black"
+                />
+              </>
             ) : (
               <Camera
                 className="camera-wrapper"

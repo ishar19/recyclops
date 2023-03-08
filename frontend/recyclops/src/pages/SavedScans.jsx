@@ -3,7 +3,7 @@ import Navbar from "../components/global/Navbar";
 import ProfileBackButton from "../components/global/ProfileBackButton";
 import { MdBookmark } from "react-icons/md";
 import { UserContext } from "../Context/UserProvider";
-import { getRecentScansId, getScans } from "../APIs/Scans";
+import { getSavedScansId, getScans } from "../APIs/Scans";
 import { Link } from "react-router-dom";
 import SavedScanBoxes from "../components/global/SavedScanBoxes";
 import { MdAddTask } from "react-icons/md";
@@ -19,7 +19,7 @@ const SavedScans = () => {
   }, [user]);
   useEffect(() => {
     const fetchScans = async () => {
-      const scanId = await getRecentScansId(user);
+      const scanId = await getSavedScansId(user);
       scanId.map(async (id) => {
         const scan = await getScans(id);
         setScanData((prev) => [...prev, scan]);

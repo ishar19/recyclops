@@ -3,7 +3,7 @@ import Navbar from "../components/global/Navbar";
 import ProfileBackButton from "../components/global/ProfileBackButton";
 import { MdOutlineHistory } from "react-icons/md";
 import { UserContext } from "../Context/UserProvider";
-import { getArticles } from "../APIs/Article";
+import { getReadingHistory, getArticleById } from "../APIs/Article";
 import ArticleBox from "../components/Home/ArticleBox";
 const ReadingHistory = () => {
   const [articles, setArticles] = useState([]);
@@ -11,12 +11,16 @@ const ReadingHistory = () => {
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const fetchArticles = async () => {
-      getArticles().then((data) => {
-        setArticles([...data]);
+      getReadingHistory(user.uid).then((data) => {
+        data.map(async (id) => {
+          getArticleById(id).then((res) => {
+            setArticles((articles) => [...articles, { id: id, data: res }]);
+          });
+        });
       });
     };
     fetchArticles();
-  }, []);
+  }, [user]);
   return (
     <div>
       <h1 className="flex items-center gap-1 p-5 font-dosis text-4xl font-bold text-greenPrimary">
