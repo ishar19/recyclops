@@ -12,7 +12,7 @@ import {
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
-const ArticleBox = ({ articleIds, article, id, bookmarked }) => {
+const ArticleBox = ({ article, id, bookmarked, loading }) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -112,7 +112,9 @@ const ArticleBox = ({ articleIds, article, id, bookmarked }) => {
   return (
     <div
       key={id}
-      className={`relative mb-3 min-h-[200px] rounded-2xl border-[1.5px] border-solid drop-shadow-md md:min-h-[300px] lg:min-h-[300px]`}
+      className={`${
+        loading ? "animate-pulse" : ""
+      }  relative mb-3 min-h-[200px] rounded-2xl border-[1.5px] border-solid drop-shadow-md md:min-h-[300px] lg:min-h-[300px]`}
       onClick={handleOnClick}
     >
       <img
@@ -147,6 +149,7 @@ ArticleBox.propTypes = {
   user: PropTypes.any,
   articleIds: PropTypes.array,
   bookmarked: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 export default ArticleBox;

@@ -11,6 +11,7 @@ const Articles = () => {
   //   };
   const [articleIds, setArticleIds] = useState([]);
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
   const user = useContext(UserContext);
   useEffect(() => {
     const getSavedArticles = async () => {
@@ -32,6 +33,7 @@ const Articles = () => {
     };
 
     fetchArticles();
+    setLoading(false);
   }, [articleIds]);
   return (
     <div className="mt-10">
@@ -46,6 +48,7 @@ const Articles = () => {
               key={i}
               articleIds={articleIds}
               bookmarked={articleIds.includes(article.id)}
+              loading={loading}
             />
           );
         })}
