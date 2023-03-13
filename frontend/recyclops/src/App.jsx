@@ -33,11 +33,28 @@ function App() {
           element={gameData() ? <Game /> : <Navigate replace to={"/game"} />}
         />
         <Route path="/game/leaderboard" element={<GameLeaderboard />} />
-        <Route path="/profile/scanhistory" element={<ScanHistory />} />
-        <Route path="/profile/savedscans" element={<SavedScans />} />
-        <Route path="/profile/readinghistory" element={<ReadingHistory />} />
-        <Route path="/profile/bookmarks" element={<Bookmarks />} />
-        <Route path="/profile/aboutus" element={<AboutUs />} />
+        <Route
+          path="/profile/scanhistory"
+          element={user ? <ScanHistory /> : <Navigate replace to={"/signin"} />}
+        />
+        <Route
+          path="/profile/savedscans"
+          element={user ? <SavedScans /> : <Navigate replace to={"/signin"} />}
+        />
+        <Route
+          path="/profile/readinghistory"
+          element={
+            user ? <ReadingHistory /> : <Navigate replace to={"/signin"} />
+          }
+        />
+        <Route
+          path="/profile/bookmarks"
+          element={user ? <Bookmarks /> : <Navigate replace to={"/signin"} />}
+        />
+        <Route
+          path="/profile/aboutus"
+          element={user ? <AboutUs /> : <Navigate replace to={"/signin"} />}
+        />
         <Route
           path="/signin"
           element={!user ? <SignIn /> : <Navigate replace to={"/profile"} />}
