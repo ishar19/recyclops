@@ -24,7 +24,6 @@ export const getUserId = () => {
   if (auth.currentUser == null) {
     return null;
   } else {
-    console;
     return auth.currentUser.uid;
   }
 };

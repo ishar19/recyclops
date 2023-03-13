@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 import PropTypes from "prop-types";
+import { UserContext } from "../../Context/UserProvider";
 import { getHumanDate } from "../../utils/getHumanDate";
 import {
   saveArticle,
@@ -11,7 +12,7 @@ import {
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
-const ArticleBox = ({ articleIds, article, id, user, bookmarked }) => {
+const ArticleBox = ({ articleIds, article, id, bookmarked }) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -29,7 +30,12 @@ const ArticleBox = ({ articleIds, article, id, user, bookmarked }) => {
       id: id,
     });
 
-  const [showBookMark, setShowBookMark] = useState(false);
+  const [showBookMark, setShowBookMark] = useState(bookmarked);
+  // eslint-disable-next-line no-unused-vars
+  const user = useContext(UserContext);
+  // eslint-disable-next-line no-unused-vars
+  const [currentUser, setCurrentUser] = useState(user);
+  //   console.log(currentUser);
   const handleOption = (e, id) => {
     e.stopPropagation();
     if (user != null) {
@@ -82,22 +88,27 @@ const ArticleBox = ({ articleIds, article, id, user, bookmarked }) => {
     }
   };
   useEffect(() => {
-    const getSavedArticles = async () => {
-      if (bookmarked) setShowBookMark(true);
-      if (articleIds.includes(id)) {
-        setShowBookMark(true);
-      }
-      window.sessionStorage.setItem(
-        "savedArticles",
-        JSON.stringify([...articleIds])
-      );
-    };
-    if (user != null) {
-      getSavedArticles();
-    } else {
-      window.sessionStorage.setItem("savedArticles", JSON.stringify([]));
-    }
-  }, [user]);
+    if (bookmarked) setShowBookMark(true);
+    // const getSavedArticles = async () => {
+    //   //   console.log("here");
+    //   if (articleIds.indexOf(id) > -1) {
+    //     console.log("here");
+    //     setShowBookMark(true);
+    //   }
+    //   window.sessionStorage.setItem(
+    //     "savedArticles",
+    //     JSON.stringify([...articleIds])
+    //   );
+    // };
+    // if (user != null) {
+    //   getSavedArticles();
+    // } else {
+    //   window.sessionStorage.setItem("savedArticles", JSON.stringify([]));
+    // }
+  }, [bookmarked]);
+  //   useEffect(() => {
+  //     setCurrentUser(user);
+  //   }, []);
   return (
     <div
       key={id}
