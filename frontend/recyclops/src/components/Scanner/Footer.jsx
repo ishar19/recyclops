@@ -4,7 +4,7 @@ import { MdBookmarkBorder, MdBookmark } from "react-icons/md";
 import PropTypes from "prop-types";
 import { UserContext } from "../../Context/UserProvider";
 import { removeScan, saveScan } from "../../APIs/User";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 const saveToast = () => toast.success("Scan saved");
 const deleteToast = () => toast.error("Scan removed");
 
@@ -44,7 +44,6 @@ const Footer = ({ scanId }) => {
       ) : (
         <></>
       )}
-      <Toaster />
     </div>
   );
 };

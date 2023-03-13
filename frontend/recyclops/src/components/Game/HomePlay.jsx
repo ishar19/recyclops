@@ -12,6 +12,9 @@ const HomePlay = ({ user }) => {
       await createNewGame().then(() => {
         navigate("/game/play");
       });
+      else{
+        navigate("/signin")
+      }
   };
 
   const createNewGame = async () => {

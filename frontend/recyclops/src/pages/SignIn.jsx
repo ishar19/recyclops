@@ -3,14 +3,20 @@ import logo from "../Assets/Logo.png";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { auth, provider } from "../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
-
+import { newUser } from "../APIs/User";
 const title = "RecyclOps | Sign In";
 import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
-      .then((data) => {})
-      .catch((error) => {});
+      .then(async (data) => {
+        // console.log(data);
+        newUser(data.user.uid, data.user.email);
+      })
+
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   useEffect(() => {
     document.title = title;

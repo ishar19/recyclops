@@ -14,6 +14,7 @@ export const getUserJWT = () => {
       })
       .catch(function (error) {
         // Handle error
+        console.log(error);
       });
   }
   return JWT;
