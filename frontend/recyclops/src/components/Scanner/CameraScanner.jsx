@@ -9,7 +9,6 @@ import { addScan } from "../../APIs/User";
 const CameraScanner = ({ user }) => {
   const [dataUri, setDataUri] = useState(null);
   const [data, setData] = useState(false);
-  console.log(dataUri, data);
   const handleReset = () => {
     setDataUri(null);
     setData(false);
