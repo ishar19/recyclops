@@ -11,6 +11,15 @@ import {
 
 const members = [
   {
+    name: "Diksha Raj",
+    img: Diksha,
+    tech: "Design + Research",
+    info: "A second year engineering student, I am a strategic and creative person. An underway developer who likes finding patterns and styles in everyday life. I have practiced as a UI-UX designer and am currently learning frontend and working on my problem solving skills.",
+    github: "https://github.com/IamDikshaR ",
+    twitter: "https://twitter.com/Diksha_R09 ",
+    instagram: "https://instagram.com/diksha_r09",
+  },
+  {
     name: "Ishar Jain",
     img: Ishar,
     tech: "Full stack",
@@ -36,15 +45,6 @@ const members = [
     github: "https://github.com/bhavya-giri",
     twitter: "https://twitter.com/BhavyaGiri_",
     instagram: "https://www.instagram.com/bhavyagiri_/",
-  },
-  {
-    name: "Diksha Raj",
-    img: Diksha,
-    tech: "Design + Research",
-    info: "A second year engineering student, I am a strategic and creative person. An underway developer who likes finding patterns and styles in everyday life. I have practiced as a UI-UX designer and am currently learning frontend and working on my problem solving skills.",
-    github: "https://github.com/IamDikshaR ",
-    twitter: "https://twitter.com/Diksha_R09 ",
-    instagram: "https://instagram.com/diksha_r09",
   },
 ];
 const renderMembers = members.map((member, i) => (
