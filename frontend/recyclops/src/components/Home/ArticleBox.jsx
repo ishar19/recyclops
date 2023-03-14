@@ -8,11 +8,13 @@ import {
   removeArticle,
 
   //   savedArticles,
+
   readingHistory,
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
 const ArticleBox = ({ article, id, bookmarked, loading }) => {
+
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
