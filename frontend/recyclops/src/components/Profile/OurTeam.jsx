@@ -33,8 +33,8 @@ const members = [
     img: Prabkirat,
     tech: "Backend + ML model",
     info: "I am a second-year student. I love building projects and constantly trying out new technologies. So far, I have worked on Android and iOS apps, as well as Discord and Twitter bots. Additionally, I have built basic APIs and machine learning models.",
-    github: "https://github.com/Infinil",
-    twitter: "https://twitter.com/iaminfinil?t=I0wOcu5m-s6er22b9hP-EQ&s=09",
+    github: "",
+    twitter: "https://twitter.com/pkiratsingh",
     instagram: "",
   },
   {
