@@ -1,5 +1,7 @@
 import React from "react";
 import Bhavya from "../../Assets/Bhavya.jpeg";
+import Diksha from "../../Assets/Diksha.jpeg";
+import Prabkirat from "../../Assets/Prabkirat.jpeg";
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -19,11 +21,11 @@ const OurTeam = () => {
     },
     {
       name: "Prabhkirat",
-      img: Bhavya,
+      img: Prabkirat,
       tech: "Backend + ML model",
       info: "I am a second-year student. I love building projects and constantly trying out new technologies. So far, I have worked on Android and iOS apps, as well as Discord and Twitter bots. Additionally, I have built basic APIs and machine learning models.",
-      github: "",
-      twitter: "",
+      github: "https://github.com/Infinil",
+      twitter: "https://twitter.com/iaminfinil?t=I0wOcu5m-s6er22b9hP-EQ&s=09",
       instagram: "",
     },
     {
@@ -37,20 +39,24 @@ const OurTeam = () => {
     },
     {
       name: "Diksha Raj",
-      img: Bhavya,
+      img: Diksha,
       tech: "Design + Research",
       info: "A second year engineering student, I am a strategic and creative person. An underway developer who likes finding patterns and styles in everyday life. I have practiced as a UI-UX designer and am currently learning frontend and working on my problem solving skills.",
-      github: "",
-      twitter: "",
-      instagram: "",
+      github: "https://github.com/IamDikshaR ",
+      twitter: "https://twitter.com/Diksha_R09 ",
+      instagram: "https://instagram.com/diksha_r09",
     },
   ];
   const renderMembers = members.map((member, i) => (
     <div
       key={i}
-      className="m-5 rounded-md bg-gray-300 bg-opacity-5 p-5 text-center  font-dosis drop-shadow-lg backdrop-blur-lg"
+      className="m-5  rounded-md bg-gray-300  bg-opacity-5 p-5 text-center font-dosis drop-shadow-lg backdrop-blur-lg"
     >
-      <img src={member.img} alt={member.name} className="rounded-full" />
+      <img
+        src={member.img}
+        alt={member.name}
+        className="mx-auto h-40 w-40 rounded-full"
+      />
       <h1 className="text-2xl font-semibold text-greenPrimary">
         {member.name}
       </h1>
