@@ -14,6 +14,7 @@ export const getUserJWT = () => {
       })
       .catch(function (error) {
         // Handle error
+        console.log(error);
       });
   }
   return JWT;
@@ -23,7 +24,6 @@ export const getUserId = () => {
   if (auth.currentUser == null) {
     return null;
   } else {
-    console;
     return auth.currentUser.uid;
   }
 };

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
 import PropTypes from "prop-types";
+import { UserContext } from "../../Context/UserProvider";
 import { getHumanDate } from "../../utils/getHumanDate";
 import {
   saveArticle,
@@ -12,8 +13,8 @@ import {
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
+const ArticleBox = ({ article, id, bookmarked, loading }) => {
 
-const ArticleBox = ({ articleIds, article, id, user }) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -31,7 +32,12 @@ const ArticleBox = ({ articleIds, article, id, user }) => {
       id: id,
     });
 
-  const [showBookMark, setShowBookMark] = useState(false);
+  const [showBookMark, setShowBookMark] = useState(bookmarked);
+  // eslint-disable-next-line no-unused-vars
+  const user = useContext(UserContext);
+  // eslint-disable-next-line no-unused-vars
+  const [currentUser, setCurrentUser] = useState(user);
+  //   console.log(currentUser);
   const handleOption = (e, id) => {
     e.stopPropagation();
     if (user != null) {
@@ -84,25 +90,33 @@ const ArticleBox = ({ articleIds, article, id, user }) => {
     }
   };
   useEffect(() => {
-    const getSavedArticles = async () => {
-      if (articleIds.includes(id)) {
-        setShowBookMark(true);
-      }
-      window.sessionStorage.setItem(
-        "savedArticles",
-        JSON.stringify([...articleIds])
-      );
-    };
-    if (user != null) {
-      getSavedArticles();
-    } else {
-      window.sessionStorage.setItem("savedArticles", JSON.stringify([]));
-    }
-  }, [user]);
+    if (bookmarked) setShowBookMark(true);
+    // const getSavedArticles = async () => {
+    //   //   console.log("here");
+    //   if (articleIds.indexOf(id) > -1) {
+    //     console.log("here");
+    //     setShowBookMark(true);
+    //   }
+    //   window.sessionStorage.setItem(
+    //     "savedArticles",
+    //     JSON.stringify([...articleIds])
+    //   );
+    // };
+    // if (user != null) {
+    //   getSavedArticles();
+    // } else {
+    //   window.sessionStorage.setItem("savedArticles", JSON.stringify([]));
+    // }
+  }, [bookmarked]);
+  //   useEffect(() => {
+  //     setCurrentUser(user);
+  //   }, []);
   return (
     <div
       key={id}
-      className={`relative mb-3 min-h-[200px] rounded-2xl border-[1.5px] border-solid drop-shadow-md md:min-h-[300px] lg:min-h-[300px]`}
+      className={`${
+        loading ? "animate-pulse" : ""
+      }  relative mb-3 min-h-[200px] rounded-2xl border-[1.5px] border-solid drop-shadow-md md:min-h-[300px] lg:min-h-[300px]`}
       onClick={handleOnClick}
     >
       <img
@@ -136,7 +150,8 @@ ArticleBox.propTypes = {
   id: PropTypes.string,
   user: PropTypes.any,
   articleIds: PropTypes.array,
-
+  bookmarked: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 export default ArticleBox;

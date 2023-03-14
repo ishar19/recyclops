@@ -21,12 +21,14 @@ const RecentScans = ({ user }) => {
   //       scanData.push(scan);
   //     });
   //   };
+  const [loading, setLoading] = useState(true);
   const fetchScans = async () => {
     const scanId = await getRecentScansId(user);
     scanId.map(async (id) => {
       const scan = await getScans(id);
       setScanData((prev) => [...prev, scan]);
     });
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -47,38 +49,44 @@ const RecentScans = ({ user }) => {
         Recent Scans
       </h1>
       <div>
-        {user != null ? (
-          <div className="my-6 flex gap-5 overflow-x-scroll py-8 text-center scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default">
-            {scanData.length == 0 ? (
-              <div className="flex flex-col items-center justify-center gap-3">
-                <h2 className="flex gap-1 font-dosis text-2xl font-medium">
-                  No History <MdAddTask />
-                </h2>
-                <Link to="/scanner">
-                  <button className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white">
-                    Start Scanning
-                  </button>
-                </Link>
-              </div>
-            ) : (
-              <></>
-            )}
-            {scanData.map((scan, i) => (
-              <ScanBoxes scan={scan} key={i} />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center gap-3">
-            <h2 className="flex gap-1 font-dosis text-2xl font-medium">
-              No History <MdAddTask />
-            </h2>
-            <Link to="/scanner">
-              <button className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white">
-                Start Scanning
-              </button>
-            </Link>
-          </div>
-        )}
+        <div
+          className={`${loading ? "animate-pulse" : ""} h-[200px] w-[100vw]`}
+        >
+          {user != null ? (
+            <div
+              className={`my-6 flex gap-5 overflow-x-scroll py-8 text-center scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default`}
+            >
+              {scanData.length == 0 ? (
+                <div className="flex flex-col items-center justify-center gap-3">
+                  <h2 className="flex gap-1 font-dosis text-2xl font-medium">
+                    No History <MdAddTask />
+                  </h2>
+                  <Link to="/scanner">
+                    <button className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white">
+                      Start Scanning
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <></>
+              )}
+              {scanData.map((scan, i) => (
+                <ScanBoxes scan={scan} key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-3">
+              <h2 className="flex gap-1 font-dosis text-2xl font-medium">
+                No History <MdAddTask />
+              </h2>
+              <Link to="/scanner">
+                <button className="rounded-lg bg-greenPrimary px-5 py-1 font-dosis text-2xl font-medium text-white">
+                  Start Scanning
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

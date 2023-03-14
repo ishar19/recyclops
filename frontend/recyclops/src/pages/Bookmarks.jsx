@@ -35,6 +35,7 @@ const Bookmarks = () => {
             article={article.data}
             id={article.id}
             key={i}
+            bookmarked
           />
         ))}
       </div>

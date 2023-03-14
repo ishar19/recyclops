@@ -11,15 +11,17 @@ const Articles = () => {
   //   };
   const [articleIds, setArticleIds] = useState([]);
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
   const user = useContext(UserContext);
-
   useEffect(() => {
     const getSavedArticles = async () => {
       await savedArticles(user.uid).then((data) => {
         setArticleIds([...data]);
       });
     };
-    getSavedArticles();
+    if (user != null) {
+      getSavedArticles();
+    }
   }, [user]);
 
   useEffect(() => {
@@ -31,20 +33,25 @@ const Articles = () => {
     };
 
     fetchArticles();
-  }, []);
+    setLoading(false);
+  }, [articleIds]);
   return (
     <div className="mt-10">
       <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default"></div>
       <div className="grid grid-cols-1 gap-4   md:grid-cols-2 lg:grid-cols-2">
-        {articles.map((article, i) => (
-          <ArticleBox
-            user={user}
-            article={article.data}
-            id={article.id}
-            key={i}
-            articleIds={articleIds}
-          />
-        ))}
+        {articles.map((article, i) => {
+          return (
+            <ArticleBox
+              user={user}
+              article={article.data}
+              id={article.id}
+              key={i}
+              articleIds={articleIds}
+              bookmarked={articleIds.includes(article.id)}
+              loading={loading}
+            />
+          );
+        })}
       </div>
     </div>
   );
