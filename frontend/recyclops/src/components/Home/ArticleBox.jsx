@@ -8,13 +8,18 @@ import {
   removeArticle,
 
   //   savedArticles,
-
   readingHistory,
 } from "../../APIs/Article";
 import toast from "react-hot-toast";
 
-const ArticleBox = ({ article, id, bookmarked, loading }) => {
-
+const ArticleBox = ({
+  article,
+  id,
+  bookmarked,
+  loading,
+  savedArticles = [],
+  hideBookmark = false,
+}) => {
   const saveToast = (id) =>
     toast.success("Article saved", {
       id: id,
@@ -41,8 +46,15 @@ const ArticleBox = ({ article, id, bookmarked, loading }) => {
   const handleOption = (e, id) => {
     e.stopPropagation();
     if (user != null) {
-      e.stopPropagation();
       if (!showBookMark) {
+        setShowBookMark((prev) => !prev);
+        saveArticle(user.uid, id).then((res) => {
+          if (res) {
+            saveToast(id);
+          } else {
+            failToast(id);
+          }
+        });
         const savedArticles = JSON.parse(
           window.sessionStorage.getItem("savedArticles")
         );
@@ -50,32 +62,24 @@ const ArticleBox = ({ article, id, bookmarked, loading }) => {
           "savedArticles",
           JSON.stringify([...savedArticles, id])
         );
-        saveArticle(user.uid, id).then((res) => {
-          if (res) {
-            saveToast(id);
-            setShowBookMark((prev) => !prev);
-          } else {
-            failToast(id);
-          }
-        });
       } else {
-        const savedArticles = JSON.parse(
-          window.sessionStorage.getItem("savedArticles")
-        );
-        const index = savedArticles.indexOf(id);
-        savedArticles.splice(index, 1);
-        window.sessionStorage.setItem(
-          "savedArticles",
-          JSON.stringify([...savedArticles])
-        );
+        setShowBookMark((prev) => !prev);
         removeArticle(user.uid, id).then((res) => {
           if (res) {
             deleteToast(id);
-            setShowBookMark((prev) => !prev);
           } else {
             failToast(id);
           }
         });
+        const articles = JSON.parse(
+          window.sessionStorage.getItem("savedArticles")
+        );
+        const index = articles.indexOf(id);
+        articles.splice(index, 1);
+        window.sessionStorage.setItem(
+          "savedArticles",
+          JSON.stringify([...articles])
+        );
       }
     } else {
       loginToast(id);
@@ -97,10 +101,6 @@ const ArticleBox = ({ article, id, bookmarked, loading }) => {
     //     console.log("here");
     //     setShowBookMark(true);
     //   }
-    //   window.sessionStorage.setItem(
-    //     "savedArticles",
-    //     JSON.stringify([...articleIds])
-    //   );
     // };
     // if (user != null) {
     //   getSavedArticles();
@@ -108,9 +108,12 @@ const ArticleBox = ({ article, id, bookmarked, loading }) => {
     //   window.sessionStorage.setItem("savedArticles", JSON.stringify([]));
     // }
   }, [bookmarked]);
-  //   useEffect(() => {
-  //     setCurrentUser(user);
-  //   }, []);
+  useEffect(() => {
+    window.sessionStorage.setItem(
+      "savedArticles",
+      JSON.stringify([...savedArticles])
+    );
+  }, []);
   return (
     <div
       key={id}
@@ -125,13 +128,17 @@ const ArticleBox = ({ article, id, bookmarked, loading }) => {
         className="absolute -z-10 h-full w-full rounded-2xl object-cover blur-[0.7px]"
       />
       <div className="flex flex-col items-end justify-around">
-        <button
-          className="absolute bottom-3 right-2 z-10 text-3xl font-[1200] text-black"
-          id={id}
-          onClick={(e) => handleOption(e, id)}
-        >
-          {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
-        </button>
+        {hideBookmark ? (
+          ""
+        ) : (
+          <button
+            className="absolute bottom-3 right-2 z-10 text-3xl font-[1200] text-black"
+            id={id}
+            onClick={(e) => handleOption(e, id)}
+          >
+            {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
+          </button>
+        )}
       </div>
       <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 backdrop-sepia-0">
         <h2 className="text-xl">{article.title}</h2>
@@ -152,6 +159,8 @@ ArticleBox.propTypes = {
   articleIds: PropTypes.array,
   bookmarked: PropTypes.bool,
   loading: PropTypes.bool,
+  savedArticles: PropTypes.array,
+  hideBookmark: PropTypes.bool,
 };
 
 export default ArticleBox;

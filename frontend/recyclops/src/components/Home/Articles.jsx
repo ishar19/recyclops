@@ -46,7 +46,7 @@ const Articles = () => {
               article={article.data}
               id={article.id}
               key={i}
-              articleIds={articleIds}
+              savedArticles={articleIds}
               bookmarked={articleIds.includes(article.id)}
               loading={loading}
             />

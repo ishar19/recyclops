@@ -34,5 +34,4 @@ const HomePlay = ({ user }) => {
     </button>
   );
 };
-
 export default HomePlay;

@@ -35,7 +35,8 @@ const Bookmarks = () => {
             article={article.data}
             id={article.id}
             key={i}
-            bookmarked
+            bookmarked={true}
+            hideBookmark={true}
           />
         ))}
       </div>

@@ -51,6 +51,7 @@ const ReadingHistory = () => {
             id={article.id}
             key={i}
             bookmarked={articleIds.includes(article.id)}
+            savedArticles={articleIds}
           />
         ))}
       </div>
