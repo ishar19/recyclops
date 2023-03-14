@@ -1,7 +1,7 @@
 import React from "react";
 import Giri from "../../Assets/Giri.jpeg";
 import Diksha from "../../Assets/Diksha.jpeg";
-import Prabkirat from "../../Assets/Prabkirat.jpeg";
+import Prabkirat from "../../Assets/Prabkirat.jpg";
 import Ishar from "../../Assets/ishar.jpg";
 import {
   AiFillGithub,
