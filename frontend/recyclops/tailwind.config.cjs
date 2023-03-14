@@ -4,6 +4,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        aboutUs: "url('../public/Watermark.png')",
+      },
       colors: {
         greenPrimary: "#34A853",
         yellowPrimary: "#FABB0566",
