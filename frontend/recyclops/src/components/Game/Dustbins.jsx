@@ -60,8 +60,8 @@ const Dustbins = ({ user }) => {
         window.localStorage.setItem("gameData", JSON.stringify(gameData));
         setLives(gameData.livesLeft);
       }
+      setIsDropped(true);
     }
-    setIsDropped(true);
   }
   const handleDragStart = (e) => {};
   const handleDragOver = ({ active }) => {};
@@ -119,7 +119,7 @@ const Dustbins = ({ user }) => {
       {bins.map((bin, idx) => {
         return (
           <Droppable key={idx} id={bin} style={idx}>
-            <img src={binData[bin]["image"]} className="z-10 h-[20vh]" />;
+            <img src={binData[bin]["image"]} className="z-10 h-[20vh]" />
           </Droppable>
         );
       })}

@@ -50,12 +50,12 @@ const LeaderboardContent = () => {
             Back
           </button>
         </Link>
-        <input
+        {/* <input
           type="text"
           name="name"
           className="w-[15vh] rounded-md border-none bg-[#FABB05] p-1 text-center text-white placeholder:text-white"
           placeholder="Find yourself"
-        />
+        /> */}
       </div>
     </div>
   );
