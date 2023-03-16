@@ -23,17 +23,18 @@ const correctAns = () =>
   toast.success(<Correct />, {
     duration: 1000,
     position: "top-center",
-    icon: "✅",
+    icon: "🎉",
   });
 const wrongAns = () =>
   toast.error(<Wrong />, {
     duration: 1000,
     position: "top-center",
-    icon: "❎",
+    icon: "❌",
   });
 const gameOver = () => {
   toast.error(<Over />, {
     duration: 2000,
+    icon: "☹️",
   });
 };
 const Dustbins = ({ user }) => {

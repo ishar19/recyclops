@@ -87,7 +87,7 @@ const OurTeam = () => {
           Our Team
         </h1>
       </div>
-      <div className="sm:flex md:flex-col lg:flex-col">{renderMembers}</div>
+      <div className="sm:flex md:flex-row lg:flex-row">{renderMembers}</div>
     </>
   );
 };

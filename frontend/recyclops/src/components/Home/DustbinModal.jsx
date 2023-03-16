@@ -5,11 +5,11 @@ const DustbinModal = ({ handleModal, description }) => {
     <>
       <div className="fixed inset-0 z-50 mx-5 flex items-center justify-center overflow-y-auto shadow-lg outline-none overflow-x-hidden focus:outline-none">
         <div className="relative my-6 mx-auto w-auto max-w-3xl">
-          <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
+          <div className="relative flex w-full flex-col rounded-lg bg-white shadow-lg outline-none focus:outline-none">
             <div
-              className={`flex items-start justify-between rounded-t border-b border-solid border-gray-300 p-5 ${description.bg}`}
+              className={`flex items-start justify-between rounded-t-lg p-5 ${description.bg}`}
             >
-              <h3 className="font=semibold text-3xl text-white">
+              <h3 className="font-dosis font-semibold text-3xl text-white">
                 {description.title}
               </h3>
               <button
@@ -21,7 +21,7 @@ const DustbinModal = ({ handleModal, description }) => {
                 </span>
               </button>
             </div>
-            <div className="relative flex-auto p-6">{description.info}</div>
+            <div className="relative flex-auto p-6 font-dosis text-lg">{description.info}</div>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ const HomePlay = ({ user }) => {
       className={`mx-8 ${loading ? "animate-pulse" : ""} relative`}
       onClick={navigateToGame}
     >
-      <span className="absolute top-1 right-2  inline-flex h-[5vh] w-[5vh] animate-ping rounded-full bg-red-500"></span>
+      {/* <span className="absolute top-1 right-2  inline-flex h-[5vh] w-[5vh] animate-ping rounded-full bg-red-500"></span> */}
       <img src={dragAndDrop} alt="Play Game" />
     </button>
   );

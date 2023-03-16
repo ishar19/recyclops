@@ -45,7 +45,7 @@ const RecentScans = ({ user }) => {
 
   return (
     <div>
-      <h1 className="mb-2 font-dosis text-2xl font-normal text-greenPrimary">
+      <h1 className="mb-2 font-dosis text-3xl font-medium text-greenPrimary">
         Recent Scans
       </h1>
       <div>
@@ -53,12 +53,10 @@ const RecentScans = ({ user }) => {
           className={`${loading ? "animate-pulse" : ""} h-[200px] w-[100vw]`}
         >
           {user != null ? (
-            <div
-              className={`my-6 flex gap-5 overflow-x-scroll py-8 text-center scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default`}
-            >
-              {scanData.length == 0 ? (
+            
+              scanData.length == 0 ? (
                 <div className="flex flex-col items-center justify-center gap-3">
-                  <h2 className="flex gap-1 font-dosis text-2xl font-medium">
+                  <h2 className="flex gap-1 font-dosis text-2xl font-medium text-center">
                     No History <MdAddTask />
                   </h2>
                   <Link to="/scanner">
@@ -68,12 +66,15 @@ const RecentScans = ({ user }) => {
                   </Link>
                 </div>
               ) : (
-                <></>
-              )}
+                <div
+              className={`my-6 flex gap-5 overflow-x-scroll py-8 text-center scrollbar-hide lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default`}
+            >
               {scanData.map((scan, i) => (
                 <ScanBoxes scan={scan} key={i} />
               ))}
             </div>
+              )
+              
           ) : (
             <div className="flex flex-col items-center justify-center gap-3">
               <h2 className="flex gap-1 font-dosis text-2xl font-medium">

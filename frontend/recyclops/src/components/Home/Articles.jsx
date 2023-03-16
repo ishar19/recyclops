@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import ArticleBox from "./ArticleBox";
 import { UserContext } from "../../Context/UserProvider";
 import { savedArticles } from "../../APIs/Article";
+import { shuffle } from "../../utils/shuffleArray";
 const Articles = () => {
   //   const [selected, setSelected] = useState(0);
   //   const handleSelect = (e, key) => {
@@ -28,7 +29,7 @@ const Articles = () => {
     // eslint-disable-next-line no-unused-vars
     const fetchArticles = async () => {
       getArticles().then((data) => {
-        setArticles([...data]);
+        setArticles(shuffle([...data]));
       });
     };
 
@@ -37,6 +38,9 @@ const Articles = () => {
   }, [articleIds]);
   return (
     <div className="mt-10">
+      <h1 className="mb-2 font-dosis text-3xl font-medium text-greenPrimary">
+        Articles you may like
+      </h1>
       <div className="flex gap-5 overflow-x-scroll py-4  lg:scrollbar lg:scrollbar-track-inherit lg:scrollbar-thumb-slate-300   lg:scrollbar-default"></div>
       <div className="grid grid-cols-1 gap-4   md:grid-cols-2 lg:grid-cols-2">
         {articles.map((article, i) => {

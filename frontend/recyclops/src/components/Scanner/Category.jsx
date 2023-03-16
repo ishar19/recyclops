@@ -7,21 +7,21 @@ const Category = ({ category, color }) => {
       <div className="mt-6 flex  gap-5">
         {category == "Dry" ? (
           <div className="trashBlue flex flex-col items-center rounded-md px-4 py-2 text-sm">
-            <div className="font-bold">Category</div>
-            <div className="font-bold">{category}</div>
+            <div className="font-bold font-dosis text-lg">Category</div>
+            <div className="font-dosis text-lg">{category}</div>
           </div>
         ) : (
           <div className="trashGreen flex flex-col items-center rounded-md px-4 py-2 text-sm">
-            <div className="font-bold">Category</div>
-            <div className="font-bold">{category}</div>
+            <div className="font-bold font-dosis text-lg">Category</div>
+            <div className="font-dosis text-lg">{category}</div>
           </div>
         )}
 
         <div
           className={`flex flex-col items-center rounded-md trash${color} px-4 py-2 text-sm opacity-100`}
         >
-          <div className="font-bold">Bin color</div>
-          <div className="font-bold">{color}</div>
+          <div className="font-bold font-dosis text-lg">Bin color</div>
+          <div className="font-dosis text-lg">{color}</div>
         </div>
       </div>
     </div>

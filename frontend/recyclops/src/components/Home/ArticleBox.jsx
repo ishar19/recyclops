@@ -140,13 +140,12 @@ const ArticleBox = ({
           </button>
         )}
       </div>
-      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 backdrop-sepia-0">
+      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 backdrop-sepia-0 font-dosis">
         <h2 className="text-xl">{article.title}</h2>
         <p className="text-md text-black">
           {getHumanDate(article.published.seconds)}
         </p>
       </div>
-      {/* <Toaster /> */}
     </div>
   );
 };
