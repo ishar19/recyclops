@@ -14,6 +14,7 @@ import GameHome from "./pages/GameHome";
 import { Toaster } from "react-hot-toast";
 import Bookmarks from "./pages/Bookmarks";
 import AboutUs from "./pages/AboutUs";
+import Intro from "./pages/Intro";
 function App() {
   const user = useContext(UserContext);
   const gameData = () =>
@@ -22,6 +23,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/intro" element={<Intro />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route
           path="/profile"

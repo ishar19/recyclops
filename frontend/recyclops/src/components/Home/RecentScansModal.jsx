@@ -109,7 +109,6 @@ const RecentScansModal = ({ handleModal, scan }) => {
                   className="h-[200px]"
                   alt={scan.category}
                 />
-                {/* {scanContent.description} */}
               </div>
             </div>
           </div>
