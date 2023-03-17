@@ -5,7 +5,7 @@ const BackButton = () => {
   const navigate = useNavigate();
   return (
     <button
-      className=" absolute top-[2vh] left-[2vw] z-10 flex h-[5vh] items-center justify-center rounded-md bg-greenPrimary px-3 text-white shadow-md"
+      className=" absolute top-[2vh] left-[2vw] z-50 flex h-[5vh] items-center justify-center rounded-md bg-greenPrimary px-3 text-white shadow-md"
       onClick={() => navigate(-1)}
     >
       <MdArrowBackIos />

@@ -7,8 +7,8 @@ import Info from "./Info";
 import { scanImage } from "../../APIs/Scans";
 import { addScan } from "../../APIs/User";
 const CameraScanner = ({ user }) => {
-  const [dataUri, setDataUri] = useState(null);
-  const [data, setData] = useState(false);
+  const [dataUri, setDataUri] = useState("");
+  const [data, setData] = useState(true);
   const handleReset = () => {
     setDataUri(null);
     setData(false);
@@ -62,7 +62,7 @@ const CameraScanner = ({ user }) => {
               onClick={handleReset}
               fontSize="3em"
               fontWeight="bolder"
-              className="absolute right-4 top-4 rounded-lg bg-greenPrimary text-black"
+              className="absolute right-4 top-4 z-50 rounded-lg bg-greenPrimary text-black"
             />
           </>
         ) : (
@@ -75,7 +75,7 @@ const CameraScanner = ({ user }) => {
                   onClick={handleReset}
                   fontSize="3em"
                   fontWeight="bolder"
-                  className="absolute right-4 top-4 rounded-lg bg-greenPrimary text-black"
+                  className="absolute right-4 top-4 z-50 rounded-lg bg-greenPrimary text-black"
                 />
               </>
             ) : (

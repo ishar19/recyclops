@@ -127,24 +127,27 @@ const ArticleBox = ({
         alt="scan image"
         className="absolute -z-10 h-full w-full rounded-2xl object-cover blur-[0.7px]"
       />
-      <div className="flex flex-col items-end justify-around">
-        {hideBookmark ? (
-          ""
-        ) : (
-          <button
-            className="absolute bottom-3 right-2 z-10 float-right text-3xl font-[1200] text-black"
-            id={id}
-            onClick={(e) => handleOption(e, id)}
-          >
-            {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
-          </button>
-        )}
-      </div>
-      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 font-dosis backdrop-sepia-0">
-        <h2 className="text-xl">{article.title}</h2>
-        <p className="text-md text-black">
-          {getHumanDate(article.published.seconds)}
-        </p>
+
+      <div className="bg absolute bottom-0  flex  w-[100%]  justify-between gap-1 rounded-b-2xl bg-white p-2  align-middle font-dosis backdrop-sepia-0">
+        <div>
+          <h2 className="text-xl">{article.title}</h2>
+          <p className="text-md text-black">
+            {getHumanDate(article.published.seconds)}
+          </p>
+        </div>
+        <div className="flex flex-col items-end justify-around">
+          {hideBookmark ? (
+            ""
+          ) : (
+            <button
+              className="relative bottom-3 right-2 z-10 float-right text-3xl font-[1200] text-black"
+              id={id}
+              onClick={(e) => handleOption(e, id)}
+            >
+              {showBookMark ? <BsFillBookmarkFill /> : <BsBookmark />}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
