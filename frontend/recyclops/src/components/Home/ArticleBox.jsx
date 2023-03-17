@@ -132,7 +132,7 @@ const ArticleBox = ({
           ""
         ) : (
           <button
-            className="absolute bottom-3 right-2 z-10 text-3xl font-[1200] text-black"
+            className="absolute bottom-3 right-2 z-10 float-right text-3xl font-[1200] text-black"
             id={id}
             onClick={(e) => handleOption(e, id)}
           >
@@ -140,7 +140,7 @@ const ArticleBox = ({
           </button>
         )}
       </div>
-      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 backdrop-sepia-0 font-dosis">
+      <div className="bg absolute  bottom-0 w-[100%] rounded-b-2xl bg-white pl-4 font-dosis backdrop-sepia-0">
         <h2 className="text-xl">{article.title}</h2>
         <p className="text-md text-black">
           {getHumanDate(article.published.seconds)}

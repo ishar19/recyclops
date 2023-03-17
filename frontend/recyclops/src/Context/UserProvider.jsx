@@ -1,11 +1,13 @@
 import React, { useState, useEffect, createContext } from "react";
 import { auth } from "../firebaseConfig";
 import PropTypes from "prop-types";
-export const UserContext = createContext({ user: auth.currentUser });
+export const UserContext = createContext();
 export default function UserProvider({ children }) {
-  const [user, setUser] = useState(auth.currentUser);
+  const [user, setUser] = useState();
+  console.log(auth, user);
   useEffect(() => {
     const userListener = auth.onAuthStateChanged(async (user) => {
+      console.log(user);
       if (user == null) {
         setUser(null);
       } else {
