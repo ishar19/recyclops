@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import Bookmarks from "./pages/Bookmarks";
 import AboutUs from "./pages/AboutUs";
 import Intro from "./pages/Intro";
+import NotFound from "./components/global/NotFound";
 function App() {
   const user = useContext(UserContext);
   const gameData = () =>
@@ -112,7 +113,3 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-const NotFound = () => {
-  return <h1>404 not found</h1>;
-};
