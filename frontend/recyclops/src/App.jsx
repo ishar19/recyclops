@@ -17,6 +17,7 @@ import AboutUs from "./pages/AboutUs";
 import Intro from "./pages/Intro";
 import NotFound from "./components/global/NotFound";
 import ErrorBoundary from "./components/global/ErrorBoundary";
+import Reset from "./components/Scanner/Reset";
 function App() {
   const user = useContext(UserContext);
   const gameData = () =>
@@ -24,7 +25,7 @@ function App() {
   return (
     <ErrorBoundary>
       {user === undefined ? (
-        <p>Loading...</p>
+        <Reset />
       ) : (
         <>
           <Routes>
