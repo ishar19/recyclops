@@ -16,6 +16,7 @@ import Bookmarks from "./pages/Bookmarks";
 import AboutUs from "./pages/AboutUs";
 import Intro from "./pages/Intro";
 import NotFound from "./components/global/NotFound";
+import ErrorBoundary from "./components/global/ErrorBoundary";
 function App() {
   const user = useContext(UserContext);
   const gameData = () =>
@@ -86,30 +87,3 @@ function App() {
 }
 
 export default App;
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
-
-    // eslint-disable-next-line react/prop-types
-    return this.props.children;
-  }
-}
