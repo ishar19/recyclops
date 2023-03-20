@@ -22,15 +22,15 @@ export const newGame = async (userId) => {
   return newGameModel(gameDocumentId, userId);
 };
 
-export const fetchGame = async () => {
-  return fetch(
-    `${
-      import.meta.env.VITE_FAST_API_PORT
-    }/game/fetch?game_id=UnjZQJNIOTy6rYe4kxFx`
-  ).then(async (data) => {
-    return await data.json();
-  });
-};
+// export const fetchGame = async () => {
+//   return fetch(
+//     `${
+//       import.meta.env.VITE_FAST_API_PORT
+//     }/game/fetch?game_id=UnjZQJNIOTy6rYe4kxFx`
+//   ).then(async (data) => {
+//     return await data.json();
+//   });
+// };
 
 export const saveGame = async (body) => {
   const jwt = await getUserJWT();

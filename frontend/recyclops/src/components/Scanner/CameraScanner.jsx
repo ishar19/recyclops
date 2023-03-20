@@ -7,8 +7,8 @@ import Info from "./Info";
 import { scanImage } from "../../APIs/Scans";
 import { addScan } from "../../APIs/User";
 const CameraScanner = ({ user }) => {
-  const [dataUri, setDataUri] = useState("");
-  const [data, setData] = useState(true);
+  const [dataUri, setDataUri] = useState(null);
+  const [data, setData] = useState(false);
   const handleReset = () => {
     setDataUri(null);
     setData(false);

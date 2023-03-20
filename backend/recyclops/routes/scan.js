@@ -19,7 +19,7 @@ router.post('/newScan',async(req, res)=>{
     try{
         const file = await getImage(dataURI)
         publicURL = await uploadImage(file)
-        const response = await fetch(`https://fastapi-production-0f75.up.railway.app/classify_image?image_url=${publicURL}`);
+        const response = await fetch(`https://ml.recyclops.limitnil.com/classify_image?image_url=${publicURL}`);
         const data = await response.json()
         scanClass = data['class_integer'].toString()
         const scanDataRef = doc(db, "scanData",data['class_integer'].toString())
