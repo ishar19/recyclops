@@ -114,6 +114,7 @@ const ArticleBox = ({
       JSON.stringify([...savedArticles])
     );
   }, []);
+  console.log(article);
   return (
     <div
       key={id}

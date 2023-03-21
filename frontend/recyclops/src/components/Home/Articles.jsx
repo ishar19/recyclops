@@ -36,6 +36,7 @@ const Articles = () => {
     fetchArticles();
     setLoading(false);
   }, [articleIds]);
+
   return (
     <div className="mt-10">
       <h1 className="mb-2 font-dosis text-3xl font-medium text-greenPrimary">
