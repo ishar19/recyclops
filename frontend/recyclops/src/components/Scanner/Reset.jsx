@@ -6,16 +6,22 @@ const Reset = ({ transparent }) => {
     <div
       className={`absolute ${
         transparent ? "z-[50]" : "z-[-50]"
-      } flex h-screen w-screen items-center justify-center ${
+      } flex h-screen w-screen flex-col items-center justify-center  ${
         transparent
           ? "bg-none"
           : "bg-gradient-to-l from-[#34A85366]/40 to-[#34A85366]/10"
       }   `}
     >
-      <img
-        src={Loader}
-        className="absolute   translate-x-[-50%] translate-y-[-50%] animate-spin-animation"
-      />
+      <div className=" animate-spin-animation">
+        <img src={Loader} />
+      </div>
+      {!transparent ? (
+        <p className=" font-dosis text-4xl font-bold  text-greenPrimary">
+          RecyclOps
+        </p>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
