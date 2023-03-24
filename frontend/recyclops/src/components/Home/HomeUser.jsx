@@ -6,7 +6,6 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { newUser } from "../../APIs/User";
 const HomeUser = () => {
   const user = useContext(UserContext);
-  console.log(user);
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then(async (data) => {

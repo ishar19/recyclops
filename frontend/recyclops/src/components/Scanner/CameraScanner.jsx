@@ -6,9 +6,12 @@ import Reset from "./Reset";
 import Info from "./Info";
 import { scanImage } from "../../APIs/Scans";
 import { addScan } from "../../APIs/User";
+// import { scanDataState } from "../../Context/scanData";
+// import { useRecoilState } from "recoil";
 const CameraScanner = ({ user }) => {
   const [dataUri, setDataUri] = useState(null);
   const [data, setData] = useState(false);
+  //   console.log(useRecoilState(scanDataState));
   const handleReset = () => {
     setDataUri(null);
     setData(false);
@@ -27,7 +30,7 @@ const CameraScanner = ({ user }) => {
       if (user != null) {
         addScan(user.uid, scanData.scanId);
       }
-      setData(scanData);
+      setData({ id: "scanData", data: scanData });
       //   if (user == null) {
       //     const recentScans = JSON.parse(
       //       window.localStorage.getItem("recentScans")
@@ -49,7 +52,7 @@ const CameraScanner = ({ user }) => {
   return (
     <>
       {dataUri != null && data != false ? (
-        <Info data={data} />
+        <Info data={data.data} />
       ) : (
         <>{dataUri == null && data == false ? <Reset /> : <></>}</>
       )}

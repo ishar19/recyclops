@@ -72,12 +72,7 @@ function App() {
               path="/profile/aboutus"
               element={user ? <AboutUs /> : <Navigate replace to={"/signin"} />}
             />
-            <Route
-              path="/signin"
-              element={
-                !user ? <SignIn /> : <Navigate replace to={"/profile"} />
-              }
-            />
+            <Route path="/signin" element={!user ? <SignIn /> : <></>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Toaster />
