@@ -10,8 +10,8 @@ const SignIn = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then(async (data) => {
-        // console.log(data);
         newUser(data.user.uid, data.user.email);
+        navigate(-1);
       })
 
       .catch((error) => {
@@ -35,13 +35,13 @@ const SignIn = () => {
           Sign in
         </button>
         <div className="mt-12 p-5 font-dosis font-medium">
-          Lorem ipsum dolor sit amet consectetur. Nunc sed mi blandit vitae eget
-          vitae. In egestas quis.
+          Take charge of your trash and transform your impact on the planet -
+          sign up now for our waste management app!
         </div>
       </div>
 
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/")}
         className="text-whi absolute right-10 rounded-md bg-greenPrimary px-5 py-2 font-dosis font-medium text-white shadow-md"
       >
         Skip
