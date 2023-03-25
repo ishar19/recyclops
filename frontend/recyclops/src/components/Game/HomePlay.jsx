@@ -10,19 +10,20 @@ const HomePlay = ({ user }) => {
   const navigate = useNavigate();
   const navigateToGame = async () => {
     setLoading(true);
-    if (user != null)
-      await createNewGame().then(() => {
-        navigate("/game/play");
-      });
+    if (user != null) navigate("/game/play");
     else {
       navigate("/signin");
     }
   };
 
+  useEffect(() => {
+    createNewGame();
+  }, []);
+
   const createNewGame = async () => {
     // eslint-disable-next-line react/prop-types
     const gameData = await newGame(user.uid);
-    window.localStorage.setItem("gameData", JSON.stringify(gameData));
+    window.sessionStorage.setItem("gameData", JSON.stringify(gameData));
   };
   return (
     <button

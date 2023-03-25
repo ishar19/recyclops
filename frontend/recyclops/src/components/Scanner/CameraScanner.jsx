@@ -35,12 +35,12 @@ const CameraScanner = ({ user }) => {
       setData(scanData);
       //   if (user == null) {
       //     const recentScans = JSON.parse(
-      //       window.localStorage.getItem("recentScans")
+      //       window.sessionStorage.getItem("recentScans")
       //     );
       //     if (recentScans == undefined)
-      //       window.localStorage.setItem("recentScans", [scanData.scanId]);
+      //       window.sessionStorage.setItem("recentScans", [scanData.scanId]);
       //     else
-      //       window.localStorage.setItem("recentScans", [
+      //       window.sessionStorage.setItem("recentScans", [
       //         ...recentScans,
       //         scanData.scanId,
       //       ]);

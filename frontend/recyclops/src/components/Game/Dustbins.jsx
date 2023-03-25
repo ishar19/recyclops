@@ -48,17 +48,17 @@ const Dustbins = ({ user }) => {
 
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   function handleDragEnd(event) {
-    const gameData = JSON.parse(window.localStorage.getItem("gameData"));
+    const gameData = JSON.parse(window.sessionStorage.getItem("gameData"));
     if (event.over && event.over.id !== null) {
       if (event.over.id == correctBin) {
         correctAns();
         gameData.score += 10;
-        window.localStorage.setItem("gameData", JSON.stringify(gameData));
+        window.sessionStorage.setItem("gameData", JSON.stringify(gameData));
         setScore(gameData.score);
       } else {
         wrongAns();
         gameData.livesLeft -= 1;
-        window.localStorage.setItem("gameData", JSON.stringify(gameData));
+        window.sessionStorage.setItem("gameData", JSON.stringify(gameData));
         setLives(gameData.livesLeft);
       }
       setIsDropped(true);
@@ -73,7 +73,7 @@ const Dustbins = ({ user }) => {
     setCorrectBin(question.correctBinId);
   };
   useEffect(() => {
-    const gameData = JSON.parse(window.localStorage.getItem("gameData"));
+    const gameData = JSON.parse(window.sessionStorage.getItem("gameData"));
     setScore(gameData.score);
     setLives(gameData.livesLeft);
 
@@ -83,8 +83,8 @@ const Dustbins = ({ user }) => {
     }
   }, [isDropped]);
   useEffect(() => {
-    setScore(JSON.parse(window.localStorage.getItem("gameData")).score);
-    setLives(JSON.parse(window.localStorage.getItem("gameData")).livesLeft);
+    setScore(JSON.parse(window.sessionStorage.getItem("gameData")).score);
+    setLives(JSON.parse(window.sessionStorage.getItem("gameData")).livesLeft);
   }, []);
   useEffect(() => {
     const navigateBack = setTimeout(() => {
@@ -92,11 +92,11 @@ const Dustbins = ({ user }) => {
     }, 2000);
 
     const save = async () => {
-      const gameData = JSON.parse(window.localStorage.getItem("gameData"));
+      const gameData = JSON.parse(window.sessionStorage.getItem("gameData"));
       gameData.endTimestamp = new Date(Date.now());
-      window.localStorage.setItem("gameData", JSON.stringify(gameData));
-      await saveGame(JSON.parse(window.localStorage.getItem("gameData")));
-      window.localStorage.removeItem("gameData");
+      window.sessionStorage.setItem("gameData", JSON.stringify(gameData));
+      await saveGame(JSON.parse(window.sessionStorage.getItem("gameData")));
+      window.sessionStorage.removeItem("gameData");
     };
     if (lives == 0) {
       gameOver();

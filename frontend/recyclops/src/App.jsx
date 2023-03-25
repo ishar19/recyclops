@@ -20,8 +20,7 @@ import ErrorBoundary from "./components/global/ErrorBoundary";
 import Reset from "./components/Scanner/Reset";
 function App() {
   const user = useContext(UserContext);
-  const gameData = () =>
-    !(window.localStorage.getItem("gameData") == undefined);
+  const gameData = () => window.sessionStorage.getItem("gameData");
   return (
     <ErrorBoundary>
       {user === undefined ? (
