@@ -175,10 +175,10 @@ async def save_game(game_item: GameItem, token: str) -> dict:
             }
           )
 
-      leaderboard_doc_list.sort(key=lambda x: x["score"], reverse=True)
-      leaderboard_doc_ref.update(
-        {"list": leaderboard_doc_list}
-      )
+        leaderboard_doc_list.sort(key=lambda x: x["score"], reverse=True)
+        leaderboard_doc_ref.update(
+          {"list": leaderboard_doc_list}
+        )
 
     old_game_doc_ref.update(
       game_data
