@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
 import { RxCross2 } from "react-icons/rx";
@@ -6,15 +6,17 @@ import Reset from "./Reset";
 import Info from "./Info";
 import { scanImage } from "../../APIs/Scans";
 import { addScan } from "../../APIs/User";
-// import { scanDataState } from "../../Context/scanData";
-// import { useRecoilState } from "recoil";
+import { scanDataState, dataURI, isSaved } from "../../Context/scanData";
+import { useRecoilState } from "recoil";
 const CameraScanner = ({ user }) => {
-  const [dataUri, setDataUri] = useState(null);
-  const [data, setData] = useState(false);
-  //   console.log(useRecoilState(scanDataState));
+  const [dataUri, setDataUri] = useRecoilState(dataURI);
+  const [data, setData] = useRecoilState(scanDataState);
+  const [save, setSave] = useRecoilState(isSaved);
+
   const handleReset = () => {
     setDataUri(null);
     setData(false);
+    setSave(false);
   };
   function handleTakePhoto(dataUri) {
     setDataUri(dataUri);
@@ -30,7 +32,7 @@ const CameraScanner = ({ user }) => {
       if (user != null) {
         addScan(user.uid, scanData.scanId);
       }
-      setData({ id: "scanData", data: scanData });
+      setData(scanData);
       //   if (user == null) {
       //     const recentScans = JSON.parse(
       //       window.localStorage.getItem("recentScans")
@@ -52,7 +54,7 @@ const CameraScanner = ({ user }) => {
   return (
     <>
       {dataUri != null && data != false ? (
-        <Info data={data.data} />
+        <Info data={data} save={save} setSave={setSave} />
       ) : (
         <>{dataUri == null && data == false ? <Reset /> : <></>}</>
       )}

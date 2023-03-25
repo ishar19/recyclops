@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 // import { AiOutlineTwitter } from "react-icons/ai";
 import { MdBookmarkBorder, MdBookmark } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -6,13 +6,14 @@ import { UserContext } from "../../Context/UserProvider";
 import { removeScan, saveScan } from "../../APIs/User";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 const saveToast = () => toast.success("Scan saved");
 const deleteToast = () => toast.error("Scan removed");
 const loginToast = () => toast.error("Login to save scan");
-const Footer = ({ scanId }) => {
+// eslint-disable-next-line react/prop-types
+const Footer = ({ scanId, save, setSave }) => {
   const user = useContext(UserContext);
   const navigate = useNavigate();
-  const [save, setSave] = useState(false);
   const handleSave = async () => {
     setSave((prev) => !prev);
     const isSaveScan = await saveScan(user.uid, scanId);

@@ -4,13 +4,14 @@ import Dispose from "./Dispose";
 import Footer from "./Footer";
 import PropTypes from "prop-types";
 
-const Info = ({ data }) => {
+// eslint-disable-next-line react/prop-types
+const Info = ({ data, save, setSave }) => {
   const { scanInfo, scanId } = data;
   return (
     <div className="flex flex-col items-center">
       <Category category={scanInfo.category} color={scanInfo.color} />
       <Dispose category={scanInfo.class} info={scanInfo.info} />
-      <Footer scanId={scanId} />
+      <Footer scanId={scanId} save={save} setSave={setSave} />
     </div>
   );
 };
