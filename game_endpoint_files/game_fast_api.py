@@ -200,7 +200,7 @@ async def leaderboard() -> list[dict]:
   leaderboard_doc_ref = leaderboard_ref.document("drag_and_drop")
   leaderboard_doc_list : list[dict] = leaderboard_doc_ref.get().to_dict()['list']
   new_leaderboard_doc_list = sorted(leaderboard_doc_list, key=lambda x: x["score"], reverse=True)
-  if leaderboard_doc_list == new_leaderboard_doc_list:
+  if leaderboard_doc_list != new_leaderboard_doc_list:
     leaderboard_doc_ref.update(
       {"list": leaderboard_doc_list}
     )
@@ -215,7 +215,7 @@ async def leaderboard(user_id: str) -> dict:
   leaderboard_doc_ref = leaderboard_ref.document("drag_and_drop")
   leaderboard_doc_list : list[dict] = leaderboard_doc_ref.get().to_dict()['list']
   new_leaderboard_doc_list = sorted(leaderboard_doc_list, key=lambda x: x["score"], reverse=True)
-  if leaderboard_doc_list == new_leaderboard_doc_list:
+  if leaderboard_doc_list != new_leaderboard_doc_list:
     leaderboard_doc_ref.update(
       {"list": leaderboard_doc_list}
     )
