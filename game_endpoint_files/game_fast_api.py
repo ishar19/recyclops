@@ -204,7 +204,7 @@ async def leaderboard() -> list[dict]:
     leaderboard_doc_ref.update(
       {"list": leaderboard_doc_list}
     )
-  return leaderboard_doc_list
+  return new_leaderboard_doc_list
 
 
 # #leaderboard user related commands
@@ -220,7 +220,7 @@ async def leaderboard(user_id: str) -> dict:
       {"list": leaderboard_doc_list}
     )
   
-  for index, inner_dict in enumerate(leaderboard_doc_list.copy()):
+  for index, inner_dict in enumerate(new_leaderboard_doc_list.copy()):
     if inner_dict['userId'] == user_id:
       inner_dict['rank'] = index+1
       return inner_dict
