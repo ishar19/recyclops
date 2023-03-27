@@ -12,7 +12,6 @@ const HomeUser = () => {
         // console.log(data);
         newUser(data.user.uid, data.user.email);
       })
-
       .catch((error) => {
         console.log(error.message);
       });

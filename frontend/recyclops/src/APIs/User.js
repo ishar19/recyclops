@@ -50,12 +50,14 @@ export const newUser = async (userId, email) => {
     id: userId,
     email: email,
   };
+  console.log(body);
   return fetch(`${import.meta.env.VITE_NODE_JS_PORT}/user/newUser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
-  }).then(async (data) => data.ok);
+  }).then(async (data) => {
+    return data.ok;
+  });
 };
-
