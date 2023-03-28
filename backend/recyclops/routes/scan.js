@@ -51,7 +51,6 @@ router.get('/getData/:id', async(req, res)=>{
             const scanDataRef = doc(db, "scanData",scanInfo.scanClass)
             const scanDataSnap = await getDoc(scanDataRef)
             const scanData = scanDataSnap.data()
-            console.log(scanInfo,scanData)
             res.json({scanInfo,scanData})
         }
         else{
