@@ -29,10 +29,10 @@ const members = [
     instagram: "https://instagram.com/ij_473",
   },
   {
-    name: "Prabhkirat",
+    name: "Prabhkirat Singh",
     img: Prabkirat,
     tech: "Backend + ML model",
-    info: "I am a second-year student. I love building projects and constantly trying out new technologies. So far, I have worked on Android and iOS apps, as well as Discord and Twitter bots. Additionally, I have built basic APIs and machine learning models.",
+    info: "I am a second-year BTech CSE student who loves building projects and constantly trying out new technologies. So far, I have worked on Android and iOS apps thanks to Flutter, as well as created Discord and Twitter bots using Python. Additionally, I have built basic APIs and machine learning models.",
     github: "",
     twitter: "https://twitter.com/pkiratsingh",
     instagram: "",
