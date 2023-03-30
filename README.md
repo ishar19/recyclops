@@ -96,7 +96,7 @@ Please adhere to this project's `code of conduct`.
 
 - [ishar19](https://github.com/ishar19)
 - [bhavya-giri](https://github.com/bhavya-giri)
-- [Infinil](https://github.com/Infinil)
+- [noob8boi](https://github.com/noob8boi)
 - [IamDikshaR](https://github.com/IamDikshaR)
 
 
