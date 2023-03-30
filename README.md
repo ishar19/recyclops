@@ -16,7 +16,10 @@ A web application to help people recognize and segregate their wastes in a corre
 
 ### Screenshots
 
-![App Screenshot]![image](https://user-images.githubusercontent.com/84319299/228841931-2e2f1051-66c0-4821-9bcc-7d1a584658e6.png)
+![image](https://user-images.githubusercontent.com/84319299/228841931-2e2f1051-66c0-4821-9bcc-7d1a584658e6.png)
+![image](https://user-images.githubusercontent.com/84319299/228845180-ce7ef10c-c3b2-49c0-bedc-bf07961a908e.png)
+![image](https://user-images.githubusercontent.com/84319299/228845316-98c57e6c-a8ac-4595-b969-a90010fdbc90.png)
+
 
 
 
