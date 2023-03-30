@@ -16,7 +16,8 @@ A web application to help people recognize and segregate their wastes in a corre
 
 ### Screenshots
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/recyclops-69781.appspot.com/o/app-images%2FScreenshot%20(76).png?alt=media&token=abda1b82-1489-451a-8064-94004519e3d9)
+![App Screenshot]![image](https://user-images.githubusercontent.com/84319299/228841931-2e2f1051-66c0-4821-9bcc-7d1a584658e6.png)
+
 
 
 ## Features
@@ -76,7 +77,8 @@ Start the server
   npm run dev
 ```
 #### Open the dev link from vite in a mobile device for better experience
-
+#### It is using https locally to use camer. Please approve it to use project locally
+![image](https://user-images.githubusercontent.com/84319299/228840634-507f3794-210c-48b5-8f48-2e86c4e3e645.png)
 
 <!-- ### Documentation
 
