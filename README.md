@@ -55,13 +55,13 @@ A web application to help people recognize and segregate their wastes in a corre
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/ishar19/recyclops.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd recyclops/frontend/recyclops
 ```
 
 Install dependencies
@@ -73,23 +73,24 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm run dev
 ```
+#### Open the dev link from vite in a mobile device for better experience
 
 
-### Documentation
+<!-- ### Documentation
 
 [Code Documentation](https://linktodocumentation)   
-[Design Documentation]()
+[Design Documentation]() -->
 
 
-### Contributing
+<!-- ### Contributing
 
 Contributions are always welcome!
 
 See `contributing.md` for ways to get started.
 
-Please adhere to this project's `code of conduct`.
+Please adhere to this project's `code of conduct`. -->
 
 
 ## Authors
