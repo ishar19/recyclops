@@ -12,7 +12,7 @@ A web application to help people recognize and segregate their wastes in a corre
 
 ### Demo
 
-[Video link]()
+[Video link](https://youtu.be/CDdQ1z0X_PE)
 
 ### Screenshots
 
