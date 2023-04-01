@@ -9,49 +9,6 @@ A web application to help people recognize and segregate their wastes in a corre
 
 ![Recyclops Logo](https://firebasestorage.googleapis.com/v0/b/recyclops-69781.appspot.com/o/app-images%2FLogo.png?alt=media&token=7ca240c3-5878-443f-bae1-6fa603ac3fc9)
 
-
-### Demo
-
-[Video link](https://youtu.be/CDdQ1z0X_PE)
-
-### Screenshots
-
-![image](https://user-images.githubusercontent.com/84319299/228841931-2e2f1051-66c0-4821-9bcc-7d1a584658e6.png)
-![image](https://user-images.githubusercontent.com/84319299/228845180-ce7ef10c-c3b2-49c0-bedc-bf07961a908e.png)
-![image](https://user-images.githubusercontent.com/84319299/228845316-98c57e6c-a8ac-4595-b969-a90010fdbc90.png)
-![image](https://user-images.githubusercontent.com/84319299/228849606-326592c6-ac3c-46c0-8a0f-ddbb99e3dad4.png)
-
-
-
-
-
-## Features
-
-- A scanner which lets you scan any trash object and tells you what category of trash it is out of the seven accepted categories(color code) and how to dispose or recycle it correctly
-- An interactive game of drag and drop where the user has to drag and drop the trash in the correct bin
-- Displays articles on various waste management topics and enculcating sustainibilty
-## Tech Stack
-
-- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
-- ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) 
-- ![NodeJs](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) 
-- ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) 
-- ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
-- ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
-- ![FastAPI](https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=FASTAPI&logoColor=white) 
-
-
-### Tools
-
-- ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) 
-- ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-- ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
-- ![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white) 
-- ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
-- ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
-- ![VS code](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-
-
 ### Deployment
 
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=recyclops)
@@ -84,6 +41,53 @@ Start the server
 #### Open the dev link from vite in a mobile device for better experience
 #### It is using https locally to use camer. Please approve it to use project locally
 ![image](https://user-images.githubusercontent.com/84319299/228840634-507f3794-210c-48b5-8f48-2e86c4e3e645.png)
+
+
+### Demo
+
+[Video link](https://youtu.be/CDdQ1z0X_PE)
+
+### Screenshots
+
+![image](https://user-images.githubusercontent.com/84319299/228841931-2e2f1051-66c0-4821-9bcc-7d1a584658e6.png)
+![image](https://user-images.githubusercontent.com/84319299/228845180-ce7ef10c-c3b2-49c0-bedc-bf07961a908e.png)
+![image](https://user-images.githubusercontent.com/84319299/228845316-98c57e6c-a8ac-4595-b969-a90010fdbc90.png)
+![image](https://user-images.githubusercontent.com/84319299/228849606-326592c6-ac3c-46c0-8a0f-ddbb99e3dad4.png)
+
+
+
+### PageSpeed Insights
+![image](https://user-images.githubusercontent.com/84319299/229278188-91ca31bb-1cb8-4ad5-8e89-fd048b3494a1.png)
+![image](https://user-images.githubusercontent.com/84319299/229278195-ce15c99f-afb3-4693-8da5-f89dafe508b6.png)
+
+
+## Features
+
+- A scanner which lets you scan any trash object and tells you what category of trash it is out of the seven accepted categories(color code) and how to dispose or recycle it correctly
+- An interactive game of drag and drop where the user has to drag and drop the trash in the correct bin
+- Displays articles on various waste management topics and enculcating sustainibilty
+## Tech Stack
+
+- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
+- ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) 
+- ![NodeJs](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) 
+- ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) 
+- ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+- ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+- ![FastAPI](https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=FASTAPI&logoColor=white) 
+
+
+### Tools
+
+- ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) 
+- ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+- ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
+- ![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white) 
+- ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+- ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+- ![VS code](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+
 
 <!-- ### Documentation
 
