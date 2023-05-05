@@ -1,6 +1,9 @@
 
 # Recyclops
 
+## This will be inactive for a while since we are transferring our services from one provider to another
+
+
 A web application to help people recognize and segregate their wastes in a correct manner. In today’s world, where technology and man power are at it’s peak and every activity generates waste of some or the other kind, it becomes necessary to know the correct way of disposal of wastes to decrease environmental pollution and contamination. We often are unaware of the correct disposal of waste that is found in an average household and in everyday life. The objective of this project is to help every common man learn the dos and don’ts of waste disposal and create a safer and cleaner environment in the process. Further it would help inculcate environment consciousness and also help promote a sustainable lifestyle. 
 
 > We don't have to sacrifice a strong economy for a healthy environment   *-Dennis Weaver*
